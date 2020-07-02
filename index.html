@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <title>Advanced Dungeon & Dragons</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href="img/favicon.gif">
+    <style>
+      #ficha {
+        width: 500px;
+      }
+      thead tr th {
+        display: none;
+      }
+      tbody tr td:first-child {
+        font-weight: bold;
+        width: 100px;
+        border: 0 !important;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="ficha"></div>
+
+    <script src="scripts/prettyprint.js"></script>
+    <script type="text/javascript">
+
+      const RACAS = {
+        "Humano": {
+          "Força": { minimo: 3, maximo: 18 },
+          "Destreza": { minimo: 3, maximo: 18 },
+          "Constituição": { minimo: 3, maximo: 18 },
+          "Inteligência": { minimo: 3, maximo: 18 },
+          "Sabedoria": { minimo: 3, maximo: 18 },
+          "Carisma": { minimo: 3, maximo: 18 },
+          ajustes: {},
+          detalhes: []
+        },
+        "Anão": {
+          "Força": { minimo: 8, maximo: 18 },
+          "Destreza": { minimo: 3, maximo: 17 },
+          "Constituição": { minimo: 11, maximo: 18 },
+          "Inteligência": { minimo: 3, maximo: 18 },
+          "Sabedoria": { minimo: 3, maximo: 18 },
+          "Carisma": { minimo: 3, maximo: 17 },
+          ajustes: { "Constituição": 1, "Carisma": -1 },
+          detalhes: []
+        },
+        "Elfo": {
+          "Força": { minimo: 3, maximo: 18 },
+          "Destreza": { minimo: 6, maximo: 18 },
+          "Constituição": { minimo: 7, maximo: 18 },
+          "Inteligência": { minimo: 8, maximo: 18 },
+          "Sabedoria": { minimo: 3, maximo: 18 },
+          "Carisma": { minimo: 8, maximo: 18 },
+          ajustes: { "Destreza": 1, "Constituição": -1 },
+          detalhes: []
+        },
+        "Gnomo": {
+          "Força": { minimo: 6, maximo: 18 },
+          "Destreza": { minimo: 3, maximo: 18 },
+          "Constituição": { minimo: 8, maximo: 18 },
+          "Inteligência": { minimo: 6, maximo: 18 },
+          "Sabedoria": { minimo: 3, maximo: 18 },
+          "Carisma": { minimo: 3, maximo: 18 },
+          ajustes: { "Inteligência": 1, "Sabedoria": -1 },
+          detalhes: []
+        },
+        "Meio-Elfo": {
+          "Força": { minimo: 3, maximo: 18 },
+          "Destreza": { minimo: 6, maximo: 18 },
+          "Constituição": { minimo: 6, maximo: 18 },
+          "Inteligência": { minimo: 4, maximo: 18 },
+          "Sabedoria": { minimo: 3, maximo: 18 },
+          "Carisma": { minimo: 3, maximo: 18 },
+          ajustes: {},
+          detalhes: []
+        },
+        "Halfling": {
+          "Força": { minimo: 7, maximo: 18 },
+          "Destreza": { minimo: 7, maximo: 18 },
+          "Constituição": { minimo: 10, maximo: 18 },
+          "Inteligência": { minimo: 6, maximo: 18 },
+          "Sabedoria": { minimo: 3, maximo: 17 },
+          "Carisma": { minimo: 3, maximo: 18 },
+          ajustes: { "Destreza": 1, "Força": -1 },
+          detalhes: [
+            'Halflings não jogam os dados para obter Força Extraordinária'
+          ]
+        }
+      }
+
+      function rolar1d6(callback) {
+        let resultado = Math.floor(Math.random() * 6) + 1;
+        callback(resultado);
+      }
+
+      function rolar3d6(callback) {
+        rolar1d6(dado1 => {
+          rolar1d6(dado2 => {
+            rolar1d6(dado3 => {
+              let resultado = dado1 + dado2 + dado3;
+              callback(resultado);
+            })
+          })
+        })
+      }
+
+      function sortear_atributos(callback) {
+        rolar3d6(forca => {
+          rolar3d6(destreza => {
+            rolar3d6(constituicao => {
+              rolar3d6(inteligencia => {
+                rolar3d6(sabedoria => {
+                  rolar3d6(carisma => {
+                    callback({
+                      "Habilidades": {
+                        "Força": { "Valor da Habilidade": forca },
+                        "Destreza": { "Valor da Habilidade": destreza },
+                        "Constituição": { "Valor da Habilidade": constituicao },
+                        "Inteligência": { "Valor da Habilidade": inteligencia },
+                        "Sabedoria": { "Valor da Habilidade": sabedoria },
+                        "Carisma": { "Valor da Habilidade": carisma },
+                      }
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      }
+
+      function validar_habilidades(personagem, callback) {
+
+        let keys_racas = Object.keys(RACAS);
+        let keys_habilidades = Object.keys(personagem["Habilidades"]);
+
+        let racas = [];
+
+        keys_racas.forEach((raca,index_racas) => {
+
+          let habilidade_valida = true;
+          keys_habilidades.forEach((habilidade,index_habilidades) => {
+              let valor = personagem["Habilidades"][habilidade]["Valor da Habilidade"];
+              let limites = RACAS[raca][habilidade];
+              if ( (valor < limites["minimo"]) || (valor > limites["maximo"]) ) {
+                habilidade_valida = false;
+              }
+
+              if (index_habilidades == (keys_habilidades.length - 1)) {
+                if (habilidade_valida) {
+                  racas.push(raca);
+                }
+              }
+          });
+
+          if (index_racas == (keys_racas.length - 1)) {
+            callback(racas);
+          }
+        });
+
+      }
+
+      function sortear_raca(personagem, callback) {
+        validar_habilidades(personagem, racas => {
+          let index = Math.floor(Math.random() * racas.length);
+          let raca = racas[index];
+          personagem["Raça"] = raca;
+
+          let ajustes = Object.keys(RACAS[raca].ajustes);
+          if (ajustes.length == 0) {
+            callback();
+          } else {
+            ajustes.forEach((habilidade, i) => {
+
+              let valor = personagem["Habilidades"][habilidade]["Valor da Habilidade"];
+              let ajuste = RACAS[raca].ajustes[habilidade];
+              personagem["Habilidades"][habilidade]["Valor da Habilidade"] = valor + ajuste;
+
+              if (i == (ajustes.length - 1)) {
+                callback();
+              }
+            });
+          }
+
+        });
+      }
+
+      function render() {
+        sortear_atributos(personagem => {
+          sortear_raca(personagem, () => {
+            let output = document.getElementById('ficha');
+            var node = prettyPrint(personagem);
+            document.getElementById('ficha').appendChild(node);
+          });
+        });
+      }
+
+      render();
+
+    </script>
+  </body>
+</html>
