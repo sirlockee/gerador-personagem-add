@@ -154,11 +154,24 @@
         }
       };
 
+      const TENDENCIAS = [
+        "Justo (bom e leal)",
+        "Ordeiro (neutro e leal)",
+        "Vil (maligno e leal)",
+        "Bondoso (bom e neutro)",
+        "Neutro",
+        "Egoista (neutro e maligno)",
+        "Honrado (caótico e bom)",
+        "Inconstante (neutro e caótico)",
+        "Cruel (caótico e maligno)"
+      ];
+
       const CLASSES = {
         "Guerreiro": {
           "Habilidades Exigidas": { "Força": 9 },
           "Pré-Requisitos": [ "Força" ],
           "Raças Permitidas": [ "Humano", "Anão", "Elfo", "Gnomo", "Meio-Elfo", "Halfling" ],
+          tendencias: TENDENCIAS,
           detalhes: [
             'Um guerreiro com pontuação de 16 ou mais na Força ganha um bônus de 10% para sua experiência em pontos.'
           ]
@@ -167,6 +180,7 @@
           "Habilidades Exigidas": { "Força": 12, "Constituição": 9, "Sabedoria": 13, "Carisma": 17 },
           "Pré-Requisitos": [ "Força", "Carisma" ],
           "Raças Permitidas": [ "Humano" ],
+          tendencias: [ "Justo (bom e leal)" ],
           detalhes: [
             'Um paladino que tenha valores de Força e Carisma iguais ou maiores que 16 ganha um bônus de 10% em sua experiência em pontos.'
           ]
@@ -175,6 +189,13 @@
           "Habilidades Exigidas": { "Força": 13, "Destreza": 13, "Constituição": 14, "Sabedoria": 14 },
           "Pré-Requisitos": [ "Força", "Destreza", "Sabedoria" ],
           "Raças Permitidas": [ "Humano", "Elfo", "Meio-Elfo" ],
+          tendencias: [
+            "Justo (bom e leal)",
+            "Ordeiro (neutro e leal)",
+            "Vil (maligno e leal)",
+            "Neutro",
+            "Honrado (caótico e bom)"
+          ],
           detalhes: [
             'Um ranger que tenha valores de Força. Destreza e Sabedoria iguais ou maiores que 16 ganha um bônus de 10% na experiência em pontos.'
           ]
@@ -183,6 +204,7 @@
           "Habilidades Exigidas": { "Inteligência": 9 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Elfo", "Meio-Elfo" ],
+          tendencias: TENDENCIAS,
           detalhes: [
             'Um mago com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
           ]
@@ -191,6 +213,7 @@
           "Habilidades Exigidas": { "Inteligência": 9, "Sabedoria": 15 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano" ],
+          tendencias: TENDENCIAS,
           detalhes: [
             'Um Abjurante (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
           ]
@@ -199,6 +222,7 @@
           "Habilidades Exigidas": { "Constituição": 15, "Inteligência": 9 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Meio-Elfo" ],
+          tendencias: TENDENCIAS,
           detalhes: [
             'Um Conjurador (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
           ]
@@ -207,6 +231,7 @@
           "Habilidades Exigidas": { "Inteligência": 9, "Sabedoria": 16 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Elfo", "Meio-Elfo" ],
+          tendencias: TENDENCIAS,
           detalhes: [
             'Um Adivinho (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
           ]
@@ -215,6 +240,7 @@
           "Habilidades Exigidas": { "Inteligência": 9, "Carisma": 16 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Elfo", "Meio-Elfo" ],
+          tendencias: TENDENCIAS,
           detalhes: [
             'Um Feiticeiro (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
           ]
@@ -223,6 +249,7 @@
           "Habilidades Exigidas": { "Destreza": 16, "Inteligência": 9 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Gnomo" ],
+          tendencias: TENDENCIAS,
           detalhes: [
             'Um Ilusionista (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
           ]
@@ -231,6 +258,7 @@
           "Habilidades Exigidas": { "Constituição": 16, "Inteligência": 9 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano" ],
+          tendencias: TENDENCIAS,
           detalhes: [
             'Um Invocador (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
           ]
@@ -239,6 +267,7 @@
           "Habilidades Exigidas": { "Inteligência": 9, "Sabedoria": 16 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano" ],
+          tendencias: TENDENCIAS,
           detalhes: [
             'Um Necromante (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
           ]
@@ -247,6 +276,7 @@
           "Habilidades Exigidas": { "Destreza": 15, "Inteligência": 9 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Meio-Elfo" ],
+          tendencias: TENDENCIAS,
           detalhes: [
             'Um Transmutador (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
           ]
@@ -255,14 +285,17 @@
           "Habilidades Exigidas": { "Sabedoria": 9 },
           "Pré-Requisitos": [ "Sabedoria" ],
           "Raças Permitidas": [ "Humano", "Anão", "Elfo", "Gnomo", "Meio-Elfo", "Halfling" ],
+          tendencias: TENDENCIAS,
           detalhes: [
-            'O clérigo com 16 ou mais de Sabedoria ganha um bônus de 10% em sua experiência.'
+            'O clérigo com 16 ou mais de Sabedoria ganha um bônus de 10% em sua experiência.',
+            'Um clérigo de um mito específico deve possuir uma tendência aceitável para a divindade'
           ]
         },
         "Druida": {
           "Habilidades Exigidas": { "Sabedoria": 12, "Carisma": 15 },
           "Pré-Requisitos": [ "Sabedoria", "Carisma" ],
           "Raças Permitidas": [ "Humano", "Meio-Elfo" ],
+          tendencias: TENDENCIAS,
           detalhes: [
             'Um druida com pontuação de 16 ou mais em Sabedoria e Carisma ganha um bônus de 10% para sua experiência em pontos.'
           ]
@@ -271,6 +304,7 @@
           "Habilidades Exigidas": { "Destreza": 9 },
           "Pré-Requisitos": [ "Destreza" ],
           "Raças Permitidas": [ "Humano", "Anão", "Elfo", "Gnomo", "Meio-Elfo", "Halfling" ],
+          tendencias: TENDENCIAS,
           detalhes: [
             'O ladrão com 16 ou mais de Destreza ganha um bônus de 10% em sua experiência.'
           ]
@@ -279,6 +313,13 @@
           "Habilidades Exigidas": { "Destreza": 12, "Inteligência": 13, "Carisma": 15 },
           "Pré-Requisitos": [ "Destreza", "Carisma" ],
           "Raças Permitidas": [ "Humano", "Meio-Elfo" ],
+          tendencias: [
+            "Ordeiro (neutro e leal)",
+            "Bondoso (bom e neutro)",
+            "Neutro",
+            "Egoista (neutro e maligno)",
+            "Inconstante (neutro e caótico)"
+          ],
           detalhes: [
             'O bardo com 16 ou mais de Destreza e Carisma ganha um bônus de 10% em sua experiência.'
           ]
@@ -452,13 +493,48 @@
                 });
 
                 if (index_classes_fortes == (classes_fortes.length - 1)) {
+
                   if (classes_selecionadas.length > 0) {
+
                     let index = Math.floor(Math.random() * classes_selecionadas.length);
                     personagem["Classe"] = classes_selecionadas[index];
+
                   } else {
+
                     let index = Math.floor(Math.random() * classes_permitidas.length);
-                    personagem["Classe"] = classes_permitidas[index];
+                    let classe_final = classes_permitidas[index];
+
+                    if (classe_final == "Clérigo") {
+                      let lista_clerigos = [
+                        "Clérigo", "Clérigo", "Clérigo", "Clérigo",
+                        "Clérigo", "Clérigo", "Clérigo", "Clérigo",
+                        "Clérigo", "Clérigo", "Clérigo", "Clérigo",
+                        "Clérigo", "Clérigo", "Clérigo", "Clérigo",
+                        "Clérigo", "Clérigo", "Clérigo", "Clérigo",
+                        "Clérigo da Agricultura",
+                        "Clérigo dos Ferreiros",
+                        "Clérigo da Morte",
+                        "Clérigo da Doença",
+                        "Clérigo da Terra",
+                        "Clérigo da Cura",
+                        "Clérigo da Caça",
+                        "Clérigo do Relâmpago",
+                        "Clérigo do Amor",
+                        "Clérigo da Natureza",
+                        "Clérigo dos Oceanos",
+                        "Clérigo da Paz",
+                        "Clérigo da Força",
+                        "Clérigo do Trovão",
+                        "Clérigo da Guerra",
+                        "Clérigo dos Ventos"
+                      ];
+                      let index_clerigo = Math.floor(Math.random() * lista_clerigos.length);
+                      classe_final = lista_clerigos[index_clerigo];
+                    }
+
+                    personagem["Classe"] = classe_final;
                   }
+
                   callback({ valores_invalidos: false });
                 }
               });
@@ -482,14 +558,29 @@
               if (resultado.valores_invalidos) {
                 sortear_personagem(personagem => {
                   console.log("Foi necessário outro lance de dados pois não foi possível escolher uma classe.");
-                  callback(personagem);
+                  sortear_tendencia(personagem, () => {
+                    callback(personagem);
+                  });
                 });
               } else {
-                callback(personagem);
+                sortear_tendencia(personagem, () => {
+                  callback(personagem);
+                });
               }
             });
           });
         });
+      }
+
+      function sortear_tendencia(personagem, callback) {
+        let classe = personagem["Classe"];
+        if (classe.indexOf('Clérigo') > -1) {
+          classe = 'Clérigo';
+        }
+        let tendencias = CLASSES[classe].tendencias;
+        let index = Math.floor(Math.random() * tendencias.length);
+        personagem["Tendência"] = tendencias[index];
+        callback();
       }
 
       function obter_dados_personagem(callback) {
