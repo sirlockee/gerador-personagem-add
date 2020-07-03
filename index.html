@@ -282,7 +282,7 @@
           detalhes: [
             'O bardo com 16 ou mais de Destreza e Carisma ganha um bônus de 10% em sua experiência.'
           ]
-        },
+        }
       };
 
       function rolar1d6(callback) {
@@ -440,10 +440,28 @@
         validar_classes_por_raca(personagem, classes => {
           validar_classes_por_habilidades(classes, personagem, classes_permitidas => {
             if (classes_permitidas.length == 0) {
-              return { valores_invalidos: true };
+              callback({ valores_invalidos: true });
             } else {
-              // definir classe
-              return { valores_invalidos: false };
+              let classes_fortes = ["Paladino", "Ranger", "Abjurante", "Conjurador", "Adivinho", "Feiticeiro", "Ilusionista", "Invocador", "Necromante", "Transmutador", "Druida", "Bardo"];
+              let classes_selecionadas = [];
+              classes_fortes.forEach((classe_forte, index_classes_fortes) => {
+                classes_permitidas.forEach((classe_permitida, index_classe_permitida) => {
+                  if (classe_permitida == classe_forte) {
+                    classes_selecionadas.push(classe_permitida);
+                  }
+                });
+
+                if (index_classes_fortes == (classes_fortes.length - 1)) {
+                  if (classes_selecionadas.length > 0) {
+                    let index = Math.floor(Math.random() * classes_selecionadas.length);
+                    personagem["Classe"] = classes_selecionadas[index];
+                  } else {
+                    let index = Math.floor(Math.random() * classes_permitidas.length);
+                    personagem["Classe"] = classes_permitidas[index];
+                  }
+                  callback({ valores_invalidos: false });
+                }
+              });
             }
           });
         });
@@ -457,28 +475,18 @@
         });
       }
 
-      /*
-      function clonar_personagem(personagem, callback) {
-        let campos = Object.keys(personagem);
-        let copia = {};
-        campos.forEach((campo,index) => {
-          copia[campo] = personagem[campo];
-          if (index == (campos.length - 1)) {
-            callback(copia);
-          }
-        });
-      }
-      */
-
       function sortear_personagem(callback) {
-
         sortear_atributos(personagem => {
           sortear_raca(personagem, () => {
             sortear_classe(personagem, resultado => {
-              if (valores_invalidos) {
-                sortear_personagem()
+              if (resultado.valores_invalidos) {
+                sortear_personagem(personagem => {
+                  console.log("Foi necessário outro lance de dados pois não foi possível escolher uma classe.");
+                  callback(personagem);
+                });
+              } else {
+                callback(personagem);
               }
-              callback(personagem);
             });
           });
         });
@@ -506,7 +514,9 @@
           };
           callback(personagem);
         } else {
-
+          sortear_personagem(personagem => {
+            callback(personagem);
+          });
         }
       }
 
