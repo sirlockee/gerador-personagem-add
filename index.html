@@ -7,29 +7,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="img/favicon.gif">
     <style>
-      #ficha {
-        width: 500px;
+      html {
+        width: 100%;
+        box-sizing: border-box;
+      }
+      body {
+        padding: 10px;
+        margin: 0;
+        border: 0;
+        width: 100%;
+        box-sizing: border-box;
+
+        font-family: Consolas, "Lucida Console", Courier, mono !important;
+        font-size: 12px !important;
+        color: rgb(34, 34, 34) !important;
+      }
+      header {
+        width: 100%;
+        display: block;
+        box-sizing: border-box;
+      }
+      header img {
+        max-width: 60%;
+        display: block;
+        margin: 0 auto;
+      }
+      div {
+        width: auto !important;
+        display: block;
+        box-sizing: border-box;
+      }
+      table {
+        width: auto !important;
       }
       thead tr th {
         display: none;
       }
+      td {
+        font-size: 0.9em !important;
+      }
       tbody tr td:first-child {
         font-weight: bold;
-        width: 100px;
+        width: auto !important;
+        border: 0 !important;
+      }
+      tbody tr td tbody tr td tbody tr td:last-child {
+        background-color: #eee !important;
+        border: 0 !important;
+      }
+      tbody tr:nth-child(4) td tbody tr td:last-child {
+        background-color: #eee !important;
         border: 0 !important;
       }
       #botao {
-        font-family: Consolas, "Lucida Console", Courier, mono;
-        white-space: nowrap;
-        font-size: 12px;
-        color: rgb(34, 34, 34);
         padding: 5px;
+        margin-bottom: 10px;
+        background-color: #eee;
+        width: 100% !important;
+      }
+      #ficha {
         margin-bottom: 30px;
+      }
+      button {
+        background-color: #ddd;
       }
     </style>
   </head>
   <body>
 
+    <header>
+      <img src="img/logo.gif" />
+    </header>
     <div id="botao">
       Clique no botão para gerar/copiar a URL deste personagem e compartilhar com outros jogadores. Ela estará salva na área de transferência do seu celular/computador.
       <br /><br />
@@ -98,7 +146,11 @@
           "Carisma": { minimo: 3, maximo: 18 },
           ajustes: {},
           detalhes: [],
-          classes: [ "Guerreiro", "Ranger", "Paladino", "Mago", "Ilusionista", "Clérigo", "Druida", "Ladrão", "Bardo" ]
+          altura: { minimo: 1.50, maximo: 1.90 },
+          idade: { minimo: 15, maximo: 80 },
+          peso: { minimo: 60, maximo: 90 },
+          linguas_importantes: [ "comum" ],
+          linguas: []
         },
         "Anão": {
           "Força": { minimo: 8, maximo: 18 },
@@ -108,7 +160,18 @@
           "Sabedoria": { minimo: 3, maximo: 18 },
           "Carisma": { minimo: 3, maximo: 17 },
           ajustes: { "Constituição": 1, "Carisma": -1 },
-          detalhes: []
+          detalhes: [
+            'Possuem um bônus de resistência (+1 para cada 3½ pontos de Constituição) contra ataques de varinhas de condão, bastão mágicos, cajados e outras magias.',
+            'Possuem resistência excepcional a substâncias tóxicas. Seus testes de resistência contra veneno possuem bônus +1 para cada 3½ pontos de Constituição.',
+            'Itens mágicos que não forem especificamente compatíveis com a classe do personagem têm 20% de chance falhar quando usados por um anão. O teste de falha aplica-se a bastões, varinhas, anéis, amuletos, poções, trombetas e todos os outros tipos de ltens mágicos, exceto armas, escudos, armaduras, manoplas e faixas. Esta penalidade não se aplica a anões clérigos usando itens de sua classe.',
+            'Em combate corpo a corpo, os anões adicionam 1 à jogada de ataque feita contra ogros, meio-ogros, goblins e robgoblins.',
+            'Quando ogros, trolls, ogros magos, gigantes ou titãs atacam os anões, estes monstros precisam subtrair 4 pontos de suas jogadas de ataque.'
+          ],
+          altura: { minimo: 1.30, maximo: 1.45 },
+          idade: { minimo: 30, maximo: 350 },
+          peso: { minimo: 60, maximo: 100 },
+          linguas_importantes: [ "comum", "dos anões" ],
+          linguas: [ "dos gnomos", "dos goblins", "dos kobolds", "dos ogros" ]
         },
         "Elfo": {
           "Força": { minimo: 3, maximo: 18 },
@@ -118,7 +181,12 @@
           "Sabedoria": { minimo: 3, maximo: 18 },
           "Carisma": { minimo: 8, maximo: 18 },
           ajustes: { "Destreza": 1, "Constituição": -1 },
-          detalhes: []
+          detalhes: [],
+          altura: { minimo: 1.60, maximo: 1.80 },
+          idade: { minimo: 100, maximo: 1400 },
+          peso: { minimo: 50, maximo: 70 },
+          linguas_importantes: [ "comum" ],
+          linguas: []
         },
         "Gnomo": {
           "Força": { minimo: 6, maximo: 18 },
@@ -128,7 +196,12 @@
           "Sabedoria": { minimo: 3, maximo: 18 },
           "Carisma": { minimo: 3, maximo: 18 },
           ajustes: { "Inteligência": 1, "Sabedoria": -1 },
-          detalhes: []
+          detalhes: [],
+          altura: { minimo: 1.10, maximo: 1.40 },
+          idade: { minimo: 30, maximo: 350 },
+          peso: { minimo: 30, maximo: 50 },
+          linguas_importantes: [ "comum" ],
+          linguas: []
         },
         "Meio-Elfo": {
           "Força": { minimo: 3, maximo: 18 },
@@ -138,7 +211,12 @@
           "Sabedoria": { minimo: 3, maximo: 18 },
           "Carisma": { minimo: 3, maximo: 18 },
           ajustes: {},
-          detalhes: []
+          detalhes: [],
+          altura: { minimo: 1.60, maximo: 1.80 },
+          idade: { minimo: 15, maximo: 160 },
+          peso: { minimo: 50, maximo: 80 },
+          linguas_importantes: [ "comum" ],
+          linguas: []
         },
         "Halfling": {
           "Força": { minimo: 7, maximo: 18 },
@@ -150,7 +228,12 @@
           ajustes: { "Destreza": 1, "Força": -1 },
           detalhes: [
             'Halflings não jogam os dados para obter Força Extraordinária.'
-          ]
+          ],
+          altura: { minimo: 1.10, maximo: 1.40 },
+          idade: { minimo: 20, maximo: 150 },
+          peso: { minimo: 30, maximo: 50 },
+          linguas_importantes: [ "comum" ],
+          linguas: []
         }
       };
 
@@ -172,6 +255,7 @@
           "Pré-Requisitos": [ "Força" ],
           "Raças Permitidas": [ "Humano", "Anão", "Elfo", "Gnomo", "Meio-Elfo", "Halfling" ],
           tendencias: TENDENCIAS,
+          dado_de_vida: 10,
           detalhes: [
             'Um guerreiro com pontuação de 16 ou mais na Força ganha um bônus de 10% para sua experiência em pontos.'
           ]
@@ -181,6 +265,7 @@
           "Pré-Requisitos": [ "Força", "Carisma" ],
           "Raças Permitidas": [ "Humano" ],
           tendencias: [ "Justo (bom e leal)" ],
+          dado_de_vida: 10,
           detalhes: [
             'Um paladino que tenha valores de Força e Carisma iguais ou maiores que 16 ganha um bônus de 10% em sua experiência em pontos.'
           ]
@@ -196,6 +281,7 @@
             "Neutro",
             "Honrado (caótico e bom)"
           ],
+          dado_de_vida: 10,
           detalhes: [
             'Um ranger que tenha valores de Força. Destreza e Sabedoria iguais ou maiores que 16 ganha um bônus de 10% na experiência em pontos.'
           ]
@@ -205,6 +291,7 @@
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Elfo", "Meio-Elfo" ],
           tendencias: TENDENCIAS,
+          dado_de_vida: 4,
           detalhes: [
             'Um mago com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
           ]
@@ -214,6 +301,7 @@
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano" ],
           tendencias: TENDENCIAS,
+          dado_de_vida: 4,
           detalhes: [
             'Um Abjurante (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
           ]
@@ -223,6 +311,7 @@
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Meio-Elfo" ],
           tendencias: TENDENCIAS,
+          dado_de_vida: 4,
           detalhes: [
             'Um Conjurador (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
           ]
@@ -232,6 +321,7 @@
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Elfo", "Meio-Elfo" ],
           tendencias: TENDENCIAS,
+          dado_de_vida: 4,
           detalhes: [
             'Um Adivinho (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
           ]
@@ -241,6 +331,7 @@
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Elfo", "Meio-Elfo" ],
           tendencias: TENDENCIAS,
+          dado_de_vida: 4,
           detalhes: [
             'Um Feiticeiro (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
           ]
@@ -250,6 +341,7 @@
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Gnomo" ],
           tendencias: TENDENCIAS,
+          dado_de_vida: 4,
           detalhes: [
             'Um Ilusionista (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
           ]
@@ -259,6 +351,7 @@
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano" ],
           tendencias: TENDENCIAS,
+          dado_de_vida: 4,
           detalhes: [
             'Um Invocador (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
           ]
@@ -268,6 +361,7 @@
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano" ],
           tendencias: TENDENCIAS,
+          dado_de_vida: 4,
           detalhes: [
             'Um Necromante (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
           ]
@@ -277,6 +371,7 @@
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Meio-Elfo" ],
           tendencias: TENDENCIAS,
+          dado_de_vida: 4,
           detalhes: [
             'Um Transmutador (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
           ]
@@ -286,6 +381,7 @@
           "Pré-Requisitos": [ "Sabedoria" ],
           "Raças Permitidas": [ "Humano", "Anão", "Elfo", "Gnomo", "Meio-Elfo", "Halfling" ],
           tendencias: TENDENCIAS,
+          dado_de_vida: 8,
           detalhes: [
             'O clérigo com 16 ou mais de Sabedoria ganha um bônus de 10% em sua experiência.',
             'Um clérigo de um mito específico deve possuir uma tendência aceitável para a divindade'
@@ -296,6 +392,7 @@
           "Pré-Requisitos": [ "Sabedoria", "Carisma" ],
           "Raças Permitidas": [ "Humano", "Meio-Elfo" ],
           tendencias: TENDENCIAS,
+          dado_de_vida: 8,
           detalhes: [
             'Um druida com pontuação de 16 ou mais em Sabedoria e Carisma ganha um bônus de 10% para sua experiência em pontos.'
           ]
@@ -305,6 +402,7 @@
           "Pré-Requisitos": [ "Destreza" ],
           "Raças Permitidas": [ "Humano", "Anão", "Elfo", "Gnomo", "Meio-Elfo", "Halfling" ],
           tendencias: TENDENCIAS,
+          dado_de_vida: 6,
           detalhes: [
             'O ladrão com 16 ou mais de Destreza ganha um bônus de 10% em sua experiência.'
           ]
@@ -320,6 +418,7 @@
             "Egoista (neutro e maligno)",
             "Inconstante (neutro e caótico)"
           ],
+          dado_de_vida: 6,
           detalhes: [
             'O bardo com 16 ou mais de Destreza e Carisma ganha um bônus de 10% em sua experiência.'
           ]
@@ -350,6 +449,15 @@
                 rolar3d6(sabedoria => {
                   rolar3d6(carisma => {
                     callback({
+                      "Raça": '',
+                      "Classe": '',
+                      "Tendência": '',
+                      "Dados Básicos": {
+                        "Dados de Vida": 0,
+                        "Idade": 0,
+                        "Altura": 0,
+                        "Peso": 0
+                      },
                       "Habilidades": {
                         "Força": { "Valor da Habilidade": forca },
                         "Destreza": { "Valor da Habilidade": destreza },
@@ -559,12 +667,16 @@
                 sortear_personagem(personagem => {
                   console.log("Foi necessário outro lance de dados pois não foi possível escolher uma classe.");
                   sortear_tendencia(personagem, () => {
-                    callback(personagem);
+                    sortear_dados_basicos(personagem, () => {
+                      callback(personagem);
+                    });
                   });
                 });
               } else {
                 sortear_tendencia(personagem, () => {
-                  callback(personagem);
+                  sortear_dados_basicos(personagem, () => {
+                    callback(personagem);
+                  });
                 });
               }
             });
@@ -572,14 +684,41 @@
         });
       }
 
-      function sortear_tendencia(personagem, callback) {
+      function ajustar_nome_classe(personagem) {
         let classe = personagem["Classe"];
         if (classe.indexOf('Clérigo') > -1) {
           classe = 'Clérigo';
         }
+        return classe;
+      }
+
+      function sortear_tendencia(personagem, callback) {
+        let classe = ajustar_nome_classe(personagem);
         let tendencias = CLASSES[classe].tendencias;
         let index = Math.floor(Math.random() * tendencias.length);
         personagem["Tendência"] = tendencias[index];
+        callback();
+      }
+
+      function sortear_dados_basicos(personagem, callback) {
+        let classe = ajustar_nome_classe(personagem);
+        let raca = personagem["Raça"];
+
+        let vida = Math.floor(Math.random() * CLASSES[classe].dado_de_vida) + 1;
+        personagem["Dados Básicos"]["Dados de Vida"] = vida;
+
+        let ajuste_altura = RACAS[raca].altura.maximo - RACAS[raca].altura.minimo;
+        let altura = (Math.random() * ajuste_altura) + RACAS[raca].altura.minimo;
+        personagem["Dados Básicos"]["Altura"] = altura.toFixed(2);
+
+        let ajuste_idade = RACAS[raca].idade.maximo - RACAS[raca].idade.minimo;
+        let idade = Math.floor(Math.random() * ajuste_idade) + RACAS[raca].idade.minimo;
+        personagem["Dados Básicos"]["Idade"] = idade;
+
+        let ajuste_peso = RACAS[raca].peso.maximo - RACAS[raca].peso.minimo;
+        let peso = (Math.random() * ajuste_peso) + RACAS[raca].peso.minimo;
+        personagem["Dados Básicos"]["Peso"] = peso.toFixed(2);
+
         callback();
       }
 
