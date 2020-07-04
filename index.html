@@ -512,7 +512,7 @@
                       "Classe": '',
                       "Tendência": '',
                       "Dados Básicos": {
-                        "Dados de Vida": 0,
+                        "Pontos de Vida": 0,
                         "Gênero": '',
                         "Idade": 0,
                         "Altura": 0,
@@ -791,7 +791,7 @@
         let raca = ajustar_nome_raca(personagem);
 
         let vida = Math.floor(Math.random() * CLASSES[classe].dado_de_vida) + 1;
-        personagem["Dados Básicos"]["Dados de Vida"] = vida;
+        personagem["Dados Básicos"]["Pontos de Vida"] = vida;
 
         let generos = [ 'Masculino' , 'Feminino' ];
         let genero = generos[Math.floor(Math.random() * 2)];
