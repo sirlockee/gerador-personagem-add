@@ -28,7 +28,7 @@
         box-sizing: border-box;
       }
       header img {
-        max-width: 60%;
+        max-width: 300px;
         display: block;
         margin: 0 auto;
       }
@@ -60,6 +60,11 @@
         border: 0 !important;
       }
       tbody tr:nth-child(6) td tbody tr td:last-child {
+        background-color: #eee !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
+      tbody tr:nth-child(7) td tbody tr td:last-child {
         background-color: #eee !important;
         border: 0 !important;
         white-space: normal !important;
@@ -153,12 +158,15 @@
           "Sabedoria": { minimo: 3, maximo: 18 },
           "Carisma": { minimo: 3, maximo: 18 },
           ajustes: {},
-          detalhes: [],
+          detalhes: [
+            'Humanos podem ser de qualquer classe e alcançar qualquer nível na classe escolhida'
+          ],
           altura: { "Masculino": { minimo: 1.52, maximo: 2.02 }, "Feminino": { minimo: 1.5, maximo: 2.0 }},
           idade: { minimo: 15, maximo: 130 },
           peso: { "Masculino": { minimo: 70, maximo: 100 }, "Feminino": { minimo: 50, maximo: 80 }},
           linguas_importantes: [ "comum" ],
-          linguas: []
+          linguas: [ 'élfico', 'do anões', 'dos gnomos', 'dos halflings', 'dos goblins', 'dos robgoblins', 'dos orcs', 'dos gnolls' ],
+          armas_importantes: []
         },
         "Anão": {
           "Força": { minimo: 8, maximo: 18 },
@@ -185,7 +193,8 @@
           idade: { minimo: 40, maximo: 450 },
           peso: { "Masculino": { minimo: 65, maximo: 85 }, "Feminino": { minimo: 52, maximo: 72 }},
           linguas_importantes: [ "comum", "dos anões" ],
-          linguas: [ "dos gnomos", "dos goblins", "dos kobolds", "dos ogros" ]
+          linguas: [ "dos gnomos", "dos goblins", "dos kobolds", "dos ogros" ],
+          armas_importantes: []
         },
         "Elfo": {
           "Força": { minimo: 3, maximo: 18 },
@@ -208,7 +217,8 @@
           idade: { minimo: 100, maximo: 750 },
           peso: { "Masculino": { minimo: 45, maximo: 61 }, "Feminino": { minimo: 35, maximo: 51 }},
           linguas_importantes: [ "comum", 'élfico' ],
-          linguas: [ 'dos gnomos', 'dos halflings', 'dos goblins', 'dos robgoblins', 'dos orcs', 'dos gnolls' ]
+          linguas: [ 'dos gnomos', 'dos halflings', 'dos goblins', 'dos robgoblins', 'dos orcs', 'dos gnolls' ],
+          armas_importantes: [ 'Arco longo composto', 'Arco curto composto', 'Arco longo', 'Arco curto', 'Espada longa', 'Espada curta' ]
         },
         "Gnomo": {
           "Força": { minimo: 6, maximo: 18 },
@@ -233,7 +243,8 @@
           idade: { minimo: 60, maximo: 500 },
           peso: { "Masculino": { minimo: 36, maximo: 56 }, "Feminino": { minimo: 34, maximo: 54 }},
           linguas_importantes: [ "comum", "dos gnomos" ],
-          linguas: [ "dos anões", "dos halflings", "dos goblins", "dos kobolds", "linguagem simples dos mamíferos que vivem em tocas (esquilos terrestres, texugos, musaranhos, doninhas, etc.)" ]
+          linguas: [ "dos anões", "dos halflings", "dos goblins", "dos kobolds", "linguagem simples dos mamíferos que vivem em tocas (esquilos terrestres, texugos, musaranhos, doninhas, etc.)" ],
+          armas_importantes: []
         },
         "Meio-Elfo": {
           "Força": { minimo: 3, maximo: 18 },
@@ -253,7 +264,8 @@
           idade: { minimo: 15, maximo: 185 },
           peso: { "Masculino": { minimo: 55, maximo: 73 }, "Feminino": { minimo: 42, maximo: 60 }},
           linguas_importantes: [ "comum", "élfico" ],
-          linguas: [ "dos gnomos", "dos halflings", "dos goblins", "dos hobgloblins", "dos orcs", "dos gnolls" ]
+          linguas: [ "dos gnomos", "dos halflings", "dos goblins", "dos hobgloblins", "dos orcs", "dos gnolls" ],
+          armas_importantes: []
         },
         "Halfling": {
           "Força": { minimo: 7, maximo: 18 },
@@ -274,7 +286,8 @@
           idade: { minimo: 20, maximo: 200 },
           peso: { "Masculino": { minimo: 26, maximo: 46 }, "Feminino": { minimo: 24, maximo: 44 }},
           linguas_importantes: [ "comum", "dos halflings" ],
-          linguas: [ "dos anões", "élfico", "dos gnomos", "dos goblins", "dos orcs" ]
+          linguas: [ "dos anões", "élfico", "dos gnomos", "dos goblins", "dos orcs" ],
+          armas_importantes: [ 'Funda', 'Dardo', 'Arco curto', 'Zarabatana' ]
         }
       };
 
@@ -513,6 +526,7 @@
                         "Sabedoria": { "Valor da Habilidade": sabedoria },
                         "Carisma": { "Valor da Habilidade": carisma },
                       },
+                      "Idiomas": [],
                       "Detalhes": []
                     });
                   });
@@ -795,10 +809,36 @@
         let peso = (Math.random() * ajuste_peso) + RACAS[raca].peso[genero].minimo;
         personagem["Dados Básicos"]["Peso"] = peso.toFixed(2);
 
+        personagem["Idiomas"] = RACAS[raca].linguas_importantes;
+
         personagem["Detalhes"] = RACAS[raca].detalhes;
 
-        if (personagem["Raça"] == 'Halfling Robustos') {
+        if (personagem["Raça"].indexOf('Halfling') > -1) {
 
+          let detalheRobusto = 'Qualquer Halfling Robusto puro tem 15% de chance de ter uma infravisão normal, até 20 metros.';
+          let detalheNaoRobustos = 'Halflings que não são Robustos puros, tem 25% de chance de ter uma infravisão limitada, até 10 metros.';
+          let resultadoDado = 0;
+
+          if (personagem["Raça"] == 'Halfling Robustos') {
+
+            personagem["Detalhes"].push('Halflings com sangue Robusto podem notar o desnível de uma passagem com 75% de precisão (1-3 em 1d4).');
+            personagem["Detalhes"].push('Halflings com sangue Robusto podem determinar a direção com 50% de eficiência (1-3 em 1d6).');
+
+            resultadoDado = Math.floor(Math.random() * 100);
+            if (resultadoDado < 15) {
+              personagem["Detalhes"].push(detalheRobusto);
+            } else {
+              resultadoDado = Math.floor(Math.random() * 100);
+              if (resultadoDado < 25) {
+                personagem["Detalhes"].push(detalheNaoRobustos);
+              }
+            }
+          } else {
+            resultadoDado = Math.floor(Math.random() * 100);
+            if (resultadoDado < 25) {
+              personagem["Detalhes"].push(detalheNaoRobustos);
+            }
+          }
         }
 
         callback();
