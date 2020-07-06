@@ -500,6 +500,838 @@
         })
       }
 
+      function atributos_forca(atributo, forca, forca_extraordinaria) {
+        if ( forca == 1 ) {
+          if (atributo == "Chance de Acertar") {
+            return -5;
+          } else if (atributo == "Ajuste de Dano") {
+            return -4;
+          } else if (atributo == "Carga Permitida") {
+            return (0.5).toFixed(2);
+          } else if (atributo == "Sustentação") {
+            return (1.5).toFixed(2);
+          } else if (atributo == "Abrir Portas") {
+            return 1;
+          } else if (atributo == "Barras/Portais") {
+            return "0%";
+          }
+        } else if ( forca == 2 ) {
+          if (atributo == "Chance de Acertar") {
+            return -3;
+          } else if (atributo == "Ajuste de Dano") {
+            return -2;
+          } else if (atributo == "Carga Permitida") {
+            return (0.5).toFixed(2);
+          } else if (atributo == "Sustentação") {
+            return (2.5).toFixed(2);
+          } else if (atributo == "Abrir Portas") {
+            return 1;
+          } else if (atributo == "Barras/Portais") {
+            return "0%";
+          }
+        } else if ( forca == 3 ) {
+          if (atributo == "Chance de Acertar") {
+            return -3;
+          } else if (atributo == "Ajuste de Dano") {
+            return -1;
+          } else if (atributo == "Carga Permitida") {
+            return (2.5).toFixed(2);
+          } else if (atributo == "Sustentação") {
+            return 5;
+          } else if (atributo == "Abrir Portas") {
+            return 2;
+          } else if (atributo == "Barras/Portais") {
+            return "0%";
+          }
+        } else if ( (forca >= 4) && (forca <= 5) ) {
+          if (atributo == "Chance de Acertar") {
+            return -2;
+          } else if (atributo == "Ajuste de Dano") {
+            return -1;
+          } else if (atributo == "Carga Permitida") {
+            return 5;
+          } else if (atributo == "Sustentação") {
+            return 13;
+          } else if (atributo == "Abrir Portas") {
+            return 3;
+          } else if (atributo == "Barras/Portais") {
+            return "0%";
+          }
+        } else if ( (forca >= 6) && (forca <= 7) ) {
+          if (atributo == "Chance de Acertar") {
+            return -1;
+          } else if (atributo == "Ajuste de Dano") {
+            return 0;
+          } else if (atributo == "Carga Permitida") {
+            return 10;
+          } else if (atributo == "Sustentação") {
+            return 28;
+          } else if (atributo == "Abrir Portas") {
+            return 4;
+          } else if (atributo == "Barras/Portais") {
+            return "0%";
+          }
+        } else if ( (forca >= 8) && (forca <= 9) ) {
+          if (atributo == "Chance de Acertar") {
+            return 0;
+          } else if (atributo == "Ajuste de Dano") {
+            return 0;
+          } else if (atributo == "Carga Permitida") {
+            return 18;
+          } else if (atributo == "Sustentação") {
+            return 45;
+          } else if (atributo == "Abrir Portas") {
+            return 5;
+          } else if (atributo == "Barras/Portais") {
+            return "1%";
+          }
+        } else if ( (forca >= 10) && (forca <= 11) ) {
+          if (atributo == "Chance de Acertar") {
+            return 0;
+          } else if (atributo == "Ajuste de Dano") {
+            return 0;
+          } else if (atributo == "Carga Permitida") {
+            return 20;
+          } else if (atributo == "Sustentação") {
+            return 58;
+          } else if (atributo == "Abrir Portas") {
+            return 6;
+          } else if (atributo == "Barras/Portais") {
+            return "2%";
+          }
+        } else if ( (forca >= 12) && (forca <= 13) ) {
+          if (atributo == "Chance de Acertar") {
+            return 0;
+          } else if (atributo == "Ajuste de Dano") {
+            return 0;
+          } else if (atributo == "Carga Permitida") {
+            return 23;
+          } else if (atributo == "Sustentação") {
+            return 70;
+          } else if (atributo == "Abrir Portas") {
+            return 7;
+          } else if (atributo == "Barras/Portais") {
+            return "4%";
+          }
+        } else if ( (forca >= 14) && (forca <= 15) ) {
+          if (atributo == "Chance de Acertar") {
+            return 0;
+          } else if (atributo == "Ajuste de Dano") {
+            return 0;
+          } else if (atributo == "Carga Permitida") {
+            return 28;
+          } else if (atributo == "Sustentação") {
+            return 85;
+          } else if (atributo == "Abrir Portas") {
+            return 8;
+          } else if (atributo == "Barras/Portais") {
+            return "7%";
+          }
+        } else if ( forca == 16 ) {
+          if (atributo == "Chance de Acertar") {
+            return 0;
+          } else if (atributo == "Ajuste de Dano") {
+            return 1;
+          } else if (atributo == "Carga Permitida") {
+            return 35;
+          } else if (atributo == "Sustentação") {
+            return 98;
+          } else if (atributo == "Abrir Portas") {
+            return 9;
+          } else if (atributo == "Barras/Portais") {
+            return "10%";
+          }
+        } else if ( forca == 17 ) {
+          if (atributo == "Chance de Acertar") {
+            return 1;
+          } else if (atributo == "Ajuste de Dano") {
+            return 1;
+          } else if (atributo == "Carga Permitida") {
+            return 43;
+          } else if (atributo == "Sustentação") {
+            return 110;
+          } else if (atributo == "Abrir Portas") {
+            return 10;
+          } else if (atributo == "Barras/Portais") {
+            return "13%";
+          }
+        } else if ( (forca == 18) && (forca_extraordinaria == 0) ) {
+          if (atributo == "Chance de Acertar") {
+            return 1;
+          } else if (atributo == "Ajuste de Dano") {
+            return 2;
+          } else if (atributo == "Carga Permitida") {
+            return 55;
+          } else if (atributo == "Sustentação") {
+            return 128;
+          } else if (atributo == "Abrir Portas") {
+            return 11;
+          } else if (atributo == "Barras/Portais") {
+            return "16%";
+          }
+        } else if ( (forca == 18) && (forca_extraordinaria >= 1) && (forca_extraordinaria <= 50) ) {
+          if (atributo == "Chance de Acertar") {
+            return 1;
+          } else if (atributo == "Ajuste de Dano") {
+            return 3;
+          } else if (atributo == "Carga Permitida") {
+            return 68;
+          } else if (atributo == "Sustentação") {
+            return 140;
+          } else if (atributo == "Abrir Portas") {
+            return 12;
+          } else if (atributo == "Barras/Portais") {
+            return "20%";
+          }
+        } else if ( (forca == 18) && (forca_extraordinaria >= 51) && (forca_extraordinaria <= 75) ) {
+          if (atributo == "Chance de Acertar") {
+            return 2;
+          } else if (atributo == "Ajuste de Dano") {
+            return 3;
+          } else if (atributo == "Carga Permitida") {
+            return 80;
+          } else if (atributo == "Sustentação") {
+            return 153;
+          } else if (atributo == "Abrir Portas") {
+            return 13;
+          } else if (atributo == "Barras/Portais") {
+            return "25%";
+          }
+        } else if ( (forca == 18) && (forca_extraordinaria >= 76) && (forca_extraordinaria <= 90) ) {
+          if (atributo == "Chance de Acertar") {
+            return 2;
+          } else if (atributo == "Ajuste de Dano") {
+            return 4;
+          } else if (atributo == "Carga Permitida") {
+            return 93;
+          } else if (atributo == "Sustentação") {
+            return 165;
+          } else if (atributo == "Abrir Portas") {
+            return 14;
+          } else if (atributo == "Barras/Portais") {
+            return "30%";
+          }
+        } else if ( (forca == 18) && (forca_extraordinaria >= 91) && (forca_extraordinaria <= 99) ) {
+          if (atributo == "Chance de Acertar") {
+            return 2;
+          } else if (atributo == "Ajuste de Dano") {
+            return 5;
+          } else if (atributo == "Carga Permitida") {
+            return 118;
+          } else if (atributo == "Sustentação") {
+            return 190;
+          } else if (atributo == "Abrir Portas") {
+            return "15(3)";
+          } else if (atributo == "Barras/Portais") {
+            return "35%";
+          }
+        } else if ( (forca == 18) && (forca_extraordinaria == 100) ) {
+          if (atributo == "Chance de Acertar") {
+            return 3;
+          } else if (atributo == "Ajuste de Dano") {
+            return 6;
+          } else if (atributo == "Carga Permitida") {
+            return 168;
+          } else if (atributo == "Sustentação") {
+            return 240;
+          } else if (atributo == "Abrir Portas") {
+            return "16(6)";
+          } else if (atributo == "Barras/Portais") {
+            return "40%";
+          }
+        } else if ( forca == 19 ) {
+          if (atributo == "Chance de Acertar") {
+            return 3;
+          } else if (atributo == "Ajuste de Dano") {
+            return 7;
+          } else if (atributo == "Carga Permitida") {
+            return 243;
+          } else if (atributo == "Sustentação") {
+            return 320;
+          } else if (atributo == "Abrir Portas") {
+            return "16(8)";
+          } else if (atributo == "Barras/Portais") {
+            return "50%";
+          }
+        } else if ( forca == 20 ) {
+          if (atributo == "Chance de Acertar") {
+            return 3;
+          } else if (atributo == "Ajuste de Dano") {
+            return 8;
+          } else if (atributo == "Carga Permitida") {
+            return 268;
+          } else if (atributo == "Sustentação") {
+            return 350;
+          } else if (atributo == "Abrir Portas") {
+            return "17(10)";
+          } else if (atributo == "Barras/Portais") {
+            return "60%";
+          }
+        } else if ( forca == 21 ) {
+          if (atributo == "Chance de Acertar") {
+            return 4;
+          } else if (atributo == "Ajuste de Dano") {
+            return 9;
+          } else if (atributo == "Carga Permitida") {
+            return 318;
+          } else if (atributo == "Sustentação") {
+            return 405;
+          } else if (atributo == "Abrir Portas") {
+            return "17(12)";
+          } else if (atributo == "Barras/Portais") {
+            return "70%";
+          }
+        } else if ( forca == 22 ) {
+          if (atributo == "Chance de Acertar") {
+            return 4;
+          } else if (atributo == "Ajuste de Dano") {
+            return 10;
+          } else if (atributo == "Carga Permitida") {
+            return 393;
+          } else if (atributo == "Sustentação") {
+            return 485;
+          } else if (atributo == "Abrir Portas") {
+            return "18(14)";
+          } else if (atributo == "Barras/Portais") {
+            return "80%";
+          }
+        } else if ( forca == 23 ) {
+          if (atributo == "Chance de Acertar") {
+            return 5;
+          } else if (atributo == "Ajuste de Dano") {
+            return 11;
+          } else if (atributo == "Carga Permitida") {
+            return 468;
+          } else if (atributo == "Sustentação") {
+            return 565;
+          } else if (atributo == "Abrir Portas") {
+            return "18(16)";
+          } else if (atributo == "Barras/Portais") {
+            return "90%";
+          }
+        } else if ( forca == 24 ) {
+          if (atributo == "Chance de Acertar") {
+            return 6;
+          } else if (atributo == "Ajuste de Dano") {
+            return 12;
+          } else if (atributo == "Carga Permitida") {
+            return 618;
+          } else if (atributo == "Sustentação") {
+            return 720;
+          } else if (atributo == "Abrir Portas") {
+            return "19(17)";
+          } else if (atributo == "Barras/Portais") {
+            return "95%";
+          }
+        } else if ( forca == 25 ) {
+          if (atributo == "Chance de Acertar") {
+            return 7;
+          } else if (atributo == "Ajuste de Dano") {
+            return 14;
+          } else if (atributo == "Carga Permitida") {
+            return 768;
+          } else if (atributo == "Sustentação") {
+            return 875;
+          } else if (atributo == "Abrir Portas") {
+            return "19(18)";
+          } else if (atributo == "Barras/Portais") {
+            return "99%";
+          }
+        }
+      }
+
+      function atributos_destreza(atributo, destreza) {
+        if ( destreza == 1 ) {
+          if (atributo == "Ajuste de Reação") {
+            return -6;
+          } else if (atributo == "Ataque à Distância") {
+            return -6;
+          } else if (atributo == "Ajuste Defensivo") {
+            return 5;
+          }
+        } else if ( destreza == 2 ) {
+          if (atributo == "Ajuste de Reação") {
+            return -4;
+          } else if (atributo == "Ataque à Distância") {
+            return -4;
+          } else if (atributo == "Ajuste Defensivo") {
+            return 5;
+          }
+        } else if ( destreza == 3 ) {
+          if (atributo == "Ajuste de Reação") {
+            return -3;
+          } else if (atributo == "Ataque à Distância") {
+            return -3;
+          } else if (atributo == "Ajuste Defensivo") {
+            return 4;
+          }
+        } else if ( destreza == 4 ) {
+          if (atributo == "Ajuste de Reação") {
+            return -2;
+          } else if (atributo == "Ataque à Distância") {
+            return -2;
+          } else if (atributo == "Ajuste Defensivo") {
+            return 3;
+          }
+        } else if ( destreza == 5 ) {
+          if (atributo == "Ajuste de Reação") {
+            return -1;
+          } else if (atributo == "Ataque à Distância") {
+            return -1;
+          } else if (atributo == "Ajuste Defensivo") {
+            return 2;
+          }
+        } else if ( destreza == 6 ) {
+          if (atributo == "Ajuste de Reação") {
+            return 0;
+          } else if (atributo == "Ataque à Distância") {
+            return 0;
+          } else if (atributo == "Ajuste Defensivo") {
+            return 1;
+          }
+        } else if ( (destreza >= 7) && (destreza <= 14) ) {
+          if (atributo == "Ajuste de Reação") {
+            return 0;
+          } else if (atributo == "Ataque à Distância") {
+            return 0;
+          } else if (atributo == "Ajuste Defensivo") {
+            return 0;
+          }
+        } else if ( destreza == 15 ) {
+          if (atributo == "Ajuste de Reação") {
+            return 0;
+          } else if (atributo == "Ataque à Distância") {
+            return 0;
+          } else if (atributo == "Ajuste Defensivo") {
+            return -1;
+          }
+        } else if ( destreza == 16 ) {
+          if (atributo == "Ajuste de Reação") {
+            return 1;
+          } else if (atributo == "Ataque à Distância") {
+            return 1;
+          } else if (atributo == "Ajuste Defensivo") {
+            return -2;
+          }
+        } else if ( destreza == 17 ) {
+          if (atributo == "Ajuste de Reação") {
+            return 2;
+          } else if (atributo == "Ataque à Distância") {
+            return 2;
+          } else if (atributo == "Ajuste Defensivo") {
+            return -3;
+          }
+        } else if ( destreza == 18 ) {
+          if (atributo == "Ajuste de Reação") {
+            return 2;
+          } else if (atributo == "Ataque à Distância") {
+            return 2;
+          } else if (atributo == "Ajuste Defensivo") {
+            return -4;
+          }
+        } else if ( destreza == 19 ) {
+          if (atributo == "Ajuste de Reação") {
+            return 3;
+          } else if (atributo == "Ataque à Distância") {
+            return 3;
+          } else if (atributo == "Ajuste Defensivo") {
+            return -4;
+          }
+        } else if ( destreza == 20 ) {
+          if (atributo == "Ajuste de Reação") {
+            return 3;
+          } else if (atributo == "Ataque à Distância") {
+            return 3;
+          } else if (atributo == "Ajuste Defensivo") {
+            return -4;
+          }
+        } else if ( destreza == 21 ) {
+          if (atributo == "Ajuste de Reação") {
+            return 4;
+          } else if (atributo == "Ataque à Distância") {
+            return 4;
+          } else if (atributo == "Ajuste Defensivo") {
+            return -5;
+          }
+        } else if ( destreza == 22 ) {
+          if (atributo == "Ajuste de Reação") {
+            return 4;
+          } else if (atributo == "Ataque à Distância") {
+            return 4;
+          } else if (atributo == "Ajuste Defensivo") {
+            return -5;
+          }
+        } else if ( destreza == 23 ) {
+          if (atributo == "Ajuste de Reação") {
+            return 4;
+          } else if (atributo == "Ataque à Distância") {
+            return 4;
+          } else if (atributo == "Ajuste Defensivo") {
+            return -5;
+          }
+        } else if ( destreza == 24 ) {
+          if (atributo == "Ajuste de Reação") {
+            return 5;
+          } else if (atributo == "Ataque à Distância") {
+            return 5;
+          } else if (atributo == "Ajuste Defensivo") {
+            return -6;
+          }
+        } else if ( destreza == 25 ) {
+          if (atributo == "Ajuste de Reação") {
+            return 5;
+          } else if (atributo == "Ataque à Distância") {
+            return 5;
+          } else if (atributo == "Ajuste Defensivo") {
+            return -6;
+          }
+        }
+      }
+
+      function atributos_constituicao(atributo, constituicao, classe) {
+        if (constituicao == 1) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            return -3;
+          } else if (atributo == "Colapso") {
+            return "25%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "30%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return -2;
+          } else if (atributo == "Regeneração") {
+            return "Não há";
+          }
+        } else if (constituicao == 2) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            return -2;
+          } else if (atributo == "Colapso") {
+            return "30%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "35%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return -1;
+          } else if (atributo == "Regeneração") {
+            return "Não há";
+          }
+        } else if (constituicao == 3) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            return -2;
+          } else if (atributo == "Colapso") {
+            return "35%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "40%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 0;
+          } else if (atributo == "Regeneração") {
+            return "Não há";
+          }
+        } else if (constituicao == 4) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            return -1;
+          } else if (atributo == "Colapso") {
+            return "40%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "45%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 0;
+          } else if (atributo == "Regeneração") {
+            return "Não há";
+          }
+        } else if (constituicao == 5) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            return -1;
+          } else if (atributo == "Colapso") {
+            return "45%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "50%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 0;
+          } else if (atributo == "Regeneração") {
+            return "Não há";
+          }
+        } else if (constituicao == 6) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            return -1;
+          } else if (atributo == "Colapso") {
+            return "50%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "55%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 0;
+          } else if (atributo == "Regeneração") {
+            return "Não há";
+          }
+        } else if (constituicao == 7) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            return 0;
+          } else if (atributo == "Colapso") {
+            return "55%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "60%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 0;
+          } else if (atributo == "Regeneração") {
+            return "Não há";
+          }
+        } else if (constituicao == 8) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            return 0;
+          } else if (atributo == "Colapso") {
+            return "60%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "65%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 0;
+          } else if (atributo == "Regeneração") {
+            return "Não há";
+          }
+        } else if (constituicao == 9) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            return 0;
+          } else if (atributo == "Colapso") {
+            return "65%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "70%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 0;
+          } else if (atributo == "Regeneração") {
+            return "Não há";
+          }
+        } else if (constituicao == 10) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            return 0;
+          } else if (atributo == "Colapso") {
+            return "70%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "75%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 0;
+          } else if (atributo == "Regeneração") {
+            return "Não há";
+          }
+        } else if (constituicao == 11) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            return 0;
+          } else if (atributo == "Colapso") {
+            return "75%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "80%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 0;
+          } else if (atributo == "Regeneração") {
+            return "Não há";
+          }
+        } else if (constituicao == 12) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            return 0;
+          } else if (atributo == "Colapso") {
+            return "80%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "85%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 0;
+          } else if (atributo == "Regeneração") {
+            return "Não há";
+          }
+        } else if (constituicao == 13) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            return 0;
+          } else if (atributo == "Colapso") {
+            return "85%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "90%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 0;
+          } else if (atributo == "Regeneração") {
+            return "Não há";
+          }
+        } else if (constituicao == 14) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            return 0;
+          } else if (atributo == "Colapso") {
+            return "88%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "92%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 0;
+          } else if (atributo == "Regeneração") {
+            return "Não há";
+          }
+        } else if (constituicao == 15) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            return 1;
+          } else if (atributo == "Colapso") {
+            return "90%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "94%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 0;
+          } else if (atributo == "Regeneração") {
+            return "Não há";
+          }
+        } else if (constituicao == 16) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            return 2;
+          } else if (atributo == "Colapso") {
+            return "95%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "96%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 0;
+          } else if (atributo == "Regeneração") {
+            return "Não há";
+          }
+        } else if (constituicao == 17) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            if ( (classe == "Guerreiro") || (classe == "Paladino") || (classe == "Ranger") ) {
+              return 3;
+            } else {
+              return 2;
+            }
+          } else if (atributo == "Colapso") {
+            return "97%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "98%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 0;
+          } else if (atributo == "Regeneração") {
+            return "Não há";
+          }
+        } else if (constituicao == 18) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            if ( (classe == "Guerreiro") || (classe == "Paladino") || (classe == "Ranger") ) {
+              return 4;
+            } else {
+              return 2;
+            }
+          } else if (atributo == "Colapso") {
+            return "99%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "100%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 0;
+          } else if (atributo == "Regeneração") {
+            return "Não há";
+          }
+        } else if (constituicao == 19) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            if ( (classe == "Guerreiro") || (classe == "Paladino") || (classe == "Ranger") ) {
+              return 5;
+            } else {
+              return 2;
+            }
+          } else if (atributo == "Colapso") {
+            return "99%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "100%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 1;
+          } else if (atributo == "Regeneração") {
+            return "Não há";
+          }
+        } else if (constituicao == 20) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            if ( (classe == "Guerreiro") || (classe == "Paladino") || (classe == "Ranger") ) {
+              return 5;
+            } else {
+              return 2;
+            }
+          } else if (atributo == "Colapso") {
+            return "99%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "100%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 1;
+          } else if (atributo == "Regeneração") {
+            return "1/6 turnos";
+          }
+        } else if (constituicao == 21) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            if ( (classe == "Guerreiro") || (classe == "Paladino") || (classe == "Ranger") ) {
+              return 6;
+            } else {
+              return 2;
+            }
+          } else if (atributo == "Colapso") {
+            return "99%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "100%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 2;
+          } else if (atributo == "Regeneração") {
+            return "1/5 turnos";
+          }
+        } else if (constituicao == 22) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            if ( (classe == "Guerreiro") || (classe == "Paladino") || (classe == "Ranger") ) {
+              return 6;
+            } else {
+              return 2;
+            }
+          } else if (atributo == "Colapso") {
+            return "99%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "100%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 2;
+          } else if (atributo == "Regeneração") {
+            return "1/4 turnos";
+          }
+        } else if (constituicao == 23) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            if ( (classe == "Guerreiro") || (classe == "Paladino") || (classe == "Ranger") ) {
+              return 6;
+            } else {
+              return 2;
+            }
+          } else if (atributo == "Colapso") {
+            return "99%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "100%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 3;
+          } else if (atributo == "Regeneração") {
+            return "1/3 turnos";
+          }
+        } else if (constituicao == 24) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            if ( (classe == "Guerreiro") || (classe == "Paladino") || (classe == "Ranger") ) {
+              return 7;
+            } else {
+              return 2;
+            }
+          } else if (atributo == "Colapso") {
+            return "99%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "100%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 3;
+          } else if (atributo == "Regeneração") {
+            return "1/2 turnos";
+          }
+        } else if (constituicao == 25) {
+          if (atributo == "Ajuste dos Pontos de Vida") {
+            if ( (classe == "Guerreiro") || (classe == "Paladino") || (classe == "Ranger") ) {
+              return 7;
+            } else {
+              return 2;
+            }
+          } else if (atributo == "Colapso") {
+            return "100%";
+          } else if (atributo == "Chance de Ressurreição") {
+            return "100%";
+          } else if (atributo == "Resistência contra Veneno") {
+            return 4;
+          } else if (atributo == "Regeneração") {
+            return "1/1 turnos";
+          }
+        }
+      }
+
+      function atributos_inteligencia(atributo, inteligencia) {
+
+      }
+
       function sortear_atributos(callback) {
         rolar3d6(forca => {
           rolar3d6(destreza => {
@@ -519,9 +1351,29 @@
                         "Peso": 0
                       },
                       "Habilidades": {
-                        "Força": { "Valor da Habilidade": forca },
-                        "Destreza": { "Valor da Habilidade": destreza },
-                        "Constituição": { "Valor da Habilidade": constituicao },
+                        "Força": {
+                          "Valor da Habilidade": forca,
+                          "Chance de Acertar": 0,
+                          "Ajuste de Dano": 0,
+                          "Carga Permitida": 0,
+                          "Sustentação": 0,
+                          "Abrir Portas": 0,
+                          "Barras/Portais": "0%"
+                        },
+                        "Destreza": {
+                          "Valor da Habilidade": destreza,
+                          "Ajuste de Reação": 0,
+                          "Ataque à Distância": 0,
+                          "Ajuste Defensivo": 0
+                        },
+                        "Constituição": {
+                          "Valor da Habilidade": constituicao,
+                          "Ajuste dos Pontos de Vida": 0,
+                          "Colapso": "0%",
+                          "Chance de Ressurreição": "0%",
+                          "Resistência contra Veneno": 0,
+                          "Regeneração": "Não há"
+                        },
                         "Inteligência": { "Valor da Habilidade": inteligencia },
                         "Sabedoria": { "Valor da Habilidade": sabedoria },
                         "Carisma": { "Valor da Habilidade": carisma },
@@ -790,9 +1642,6 @@
         let classe = ajustar_nome_classe(personagem);
         let raca = ajustar_nome_raca(personagem);
 
-        let vida = Math.floor(Math.random() * CLASSES[classe].dado_de_vida) + 1;
-        personagem["Dados Básicos"]["Pontos de Vida"] = vida;
-
         let generos = [ 'Masculino' , 'Feminino' ];
         let genero = generos[Math.floor(Math.random() * 2)];
         personagem["Dados Básicos"]["Gênero"] = genero;
@@ -839,6 +1688,58 @@
               personagem["Detalhes"].push(detalheNaoRobustos);
             }
           }
+        }
+
+        /* Ajustes atributos */
+
+        let forca = personagem["Habilidades"]["Força"]["Valor da Habilidade"];
+        let forca_extraordinaria = 0;
+        if ( (forca == 18) && (personagem["Raça"].indexOf('Halfling') == -1) ) {
+          forca_extraordinaria = Math.floor(Math.random() * 100) + 1;
+          personagem["Habilidades"]["Força"]["Força Extraordinária"] = forca_extraordinaria;
+        }
+        personagem["Habilidades"]["Força"]["Chance de Acertar"] = atributos_forca("Chance de Acertar", forca, forca_extraordinaria);
+        personagem["Habilidades"]["Força"]["Ajuste de Dano"] = atributos_forca("Ajuste de Dano", forca, forca_extraordinaria);
+        personagem["Habilidades"]["Força"]["Carga Permitida"] = atributos_forca("Carga Permitida", forca, forca_extraordinaria);
+        personagem["Habilidades"]["Força"]["Sustentação"] = atributos_forca("Sustentação", forca, forca_extraordinaria);
+        personagem["Habilidades"]["Força"]["Abrir Portas"] = atributos_forca("Abrir Portas", forca, forca_extraordinaria);
+        personagem["Habilidades"]["Força"]["Barras/Portais"] = atributos_forca("Barras/Portais", forca, forca_extraordinaria);
+
+        let destreza = personagem["Habilidades"]["Destreza"]["Valor da Habilidade"];
+        personagem["Habilidades"]["Destreza"]["Ajuste de Reação"] = atributos_destreza("Ajuste de Reação", destreza);
+        personagem["Habilidades"]["Destreza"]["Ataque à Distância"] = atributos_destreza("Ataque à Distância", destreza);
+        personagem["Habilidades"]["Destreza"]["Ajuste Defensivo"] = atributos_destreza("Ajuste Defensivo", destreza);
+
+        let constituicao = personagem["Habilidades"]["Constituição"]["Valor da Habilidade"];
+        let ajuste_pontos_de_vida = atributos_constituicao("Ajuste dos Pontos de Vida", constituicao, classe);
+        personagem["Habilidades"]["Constituição"]["Ajuste dos Pontos de Vida"] = ajuste_pontos_de_vida;
+        personagem["Habilidades"]["Constituição"]["Colapso"] = atributos_constituicao("Colapso", constituicao, classe);
+        personagem["Habilidades"]["Constituição"]["Chance de Ressurreição"] = atributos_constituicao("Chance de Ressurreição", constituicao, classe);
+        personagem["Habilidades"]["Constituição"]["Resistência contra Veneno"] = atributos_constituicao("Resistência contra Veneno", constituicao, classe);
+        personagem["Habilidades"]["Constituição"]["Regeneração"] = atributos_constituicao("Regeneração", constituicao, classe);
+
+        let vida = Math.floor(Math.random() * CLASSES[classe].dado_de_vida) + 1;
+        if (constituicao == 20) {
+          if (vida == 1) {
+            vida = 2;
+          }
+        } else if ( (constituicao >= 21) && (constituicao <= 22) ) {
+          if ( (vida >= 1) && (vida <= 2) ) {
+            vida = 3;
+          }
+        } else if ( (constituicao >= 23) && (constituicao <= 25) ) {
+          if ( (vida >= 1) && (vida <= 3) ) {
+            vida = 4;
+          }
+        }
+        personagem["Dados Básicos"]["Pontos de Vida"] = vida + ajuste_pontos_de_vida;
+
+        if (constituicao == 20) {
+          personagem["Detalhes"].push("Todos os resultados de 1 nos Dados de Vida são considerados como 2.");
+        } else if ( (constituicao >= 21) && (constituicao <= 22) ) {
+          personagem["Detalhes"].push("Todos os resultados de 1 e 2 nos Dados de Vida são considerados como 3.");
+        } else if ( (constituicao >= 23) && (constituicao <= 25) ) {
+          personagem["Detalhes"].push("Todos os resultados de 1, 2 e 3 nos Dados de Vida são considerados como 4.");
         }
 
         callback();
