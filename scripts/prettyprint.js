@@ -682,7 +682,7 @@ var prettyPrint = (function(){
 		expanded: true,
 
 		forceObject: false,
-		maxDepth: 3,
+		maxDepth: 4,
 		maxArray: -1,  // default is unlimited
 		styles: {
 			array: {
