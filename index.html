@@ -69,6 +69,21 @@
         border: 0 !important;
         white-space: normal !important;
       }
+      tbody tr:nth-child(8) td tbody tr td:last-child {
+        background-color: #eee !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
+      tbody tr:nth-child(9) td tbody tr td:last-child {
+        background-color: #eee !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
+      tbody tr:nth-child(10) td tbody tr td:last-child {
+        background-color: #eee !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
       td {
         max-width: 320px !important;
       }
@@ -305,6 +320,7 @@
 
       const CLASSES = {
         "Guerreiro": {
+          "Grupo": "Homem de Armas",
           "Habilidades Exigidas": { "Força": 9 },
           "Pré-Requisitos": [ "Força" ],
           "Raças Permitidas": [ "Humano", "Anão", "Elfo", "Gnomo", "Meio-Elfo", "Halfling" ],
@@ -315,6 +331,7 @@
           ]
         },
         "Paladino": {
+          "Grupo": "Homem de Armas",
           "Habilidades Exigidas": { "Força": 12, "Constituição": 9, "Sabedoria": 13, "Carisma": 17 },
           "Pré-Requisitos": [ "Força", "Carisma" ],
           "Raças Permitidas": [ "Humano" ],
@@ -325,6 +342,7 @@
           ]
         },
         "Ranger": {
+          "Grupo": "Homem de Armas",
           "Habilidades Exigidas": { "Força": 13, "Destreza": 13, "Constituição": 14, "Sabedoria": 14 },
           "Pré-Requisitos": [ "Força", "Destreza", "Sabedoria" ],
           "Raças Permitidas": [ "Humano", "Elfo", "Meio-Elfo" ],
@@ -341,6 +359,7 @@
           ]
         },
         "Mago": {
+          "Grupo": "Arcano",
           "Habilidades Exigidas": { "Inteligência": 9 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Elfo", "Meio-Elfo" ],
@@ -351,6 +370,7 @@
           ]
         },
         "Abjurante": {
+          "Grupo": "Arcano",
           "Habilidades Exigidas": { "Inteligência": 9, "Sabedoria": 15 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano" ],
@@ -361,6 +381,7 @@
           ]
         },
         "Conjurador": {
+          "Grupo": "Arcano",
           "Habilidades Exigidas": { "Constituição": 15, "Inteligência": 9 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Meio-Elfo" ],
@@ -371,6 +392,7 @@
           ]
         },
         "Adivinho": {
+          "Grupo": "Arcano",
           "Habilidades Exigidas": { "Inteligência": 9, "Sabedoria": 16 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Elfo", "Meio-Elfo" ],
@@ -381,6 +403,7 @@
           ]
         },
         "Feiticeiro": {
+          "Grupo": "Arcano",
           "Habilidades Exigidas": { "Inteligência": 9, "Carisma": 16 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Elfo", "Meio-Elfo" ],
@@ -391,6 +414,7 @@
           ]
         },
         "Ilusionista": {
+          "Grupo": "Arcano",
           "Habilidades Exigidas": { "Destreza": 16, "Inteligência": 9 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Gnomo" ],
@@ -401,6 +425,7 @@
           ]
         },
         "Invocador": {
+          "Grupo": "Arcano",
           "Habilidades Exigidas": { "Constituição": 16, "Inteligência": 9 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano" ],
@@ -411,6 +436,7 @@
           ]
         },
         "Necromante": {
+          "Grupo": "Arcano",
           "Habilidades Exigidas": { "Inteligência": 9, "Sabedoria": 16 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano" ],
@@ -421,6 +447,7 @@
           ]
         },
         "Transmutador": {
+          "Grupo": "Arcano",
           "Habilidades Exigidas": { "Destreza": 15, "Inteligência": 9 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Meio-Elfo" ],
@@ -431,6 +458,7 @@
           ]
         },
         "Clérigo": {
+          "Grupo": "Sacerdote",
           "Habilidades Exigidas": { "Sabedoria": 9 },
           "Pré-Requisitos": [ "Sabedoria" ],
           "Raças Permitidas": [ "Humano", "Anão", "Elfo", "Gnomo", "Meio-Elfo", "Halfling" ],
@@ -442,6 +470,7 @@
           ]
         },
         "Druida": {
+          "Grupo": "Sacerdote",
           "Habilidades Exigidas": { "Sabedoria": 12, "Carisma": 15 },
           "Pré-Requisitos": [ "Sabedoria", "Carisma" ],
           "Raças Permitidas": [ "Humano", "Meio-Elfo" ],
@@ -452,6 +481,7 @@
           ]
         },
         "Ladrão": {
+          "Grupo": "Ladino",
           "Habilidades Exigidas": { "Destreza": 9 },
           "Pré-Requisitos": [ "Destreza" ],
           "Raças Permitidas": [ "Humano", "Anão", "Elfo", "Gnomo", "Meio-Elfo", "Halfling" ],
@@ -462,6 +492,7 @@
           ]
         },
         "Bardo": {
+          "Grupo": "Ladino",
           "Habilidades Exigidas": { "Destreza": 12, "Inteligência": 13, "Carisma": 15 },
           "Pré-Requisitos": [ "Destreza", "Carisma" ],
           "Raças Permitidas": [ "Humano", "Meio-Elfo" ],
@@ -1329,7 +1360,235 @@
       }
 
       function atributos_inteligencia(atributo, inteligencia) {
-
+        if (inteligencia == 1) {
+          if (atributo == "Número de Línguas") {
+            return 0;
+          } else if (atributo == "Círculo de Magia") {
+            return 'Nenhum';
+          } else if (atributo == "Chance de Aprender Magia") {
+            return "Nenhuma";
+          } else if (atributo == "Número Máx Magias/Círculo") {
+            return "Nenhuma";
+          } else if (atributo == "Imunidade a Magias") {
+            return "Nenhuma";
+          }
+        } else if ( (inteligencia >= 2) && (inteligencia <= 8) ) {
+          if (atributo == "Número de Línguas") {
+            return 1;
+          } else if (atributo == "Círculo de Magia") {
+            return 'Nenhum';
+          } else if (atributo == "Chance de Aprender Magia") {
+            return "Nenhuma";
+          } else if (atributo == "Número Máx Magias/Círculo") {
+            return "Nenhuma";
+          } else if (atributo == "Imunidade a Magias") {
+            return "Nenhuma";
+          }
+        } else if ( inteligencia == 9 ) {
+          if (atributo == "Número de Línguas") {
+            return 2;
+          } else if (atributo == "Círculo de Magia") {
+            return '4º';
+          } else if (atributo == "Chance de Aprender Magia") {
+            return "35%";
+          } else if (atributo == "Número Máx Magias/Círculo") {
+            return "6";
+          } else if (atributo == "Imunidade a Magias") {
+            return "Nenhuma";
+          }
+        } else if ( inteligencia == 10 ) {
+          if (atributo == "Número de Línguas") {
+            return 2;
+          } else if (atributo == "Círculo de Magia") {
+            return '5º';
+          } else if (atributo == "Chance de Aprender Magia") {
+            return "40%";
+          } else if (atributo == "Número Máx Magias/Círculo") {
+            return "7";
+          } else if (atributo == "Imunidade a Magias") {
+            return "Nenhuma";
+          }
+        } else if ( inteligencia == 11 ) {
+          if (atributo == "Número de Línguas") {
+            return 2;
+          } else if (atributo == "Círculo de Magia") {
+            return '5º';
+          } else if (atributo == "Chance de Aprender Magia") {
+            return "45%";
+          } else if (atributo == "Número Máx Magias/Círculo") {
+            return "7";
+          } else if (atributo == "Imunidade a Magias") {
+            return "Nenhuma";
+          }
+        } else if ( inteligencia == 12 ) {
+          if (atributo == "Número de Línguas") {
+            return 3;
+          } else if (atributo == "Círculo de Magia") {
+            return '6º';
+          } else if (atributo == "Chance de Aprender Magia") {
+            return "50%";
+          } else if (atributo == "Número Máx Magias/Círculo") {
+            return "7";
+          } else if (atributo == "Imunidade a Magias") {
+            return "Nenhuma";
+          }
+        } else if ( inteligencia == 13 ) {
+          if (atributo == "Número de Línguas") {
+            return 3;
+          } else if (atributo == "Círculo de Magia") {
+            return '6º';
+          } else if (atributo == "Chance de Aprender Magia") {
+            return "55%";
+          } else if (atributo == "Número Máx Magias/Círculo") {
+            return "9";
+          } else if (atributo == "Imunidade a Magias") {
+            return "Nenhuma";
+          }
+        } else if ( inteligencia == 14 ) {
+          if (atributo == "Número de Línguas") {
+            return 4;
+          } else if (atributo == "Círculo de Magia") {
+            return '7º';
+          } else if (atributo == "Chance de Aprender Magia") {
+            return "60%";
+          } else if (atributo == "Número Máx Magias/Círculo") {
+            return "9";
+          } else if (atributo == "Imunidade a Magias") {
+            return "Nenhuma";
+          }
+        } else if ( inteligencia == 15 ) {
+          if (atributo == "Número de Línguas") {
+            return 4;
+          } else if (atributo == "Círculo de Magia") {
+            return '7º';
+          } else if (atributo == "Chance de Aprender Magia") {
+            return "65%";
+          } else if (atributo == "Número Máx Magias/Círculo") {
+            return "11";
+          } else if (atributo == "Imunidade a Magias") {
+            return "Nenhuma";
+          }
+        } else if ( inteligencia == 16 ) {
+          if (atributo == "Número de Línguas") {
+            return 5;
+          } else if (atributo == "Círculo de Magia") {
+            return '8º';
+          } else if (atributo == "Chance de Aprender Magia") {
+            return "70%";
+          } else if (atributo == "Número Máx Magias/Círculo") {
+            return "11";
+          } else if (atributo == "Imunidade a Magias") {
+            return "Nenhuma";
+          }
+        } else if ( inteligencia == 17 ) {
+          if (atributo == "Número de Línguas") {
+            return 6;
+          } else if (atributo == "Círculo de Magia") {
+            return '8º';
+          } else if (atributo == "Chance de Aprender Magia") {
+            return "75%";
+          } else if (atributo == "Número Máx Magias/Círculo") {
+            return "14";
+          } else if (atributo == "Imunidade a Magias") {
+            return "Nenhuma";
+          }
+        } else if ( inteligencia == 18 ) {
+          if (atributo == "Número de Línguas") {
+            return 7;
+          } else if (atributo == "Círculo de Magia") {
+            return '9º';
+          } else if (atributo == "Chance de Aprender Magia") {
+            return "85%";
+          } else if (atributo == "Número Máx Magias/Círculo") {
+            return "18";
+          } else if (atributo == "Imunidade a Magias") {
+            return "Nenhuma";
+          }
+        } else if ( inteligencia == 19 ) {
+          if (atributo == "Número de Línguas") {
+            return 8;
+          } else if (atributo == "Círculo de Magia") {
+            return '9º';
+          } else if (atributo == "Chance de Aprender Magia") {
+            return "95%";
+          } else if (atributo == "Número Máx Magias/Círculo") {
+            return "Todas";
+          } else if (atributo == "Imunidade a Magias") {
+            return "Ilusões do 1º Círculo";
+          }
+        } else if ( inteligencia == 20 ) {
+          if (atributo == "Número de Línguas") {
+            return 9;
+          } else if (atributo == "Círculo de Magia") {
+            return '9º';
+          } else if (atributo == "Chance de Aprender Magia") {
+            return "96%";
+          } else if (atributo == "Número Máx Magias/Círculo") {
+            return "Todas";
+          } else if (atributo == "Imunidade a Magias") {
+            return "Ilusões do 2º Círculo";
+          }
+        } else if ( inteligencia == 21 ) {
+          if (atributo == "Número de Línguas") {
+            return 10;
+          } else if (atributo == "Círculo de Magia") {
+            return '9º';
+          } else if (atributo == "Chance de Aprender Magia") {
+            return "97%";
+          } else if (atributo == "Número Máx Magias/Círculo") {
+            return "Todas";
+          } else if (atributo == "Imunidade a Magias") {
+            return "Ilusões do 3º Círculo";
+          }
+        } else if ( inteligencia == 22 ) {
+          if (atributo == "Número de Línguas") {
+            return 11;
+          } else if (atributo == "Círculo de Magia") {
+            return '9º';
+          } else if (atributo == "Chance de Aprender Magia") {
+            return "98%";
+          } else if (atributo == "Número Máx Magias/Círculo") {
+            return "Todas";
+          } else if (atributo == "Imunidade a Magias") {
+            return "Ilusões do 4º Círculo";
+          }
+        } else if ( inteligencia == 23 ) {
+          if (atributo == "Número de Línguas") {
+            return 12;
+          } else if (atributo == "Círculo de Magia") {
+            return '9º';
+          } else if (atributo == "Chance de Aprender Magia") {
+            return "99%";
+          } else if (atributo == "Número Máx Magias/Círculo") {
+            return "Todas";
+          } else if (atributo == "Imunidade a Magias") {
+            return "Ilusões do 5º Círculo";
+          }
+        } else if ( inteligencia == 24 ) {
+          if (atributo == "Número de Línguas") {
+            return 15;
+          } else if (atributo == "Círculo de Magia") {
+            return '9º';
+          } else if (atributo == "Chance de Aprender Magia") {
+            return "100%";
+          } else if (atributo == "Número Máx Magias/Círculo") {
+            return "Todas";
+          } else if (atributo == "Imunidade a Magias") {
+            return "Ilusões do 6º Círculo";
+          }
+        } else if ( inteligencia == 25 ) {
+          if (atributo == "Número de Línguas") {
+            return 20;
+          } else if (atributo == "Círculo de Magia") {
+            return '9º';
+          } else if (atributo == "Chance de Aprender Magia") {
+            return "100%";
+          } else if (atributo == "Número Máx Magias/Círculo") {
+            return "Todas";
+          } else if (atributo == "Imunidade a Magias") {
+            return "Ilusões do 7º Círculo";
+          }
+        }
       }
 
       function sortear_atributos(callback) {
@@ -1374,11 +1633,27 @@
                           "Resistência contra Veneno": 0,
                           "Regeneração": "Não há"
                         },
-                        "Inteligência": { "Valor da Habilidade": inteligencia },
+                        "Inteligência": {
+                          "Valor da Habilidade": inteligencia,
+                          "Número de Línguas": 0,
+                          "Círculo de Magia": "Nenhum",
+                          "Chance de Aprender Magia": "Nenhuma",
+                          "Número Máx Magias/Círculo": "Nenhuma",
+                          "Imunidade a Magias": "Nenhuma"
+                        },
                         "Sabedoria": { "Valor da Habilidade": sabedoria },
                         "Carisma": { "Valor da Habilidade": carisma },
                       },
                       "Idiomas": [],
+                      "Pontos de Perícia": {
+                        "Perícias Armas Inicial": 0,
+                        "Perícias Armas Nº Níveis": 0,
+                        "Perícias Armas Penalidades": 0,
+                        "Perícias Comuns Inicial": 0,
+                        "Perícias Comuns Nº Níveis": 0
+                      },
+                      "Perícias": [],
+                      "Especialização": [],
                       "Detalhes": []
                     });
                   });
@@ -1638,6 +1913,51 @@
         callback();
       }
 
+      function acrescentar_novas_linguas(personagem, raca, numero_de_linguas, callback) {
+        let linguas = [ 'élfico', 'do anões', 'dos gnomos', 'dos halflings', 'dos goblins', 'dos robgoblins', 'dos orcs', 'dos gnolls' ];
+
+        if (numero_de_linguas == 0) {
+          personagem["Detalhes"].push("Mesmo incapaz de falar qualquer língua, o personagem ainda pode se comunicar através de gestos e grunhidos.");
+        } else if (numero_de_linguas == 1) {
+          let linguas_importantes = [ RACAS[raca].linguas_importantes[0] ];
+          personagem["Idiomas"] = linguas_importantes;
+          numero_de_linguas = numero_de_linguas - 1;
+        } else {
+          personagem["Idiomas"] = RACAS[raca].linguas_importantes;
+          numero_de_linguas = numero_de_linguas - RACAS[raca].linguas_importantes.length;
+        }
+
+        let idiomas_do_personagem = personagem["Idiomas"].slice();
+
+        if (numero_de_linguas > 0) {
+
+          linguas.forEach((idioma_disponivel, index_externo) => {
+            let possui_idioma = false;
+            idiomas_do_personagem.forEach((idioma_aprendido, index_interno) => {
+              if (idioma_disponivel == idioma_aprendido) {
+                possui_idioma = true;
+              }
+
+              if (index_interno == (idiomas_do_personagem.length - 1)) {
+                if ( (!possui_idioma) && (numero_de_linguas > 0) ) {
+                  let acrescentar_nova_lingua = Math.floor(Math.random() * 100) + 1;
+                  if (acrescentar_nova_lingua <= 5) {
+                    personagem["Idiomas"].push(idioma_disponivel);
+                    numero_de_linguas = numero_de_linguas - 1;
+                  }
+                }
+              }
+            });
+
+            if (index_externo == (linguas.length - 1)) {
+              callback(numero_de_linguas);
+            }
+          });
+        } else {
+          callback(numero_de_linguas);
+        }
+      }
+
       function sortear_dados_basicos(personagem, callback) {
         let classe = ajustar_nome_classe(personagem);
         let raca = ajustar_nome_raca(personagem);
@@ -1657,8 +1977,6 @@
         let ajuste_peso = RACAS[raca].peso[genero].maximo - RACAS[raca].peso[genero].minimo;
         let peso = (Math.random() * ajuste_peso) + RACAS[raca].peso[genero].minimo;
         personagem["Dados Básicos"]["Peso"] = peso.toFixed(2);
-
-        personagem["Idiomas"] = RACAS[raca].linguas_importantes;
 
         personagem["Detalhes"] = RACAS[raca].detalhes;
 
@@ -1742,7 +2060,45 @@
           personagem["Detalhes"].push("Todos os resultados de 1, 2 e 3 nos Dados de Vida são considerados como 4.");
         }
 
-        callback();
+        let inteligencia = personagem["Habilidades"]["Inteligência"]["Valor da Habilidade"];
+        let numero_de_linguas = atributos_inteligencia("Número de Línguas", inteligencia);
+        personagem["Habilidades"]["Inteligência"]["Número de Línguas"] = numero_de_linguas;
+        personagem["Habilidades"]["Inteligência"]["Círculo de Magia"] = atributos_inteligencia("Círculo de Magia", inteligencia);
+        personagem["Habilidades"]["Inteligência"]["Chance de Aprender Magia"] = atributos_inteligencia("Chance de Aprender Magia", inteligencia);
+        personagem["Habilidades"]["Inteligência"]["Número Máx Magias/Círculo"] = atributos_inteligencia("Número Máx Magias/Círculo", inteligencia);
+        personagem["Habilidades"]["Inteligência"]["Imunidade a Magias"] = atributos_inteligencia("Imunidade a Magias", inteligencia);
+
+        acrescentar_novas_linguas(personagem, raca, numero_de_linguas, (numero_de_linguas) => {
+
+          if (CLASSES[classe]["Grupo"] == "Homem de Armas") {
+            personagem["Pontos de Perícia"]["Perícias Armas Inicial"] = 4;
+            personagem["Pontos de Perícia"]["Perícias Armas Nº Níveis"] = 3;
+            personagem["Pontos de Perícia"]["Perícias Armas Penalidades"] = -2;
+            personagem["Pontos de Perícia"]["Perícias Comuns Inicial"] = 3 + numero_de_linguas;
+            personagem["Pontos de Perícia"]["Perícias Comuns Nº Níveis"] = 3;
+          } else if (CLASSES[classe]["Grupo"] == "Arcano") {
+            personagem["Pontos de Perícia"]["Perícias Armas Inicial"] = 1;
+            personagem["Pontos de Perícia"]["Perícias Armas Nº Níveis"] = 6;
+            personagem["Pontos de Perícia"]["Perícias Armas Penalidades"] = -5;
+            personagem["Pontos de Perícia"]["Perícias Comuns Inicial"] = 4 + numero_de_linguas;
+            personagem["Pontos de Perícia"]["Perícias Comuns Nº Níveis"] = 3;
+          } else if (CLASSES[classe]["Grupo"] == "Sacerdote") {
+            personagem["Pontos de Perícia"]["Perícias Armas Inicial"] = 2;
+            personagem["Pontos de Perícia"]["Perícias Armas Nº Níveis"] = 4;
+            personagem["Pontos de Perícia"]["Perícias Armas Penalidades"] = -3;
+            personagem["Pontos de Perícia"]["Perícias Comuns Inicial"] = 4 + numero_de_linguas;
+            personagem["Pontos de Perícia"]["Perícias Comuns Nº Níveis"] = 3;
+          } else if (CLASSES[classe]["Grupo"] == "Ladino") {
+            personagem["Pontos de Perícia"]["Perícias Armas Inicial"] = 2;
+            personagem["Pontos de Perícia"]["Perícias Armas Nº Níveis"] = 4;
+            personagem["Pontos de Perícia"]["Perícias Armas Penalidades"] = -3;
+            personagem["Pontos de Perícia"]["Perícias Comuns Inicial"] = 3 + numero_de_linguas;
+            personagem["Pontos de Perícia"]["Perícias Comuns Nº Níveis"] = 4;
+          }
+
+          callback();
+
+        });
       }
 
       function obter_dados_personagem(callback) {
