@@ -164,6 +164,10 @@
         });
       });
 
+      const PERICIAS = {
+        "Rastrear": {}
+      };
+
       const RACAS = {
         "Humano": {
           "Força": { minimo: 3, maximo: 18 },
@@ -327,8 +331,10 @@
           tendencias: TENDENCIAS,
           dado_de_vida: 10,
           detalhes: [
-            'Um guerreiro com pontuação de 16 ou mais na Força ganha um bônus de 10% para sua experiência em pontos.'
-          ]
+            'Um guerreiro com pontuação de 16 ou mais na Força ganha um bônus de 10% para sua experiência em pontos.',
+            'Como um mestre dos diferentes tipos de armamento, o guerreiro é o único capaz de ter uma especialízação em armas'
+          ],
+          armas: []
         },
         "Paladino": {
           "Grupo": "Homem de Armas",
@@ -338,8 +344,27 @@
           tendencias: [ "Justo (bom e leal)" ],
           dado_de_vida: 10,
           detalhes: [
-            'Um paladino que tenha valores de Força e Carisma iguais ou maiores que 16 ganha um bônus de 10% em sua experiência em pontos.'
-          ]
+            'Um paladino que tenha valores de Força e Carisma iguais ou maiores que 16 ganha um bônus de 10% em sua experiência em pontos.',
+            'O paladino deve ter e manter tendência justa. Um paladino que mude sua tendência, deliberada ou inadvertidamente, perde todos os poderes especiais.',
+            'Um paladino pode detectar uma intenção maligna até a 20 metros de distância, ao se concentrar numa direção específica. Duração: uma rodada. Este poder detecta monstros e personagens malignos.',
+            'Um paladino recebe um bônus de +2 em todos os testes de resistência.',
+            'Um paladino é imune a todas as formas de doença',
+            'Um paladino pode curar pela imposição das mãos. O paladino restaura 2 pontos de vida por nível de experiência. Ele pode curar-se ou a outra pessoa, mas somente uma vez ao dia.',
+            'Um paladino pode curar doenças de todos os tipos. Isto só pode ser feito uma vez por semana para cada cinco níveis de experiência.',
+            'Um paladino é envolto por uma aura de proteção de 3 metros de raio. Neste espaço, todas as criaturas convocadas por magia, especialmente as malignas, sofrem uma penalidade de -1 em suas jogadas de ataque. Criaturas afetadas por essa aura podem detectar facilmente sua origem, mesmo que o paladino esteja disfarçado.',
+            'Um paladino usando uma espada sagrada projeta um círculo de poder de 20 metros de diâmetro quando a espada é desembainhada e erguida. Esse poder neutraliza magias hostis de círculos menores ou iguais ao nível de experiência do paladino.',
+            'Um paladino pode usar o poder de sua fé contra mortos-vivos e demônios a partir do 3º nível. Ele afeta esses monstros da mesma forma que um clérigo dois níveis abaixo.',
+            'Um paladino pode chamar seu cavalo de batalha a partir do 4º nível.',
+            'Um paladino pode lançar magias divinas uma vez que tenha atingido o 9º nível. Ele pode utilizar somente magias das esferas de combate, adivinhação, cura e proteção.',
+            'Diferente dos sacerdotes, o paladino não recebe magias extras por um valor alto de Sabedoria.',
+            'Este personagem não pode lançar magias de pergaminhos clericais ou druídicos, nem fazer uso de itens mágicos exclusivos de sacerdotes, arcanos ou ladinos.',
+            'Um paladino não pode possuir mais de 10 itens mágicos. Além disso, entre os objetos mágicos do paladino não pode haver mais do que uma armadura, um escudo e quatro armas (flechas e dardos não contam), além de outros quatro itens diversos.',
+            'Um paladino nunca acumula riquezas.',
+            'Um paladino deve pagar o dizimo para a instituição religiosa de tendência justa à qual ele serve. O dízimo representa 10% da renda do paladino.',
+            'Um paladino não forma um grupo de seguidores ao alcançar o 9º nível ou construir um castelo. Todavia, ele pode contratar soldados e especialistas, embora esses homens devam ter tendência justa.',
+            'Um paladino só pode empregar aliados justos'
+          ],
+          armas: []
         },
         "Ranger": {
           "Grupo": "Homem de Armas",
@@ -355,8 +380,22 @@
           ],
           dado_de_vida: 10,
           detalhes: [
-            'Um ranger que tenha valores de Força. Destreza e Sabedoria iguais ou maiores que 16 ganha um bônus de 10% na experiência em pontos.'
-          ]
+            'Um ranger que tenha valores de Força, Destreza e Sabedoria iguais ou maiores que 16 ganha um bônus de 10% na experiência em pontos.',
+            'Quando estiver vestindo um corselete de couro batido (ou alguma armadura ainda mais leve) um ranger poderá lutar com ambas as mãos sem sofrer penalidades em sua jogada de ataque.',
+            'O ranger possui a perícia rastrear. Além disso, este talento melhora em +1 a cada três níveis',
+            'Enquanto estiver usando o corselete de couro batido ou uma armadura mais leve, o ranger pode mover-se silenciosamente e ocultar-se nas sombras. Quando o ranger tenta utilizar esses talentos em ambientes artificiais (numa cripta abafada ou nas ruas da cidade), a chance de sucesso diminui pela metade.',
+            'Antes de avançar para o 2º nível, todo ranger deve selecionar uma espécie inimiga (bônus de +4 em sua jogada de ataque; penalidade de -4 nos testes de reação em encontros com essa criatura).',
+            'Rangers sabem lídar com criaturas treinadas ou treinadas.',
+            'Quando lida com animais domésticos ou pacíficos. o ranger pode se aproximar da criatura e fazer amizade instantaneamente.',
+            'Quando o ranger aproxima-se de animais selvagens, ou de animais treinados para atacar, a criatura deve fazer um teste de Resistência contra Bastões contra bastões para resistir à oferta de amizade do ranger. O personagem impõe uma penalidade de -1 ao resuldado para cada três níveis de experiência.',
+            'Um ranger pode aprender magias divinas, mas somente aquelas das esferas animal e vegetal, e apenas a partir do 8º nível.',
+            'O ranger não ganha magias extras graças a um alto valor de Sabedoria, nem está apto a usar pergaminhos clericais ou itens mágicos, a não ser que a especificação do item diga o contrário.',
+            'Rangers podem construir castelos ou fortalezas, mas não ganham seguidores por isso.',
+            'No 10º nível, um ranger atrai 2d6 seguidores. Esses seguidores podem ser seres humanos normais, mas geralmente são animais ou estranhos habitantes do lugar.',
+            'Um ranger sempre deve manter uma tendência inclinada para o bem.',
+            'Rangers tendem a ser figuras solitárias, sempre com o pé na estrada. Eles não podem ter aliados, empregados, mercenários ou mesmo servos até que alcancem o 8º nível.'
+          ],
+          armas: []
         },
         "Mago": {
           "Grupo": "Arcano",
@@ -366,8 +405,14 @@
           tendencias: TENDENCIAS,
           dado_de_vida: 4,
           detalhes: [
-            'Um mago com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
-          ]
+            'Um mago com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.',
+            'Arcanos não podem usar nenhum tipo de armadura.',
+            'Arcanos podem usar poções, anéis, varinhas de condão, bastões, pergaminhos e a ampla maioria dos demais itens, incluindo a versão mágica de qualquer arma permitida à sua classe, mas não podem usar armaduras mágicas.',
+            'Uma vez que tenha alcançado o 9º nível, um arcano pode escrever pergaminhos e preparar poções. Ele só poderá criar itens de maior poder depois de ter aprendido as magias apropriadas para isso (ou de ter trabalhado com alguém que as conheça).',
+            'Todos os arcanos recebem um d4 de vida por nível do personagem, do 1º até o 10º. Depois do 10º, arcanos ganham 1 ponto de vida por nível.',
+            ''
+          ],
+          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"]
         },
         "Abjurante": {
           "Grupo": "Arcano",
@@ -377,8 +422,11 @@
           tendencias: TENDENCIAS,
           dado_de_vida: 4,
           detalhes: [
-            'Um Abjurante (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
-          ]
+            'Um Abjurante (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.',
+            'Arcanos não podem usar nenhum tipo de armadura.',
+            'Arcanos podem usar poções, anéis, varinhas de condão, bastões, pergaminhos e a ampla maioria dos demais itens, incluindo a versão mágica de qualquer arma permitida à sua classe, mas não podem usar armaduras mágicas.'
+          ],
+          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"]
         },
         "Conjurador": {
           "Grupo": "Arcano",
@@ -388,8 +436,11 @@
           tendencias: TENDENCIAS,
           dado_de_vida: 4,
           detalhes: [
-            'Um Conjurador (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
-          ]
+            'Um Conjurador (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.',
+            'Arcanos não podem usar nenhum tipo de armadura.',
+            'Arcanos podem usar poções, anéis, varinhas de condão, bastões, pergaminhos e a ampla maioria dos demais itens, incluindo a versão mágica de qualquer arma permitida à sua classe, mas não podem usar armaduras mágicas.'
+          ],
+          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"]
         },
         "Adivinho": {
           "Grupo": "Arcano",
@@ -399,8 +450,11 @@
           tendencias: TENDENCIAS,
           dado_de_vida: 4,
           detalhes: [
-            'Um Adivinho (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
-          ]
+            'Um Adivinho (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.',
+            'Arcanos não podem usar nenhum tipo de armadura.',
+            'Arcanos podem usar poções, anéis, varinhas de condão, bastões, pergaminhos e a ampla maioria dos demais itens, incluindo a versão mágica de qualquer arma permitida à sua classe, mas não podem usar armaduras mágicas.'
+          ],
+          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"]
         },
         "Feiticeiro": {
           "Grupo": "Arcano",
@@ -410,8 +464,11 @@
           tendencias: TENDENCIAS,
           dado_de_vida: 4,
           detalhes: [
-            'Um Feiticeiro (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
-          ]
+            'Um Feiticeiro (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.',
+            'Arcanos não podem usar nenhum tipo de armadura.',
+            'Arcanos podem usar poções, anéis, varinhas de condão, bastões, pergaminhos e a ampla maioria dos demais itens, incluindo a versão mágica de qualquer arma permitida à sua classe, mas não podem usar armaduras mágicas.'
+          ],
+          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"]
         },
         "Ilusionista": {
           "Grupo": "Arcano",
@@ -421,8 +478,11 @@
           tendencias: TENDENCIAS,
           dado_de_vida: 4,
           detalhes: [
-            'Um Ilusionista (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
-          ]
+            'Um Ilusionista (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.',
+            'Arcanos não podem usar nenhum tipo de armadura.',
+            'Arcanos podem usar poções, anéis, varinhas de condão, bastões, pergaminhos e a ampla maioria dos demais itens, incluindo a versão mágica de qualquer arma permitida à sua classe, mas não podem usar armaduras mágicas.'
+          ],
+          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"]
         },
         "Invocador": {
           "Grupo": "Arcano",
@@ -432,8 +492,11 @@
           tendencias: TENDENCIAS,
           dado_de_vida: 4,
           detalhes: [
-            'Um Invocador (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
-          ]
+            'Um Invocador (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.',
+            'Arcanos não podem usar nenhum tipo de armadura.',
+            'Arcanos podem usar poções, anéis, varinhas de condão, bastões, pergaminhos e a ampla maioria dos demais itens, incluindo a versão mágica de qualquer arma permitida à sua classe, mas não podem usar armaduras mágicas.'
+          ],
+          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"]
         },
         "Necromante": {
           "Grupo": "Arcano",
@@ -443,8 +506,11 @@
           tendencias: TENDENCIAS,
           dado_de_vida: 4,
           detalhes: [
-            'Um Necromante (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
-          ]
+            'Um Necromante (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.',
+            'Arcanos não podem usar nenhum tipo de armadura.',
+            'Arcanos podem usar poções, anéis, varinhas de condão, bastões, pergaminhos e a ampla maioria dos demais itens, incluindo a versão mágica de qualquer arma permitida à sua classe, mas não podem usar armaduras mágicas.'
+          ],
+          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"]
         },
         "Transmutador": {
           "Grupo": "Arcano",
@@ -454,8 +520,11 @@
           tendencias: TENDENCIAS,
           dado_de_vida: 4,
           detalhes: [
-            'Um Transmutador (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.'
-          ]
+            'Um Transmutador (mago especialista) com Inteligência 16 ou mais ganha um bônus de 10% em sua experiência em pontos.',
+            'Arcanos não podem usar nenhum tipo de armadura.',
+            'Arcanos podem usar poções, anéis, varinhas de condão, bastões, pergaminhos e a ampla maioria dos demais itens, incluindo a versão mágica de qualquer arma permitida à sua classe, mas não podem usar armaduras mágicas.'
+          ],
+          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"]
         },
         "Clérigo": {
           "Grupo": "Sacerdote",
@@ -467,7 +536,8 @@
           detalhes: [
             'O clérigo com 16 ou mais de Sabedoria ganha um bônus de 10% em sua experiência.',
             'Um clérigo de um mito específico deve possuir uma tendência aceitável para a divindade'
-          ]
+          ],
+          armas: []
         },
         "Druida": {
           "Grupo": "Sacerdote",
@@ -478,7 +548,8 @@
           dado_de_vida: 8,
           detalhes: [
             'Um druida com pontuação de 16 ou mais em Sabedoria e Carisma ganha um bônus de 10% para sua experiência em pontos.'
-          ]
+          ],
+          armas: []
         },
         "Ladrão": {
           "Grupo": "Ladino",
@@ -489,7 +560,8 @@
           dado_de_vida: 6,
           detalhes: [
             'O ladrão com 16 ou mais de Destreza ganha um bônus de 10% em sua experiência.'
-          ]
+          ],
+          armas: []
         },
         "Bardo": {
           "Grupo": "Ladino",
@@ -506,7 +578,8 @@
           dado_de_vida: 6,
           detalhes: [
             'O bardo com 16 ou mais de Destreza e Carisma ganha um bônus de 10% em sua experiência.'
-          ]
+          ],
+          armas: []
         }
       };
 
@@ -2121,7 +2194,7 @@
                         "Perícias Comuns Inicial": 0,
                         "Perícias Comuns Nº Níveis": 0
                       },
-                      "Perícias": [],
+                      "Perícias": {},
                       "Especialização": [],
                       "Detalhes": []
                     });
@@ -2293,6 +2366,10 @@
 
                     let index = Math.floor(Math.random() * classes_permitidas.length);
                     let classe_final = classes_permitidas[index];
+
+                    if (classe_final == "Ranger") {
+                      personagem["Perícias"]["Rastrear"] = PERICIAS["Rastrear"];
+                    }
 
                     if (classe_final == "Clérigo") {
                       let lista_clerigos = [
