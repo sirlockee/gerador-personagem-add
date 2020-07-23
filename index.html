@@ -322,6 +322,39 @@
         "Cruel (caótico e maligno)"
       ];
 
+      CONST ESCUDOS = [
+        { nome: 'Escudo de Corpo', ca: 1, preco: { quantidade: 10, moeda: 'po' }, peso: 7.5 },
+        { nome: 'Broquei (escudo)', ca: 1, preco: { quantidade: 1, moeda: 'po' }, peso: 1.5 },
+        { nome: 'Escudo Médio', ca: 1, preco: { quantidade: 7, moeda: 'po' }, peso: 5 },
+        { nome: 'Escudo Pequeno', ca: 1, preco: { quantidade: 3, moeda: 'po' }, peso: 2.5 }
+      ];
+
+      CONST ARMADURAS = [
+        { nome: 'Corselete de Couro Simples', ca: 8, preco: { quantidade: 5, moeda: 'po' }, peso: 7.5 },
+        { nome: 'Corselete de Couro Acolchoado', ca: 8, preco: { quantidade: 4, moeda: 'po' }, peso: 5 },
+        { nome: 'Corselete de Couro Batido', ca: 7, preco: { quantidade: 20, moeda: 'po' }, peso: 12.5 },
+        { nome: 'Loriga', ca: 7, preco: { quantidade: 100, moeda: 'po' }, peso: 15 },
+        { nome: 'Brigandina', ca: 6, preco: { quantidade: 120, moeda: 'po' }, peso: 17.5 },
+        { nome: 'Brunea', ca: 6, preco: { quantidade: 120, moeda: 'po' }, peso: 20 },
+        { nome: 'Gibão de Peles', ca: 6, preco: { quantidade: 15, moeda: 'po' }, peso: 15 },
+        { nome: 'Cota de Malha', ca: 5, preco: { quantidade: 75, moeda: 'po' }, peso: 20 },
+        { nome: 'Cota de Talas', ca: 4, preco: { quantidade: 80, moeda: 'po' }, peso: 20 },
+        { nome: 'Loriga Segmentada', ca: 4, preco: { quantidade: 200, moeda: 'po' }, peso: 17.5 },
+        { nome: 'Armadura de Bronze', ca: 4, preco: { quantidade: 400 , moeda: 'po' }, peso: 22.5 },
+        { nome: 'Armadura Simples', ca: 3, preco: { quantidade: 600, moeda: 'po' }, peso: 25 },
+        { nome: 'Armadura de Batalha', ca: 2, preco: { quantidade: 2000, moeda: 'po' }, peso: 30 },
+        { nome: 'Armadura Completa' ca: 1, preco: { quantidade: 4000, moeda: 'po' }, peso: 35 },
+        { nome: 'Elmo Grande' ca: 0, preco: { quantidade: 30, moeda: 'po' }, peso: 5 },
+        { nome: 'Basinet' ca: 0, preco: { quantidade: 8, moeda: 'po' }, peso: 2.5 }
+      ];
+
+      CONST ARMADURAS_DRUIDA = [
+        ARMADURAS[0],
+        ARMADURAS[1],
+        ARMADURAS[2],
+        ARMADURAS[6]
+      ];
+
       const CLASSES = {
         "Guerreiro": {
           "Grupo": "Homem de Armas",
@@ -332,9 +365,10 @@
           dado_de_vida: 10,
           detalhes: [
             'Um guerreiro com pontuação de 16 ou mais na Força ganha um bônus de 10% para sua experiência em pontos.',
-            'Como um mestre dos diferentes tipos de armamento, o guerreiro é o único capaz de ter uma especialízação em armas'
+            'Como um mestre dos diferentes tipos de armamento, o guerreiro é o único capaz de ter uma especialízação em armas.'
           ],
-          armas: []
+          armas: [],
+          armaduras: ARMADURAS
         },
         "Paladino": {
           "Grupo": "Homem de Armas",
@@ -360,7 +394,7 @@
             'Este personagem não pode lançar magias de pergaminhos clericais ou druídicos, nem fazer uso de itens mágicos exclusivos de sacerdotes, arcanos ou ladinos.',
             'Um paladino não pode possuir mais de 10 itens mágicos. Além disso, entre os objetos mágicos do paladino não pode haver mais do que uma armadura, um escudo e quatro armas (flechas e dardos não contam), além de outros quatro itens diversos.',
             'Um paladino nunca acumula riquezas.',
-            'Um paladino deve pagar o dizimo para a instituição religiosa de tendência justa à qual ele serve. O dízimo representa 10% da renda do paladino.',
+            'Um paladino deve pagar o dízimo para a instituição religiosa de tendência justa à qual ele serve. O dízimo representa 10% da renda do paladino.',
             'Um paladino não forma um grupo de seguidores ao alcançar o 9º nível ou construir um castelo. Todavia, ele pode contratar soldados e especialistas, embora esses homens devam ter tendência justa.',
             'Um paladino só pode empregar aliados justos'
           ],
@@ -395,7 +429,8 @@
             'Um ranger sempre deve manter uma tendência inclinada para o bem.',
             'Rangers tendem a ser figuras solitárias, sempre com o pé na estrada. Eles não podem ter aliados, empregados, mercenários ou mesmo servos até que alcancem o 8º nível.'
           ],
-          armas: []
+          armas: [],
+          armaduras: ARMADURAS
         },
         "Mago": {
           "Grupo": "Arcano",
@@ -411,7 +446,8 @@
             'Uma vez que tenha alcançado o 9º nível, um arcano pode escrever pergaminhos e preparar poções. Ele só poderá criar itens de maior poder depois de ter aprendido as magias apropriadas para isso (ou de ter trabalhado com alguém que as conheça).',
             'Todos os arcanos recebem um d4 de vida por nível do personagem, do 1º até o 10º. Depois do 10º, arcanos ganham 1 ponto de vida por nível.'
           ],
-          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"]
+          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
+          armaduras: []
         },
         "Abjurante": {
           "Grupo": "Arcano",
@@ -433,7 +469,8 @@
             'Quando um arcano especialista tenta criar uma nova magia dentro de sua própria escola de especialização, o Mestre, ao determinar a dificuldade da tarefa, deve considerar a nova magia como sendo de um círculo interior ao real.',
             'Um Abjurante não pode aprender magias das escolas de Alteração e Ilusão.'
           ],
-          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"]
+          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
+          armaduras: []
         },
         "Conjurador": {
           "Grupo": "Arcano",
@@ -455,7 +492,8 @@
             'Quando um arcano especialista tenta criar uma nova magia dentro de sua própria escola de especialização, o Mestre, ao determinar a dificuldade da tarefa, deve considerar a nova magia como sendo de um círculo interior ao real.',
             'Um Conjurador não pode aprender magias das escolas de Profecia e Invocação'
           ],
-          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"]
+          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
+          armaduras: []
         },
         "Adivinho": {
           "Grupo": "Arcano",
@@ -477,7 +515,8 @@
             'Quando um arcano especialista tenta criar uma nova magia dentro de sua própria escola de especialização, o Mestre, ao determinar a dificuldade da tarefa, deve considerar a nova magia como sendo de um círculo interior ao real.',
             'Um Adivinho não pode aprender magias da escola de Conjuração/Convocação'
           ],
-          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"]
+          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
+          armaduras: []
         },
         "Feiticeiro": {
           "Grupo": "Arcano",
@@ -499,7 +538,8 @@
             'Quando um arcano especialista tenta criar uma nova magia dentro de sua própria escola de especialização, o Mestre, ao determinar a dificuldade da tarefa, deve considerar a nova magia como sendo de um círculo interior ao real.',
             'Um Feiticeiro não pode aprender magias das escolas de Invocação/Evocação e Necromancia'
           ],
-          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"]
+          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
+          armaduras: []
         },
         "Ilusionista": {
           "Grupo": "Arcano",
@@ -521,7 +561,8 @@
             'Quando um arcano especialista tenta criar uma nova magia dentro de sua própria escola de especialização, o Mestre, ao determinar a dificuldade da tarefa, deve considerar a nova magia como sendo de um círculo interior ao real.',
             'Um Ilusionista não pode aprender magias das escolas de Necromancia, Invocação/Evocação e Abjuração'
           ],
-          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"]
+          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
+          armaduras: []
         },
         "Invocador": {
           "Grupo": "Arcano",
@@ -543,7 +584,8 @@
             'Quando um arcano especialista tenta criar uma nova magia dentro de sua própria escola de especialização, o Mestre, ao determinar a dificuldade da tarefa, deve considerar a nova magia como sendo de um círculo interior ao real.',
             'Um Invocador não pode aprender magias das escolas de Encantamento/Feitiço e Conjuração/Convocação'
           ],
-          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"]
+          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
+          armaduras: []
         },
         "Necromante": {
           "Grupo": "Arcano",
@@ -565,7 +607,8 @@
             'Quando um arcano especialista tenta criar uma nova magia dentro de sua própria escola de especialização, o Mestre, ao determinar a dificuldade da tarefa, deve considerar a nova magia como sendo de um círculo interior ao real.',
             'Um Necromante não pode aprender magias das escolas de Ilusão e Encantamento/Feitiço'
           ],
-          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"]
+          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
+          armaduras: []
         },
         "Transmutador": {
           "Grupo": "Arcano",
@@ -587,7 +630,8 @@
             'Quando um arcano especialista tenta criar uma nova magia dentro de sua própria escola de especialização, o Mestre, ao determinar a dificuldade da tarefa, deve considerar a nova magia como sendo de um círculo interior ao real.',
             'Um Transmutador não pode aprender magias das escolas de Abjuração e Necromancia'
           ],
-          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"]
+          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
+          armaduras: []
         },
         "Clérigo": {
           "Grupo": "Sacerdote",
@@ -609,6 +653,7 @@
             'No 9º nível, o clérigo pode receber autorização oficial para construir uma fortaleza religiosa, seja um mosteiro fortificado ou um convento isolado.'
           ],
           armas: ["Mangual", "Martelo de Batalha", "Açoite", "Chicote", "Alvião", "Aprisionador", "Bordão", "Arco", "Azagaia", "Lança de Cavalaria", "Funda", "Dardo", "Lança", "Clava", "Arpão", "Tridente", "Martelo", "Maça", "Maça-Estrela", "Zarabatana"],
+          armaduras: ARMADURAS,
           armas_divindade: []
         },
         "Druida": {
@@ -639,21 +684,42 @@
             'Apenas três arquidruidas (13° nível) podem operar na mesma região geográfica. Para tornar-se um arquidruida, um druida do 12° nível deve derrotar um deles ou avançar para essa posição, caso ela esteja vaga. Cada um dos três arquidruidas é servido por três iniciados do 10º nível.',
             'Dentre os arquidruidas de todo o mundo, três são escolhidos para servir ao Druida Venerável.',
             'Há apenas um grande druida (14º nível) em uma área geográfica. Ele, por sua vez, ganhou sua posição derrotando o grande druida anterior. O grande druida é servido por três iniciados do 11° nível.',
-            ''
+            'O druida de maior poder é o Druida Venerável (15º nível). Apenas uma pessoa em todo o mundo pode possuir o título de Druida Venerável.',
+            'O Druida Venerável conhece seis magias de cada círculo, além de possuir seis círculos de magia adicionais, que podem ser lançados como se fossem uma só, ou várias magias cujos círculos totalizem seis (uma magia do 6º círculo, duas do 3º, seis do 1º, etc).',
+            'O Druida Venerável é servido por nove outros druidas que estão sujeitos apenas a ele, e não têm nada a ver com a hierarquia de uma área especlfíca.',
+            'Depois do 15º nível, um druida não ganha mais magias (ignore a tabela de progressão de magias de clérigo a partir deste ponto).',
+            'No 16º nivel o druida ganha: Imunidade a todos os venenos naturais (venenos vegetais e animais, ingeridos ou injetados, incluindo os venenos de monstros, mas não venenos minerais de qualquer espécie ou gás venenoso)',
+            'No 16º nivel o druida ganha: Capacidade de mudar sua aparência à vontade. Cada transformação leva uma rodada para se completar. Um mudança de peso e altura de até 50% é possível, e a idade aparente pode ir da infância à velhice. O corpo e as feições podem espelhar qualquer criatura humana ou humanóide. Tal mudança não é mágica e só pode ser detectada pela Visão da Verdade ou método similar.',
+            'No 16º nivel o druida ganha: Impressionante vigor físico para a idade. O druida não é mais alvo dos ajustes de habilidade devido ao envelhecimento.',
+            'No 17º nivel o druida ganha: O personagem ganha a capacidade biológica de hibernar. As suas funções corporais diminuem ao ponto dele parecer morto para um observador casual, e o envelhecimento cessa. O druida fica totalmente inconsciente durante a hibernação e desperta numa hora pré-determinada (Eu hibernarei por 20 dias), ou quando houver uma mudança significativa no ambiente (o tempo ficar frio, alguém bater no personagem com um bastão, etc).',
+            'No 17º nivel o druida pode também entrar no plano elemental da Terra à vontade. A transferência leva uma rodada para ocorrer. Este poder também fornece meios para a sobrevivência no outro plano, para movimentar-se lá e retornar ao plano Material Primário quando desejar. Ele não confere proteções semelhantes no plano Material.',
+            'No 18º nivel o druida ganha o poder de  entrar e sobreviver no plano elemental do Fogo.',
+            'No 19º nivel o druida ganha o poder de entrar e sobreviver no plano elemental da Agua.',
+            'No 20º nivel o druida ganha o poder entrar e sobreviver no plano elemental do Ar.'
           ],
-          armas: ["Clava", "Foice", "Dardo", "Lança", "Adaga", "Cimitarra", "Funda", "Cajado"]
+          armas: ["Clava", "Foice", "Dardo", "Lança", "Adaga", "Cimitarra", "Funda", "Cajado"],
+          armaduras: ARMADURAS_DRUIDA
         },
         "Ladrão": {
           "Grupo": "Ladino",
           "Habilidades Exigidas": { "Destreza": 9 },
           "Pré-Requisitos": [ "Destreza" ],
           "Raças Permitidas": [ "Humano", "Anão", "Elfo", "Gnomo", "Meio-Elfo", "Halfling" ],
-          tendencias: TENDENCIAS,
+          tendencias: [
+            "Ordeiro (neutro e leal)",
+            "Vil (maligno e leal)",
+            "Bondoso (bom e neutro)",
+            "Neutro",
+            "Egoista (neutro e maligno)",
+            "Honrado (caótico e bom)",
+            "Inconstante (neutro e caótico)",
+            "Cruel (caótico e maligno)"
+          ],
           dado_de_vida: 6,
           detalhes: [
             'O ladrão com 16 ou mais de Destreza ganha um bônus de 10% em sua experiência.'
           ],
-          armas: []
+          armas: ['Clava', 'Adaga', 'Besta de Mão', 'Espada Longa', 'Dardo', 'Faca', 'Laço', 'Arco Curto', 'Funda', 'Espada Larga', 'Espada Curta', 'Cajado']
         },
         "Bardo": {
           "Grupo": "Ladino",
