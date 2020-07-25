@@ -84,6 +84,11 @@
         border: 0 !important;
         white-space: normal !important;
       }
+      tbody tr:nth-child(11) td tbody tr td:last-child {
+        background-color: #eee !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
       td {
         max-width: 320px !important;
       }
@@ -107,9 +112,9 @@
       <img src="img/logo.gif" />
     </header>
     <div id="botao">
-      Clique no botão para gerar/copiar a URL deste personagem e compartilhar com outros jogadores. Ela estará salva na área de transferência do seu celular/computador.
+      Force a rolagem para um tipo específico de classe:
       <br /><br />
-      <button type="button">Copiar URL para compartilhar personagem</button>
+      <button type="button">Rolar</button>
       <span></span>
     </div>
     <div id="ficha"></div>
@@ -117,6 +122,11 @@
     <script src="scripts/prettyprint.js"></script>
     <script type="text/javascript">
 
+      /* debug */
+      let forcar_classe = 'Todas';
+      forcar_classe = 'Paladino';
+
+      /*
       function fallbackCopyTextToClipboard(text) {
         var textArea = document.createElement("textarea");
         textArea.value = text;
@@ -163,6 +173,7 @@
           document.querySelector("div#botao > span").textContent = msg;
         });
       });
+      */
 
       const PERICIAS = {
         "Rastrear": {}
@@ -474,7 +485,7 @@
       const CLASSES = {
         "Guerreiro": {
           "Grupo": "Homem de Armas",
-          "Habilidades Exigidas": { "Força": 9 },
+          "Habilidades Exigidas": { "Força": 9, "Destreza": 0, "Constituição": 0, "Inteligência": 0, "Sabedoria": 0, "Carisma": 0 },
           "Pré-Requisitos": [ "Força" ],
           "Raças Permitidas": [ "Humano", "Anão", "Elfo", "Gnomo", "Meio-Elfo", "Halfling" ],
           tendencias: TENDENCIAS,
@@ -489,7 +500,7 @@
         },
         "Paladino": {
           "Grupo": "Homem de Armas",
-          "Habilidades Exigidas": { "Força": 12, "Constituição": 9, "Sabedoria": 13, "Carisma": 17 },
+          "Habilidades Exigidas": { "Força": 12, "Destreza": 0, "Constituição": 9, "Inteligência": 0, "Sabedoria": 13, "Carisma": 17 },
           "Pré-Requisitos": [ "Força", "Carisma" ],
           "Raças Permitidas": [ "Humano" ],
           tendencias: [ "Justo (bom e leal)" ],
@@ -521,7 +532,7 @@
         },
         "Ranger": {
           "Grupo": "Homem de Armas",
-          "Habilidades Exigidas": { "Força": 13, "Destreza": 13, "Constituição": 14, "Sabedoria": 14 },
+          "Habilidades Exigidas": { "Força": 13, "Destreza": 13, "Constituição": 14, "Inteligência": 0, "Sabedoria": 14, "Carisma": 0 },
           "Pré-Requisitos": [ "Força", "Destreza", "Sabedoria" ],
           "Raças Permitidas": [ "Humano", "Elfo", "Meio-Elfo" ],
           tendencias: [
@@ -554,7 +565,7 @@
         },
         "Mago": {
           "Grupo": "Arcano",
-          "Habilidades Exigidas": { "Inteligência": 9 },
+          "Habilidades Exigidas": { "Força": 0, "Destreza": 0, "Constituição": 0, "Inteligência": 9, "Sabedoria": 0, "Carisma": 0 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Elfo", "Meio-Elfo" ],
           tendencias: TENDENCIAS,
@@ -572,7 +583,7 @@
         },
         "Abjurante": {
           "Grupo": "Arcano",
-          "Habilidades Exigidas": { "Inteligência": 9, "Sabedoria": 15 },
+          "Habilidades Exigidas": { "Força": 0, "Destreza": 0, "Constituição": 0, "Inteligência": 9, "Sabedoria": 15, "Carisma": 0 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano" ],
           tendencias: TENDENCIAS,
@@ -596,7 +607,7 @@
         },
         "Conjurador": {
           "Grupo": "Arcano",
-          "Habilidades Exigidas": { "Constituição": 15, "Inteligência": 9 },
+          "Habilidades Exigidas": { "Força": 0, "Destreza": 0, "Constituição": 15, "Inteligência": 9, "Sabedoria": 0, "Carisma": 0 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Meio-Elfo" ],
           tendencias: TENDENCIAS,
@@ -620,7 +631,7 @@
         },
         "Adivinho": {
           "Grupo": "Arcano",
-          "Habilidades Exigidas": { "Inteligência": 9, "Sabedoria": 16 },
+          "Habilidades Exigidas": { "Força": 0, "Destreza": 0, "Constituição": 0, "Inteligência": 9, "Sabedoria": 16, "Carisma": 0 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Elfo", "Meio-Elfo" ],
           tendencias: TENDENCIAS,
@@ -644,7 +655,7 @@
         },
         "Feiticeiro": {
           "Grupo": "Arcano",
-          "Habilidades Exigidas": { "Inteligência": 9, "Carisma": 16 },
+          "Habilidades Exigidas": { "Força": 0, "Destreza": 0, "Constituição": 0, "Inteligência": 9, "Sabedoria": 0, "Carisma": 16 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Elfo", "Meio-Elfo" ],
           tendencias: TENDENCIAS,
@@ -668,7 +679,7 @@
         },
         "Ilusionista": {
           "Grupo": "Arcano",
-          "Habilidades Exigidas": { "Destreza": 16, "Inteligência": 9 },
+          "Habilidades Exigidas": { "Força": 0, "Destreza": 16, "Constituição": 0, "Inteligência": 9, "Sabedoria": 0, "Carisma": 0 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Gnomo" ],
           tendencias: TENDENCIAS,
@@ -692,7 +703,7 @@
         },
         "Invocador": {
           "Grupo": "Arcano",
-          "Habilidades Exigidas": { "Constituição": 16, "Inteligência": 9 },
+          "Habilidades Exigidas": { "Força": 0, "Destreza": 0, "Constituição": 16, "Inteligência": 9, "Sabedoria": 0, "Carisma": 0 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano" ],
           tendencias: TENDENCIAS,
@@ -716,7 +727,7 @@
         },
         "Necromante": {
           "Grupo": "Arcano",
-          "Habilidades Exigidas": { "Inteligência": 9, "Sabedoria": 16 },
+          "Habilidades Exigidas": { "Força": 0, "Destreza": 0, "Constituição": 0, "Inteligência": 9, "Sabedoria": 16, "Carisma": 0 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano" ],
           tendencias: TENDENCIAS,
@@ -740,7 +751,7 @@
         },
         "Transmutador": {
           "Grupo": "Arcano",
-          "Habilidades Exigidas": { "Destreza": 15, "Inteligência": 9 },
+          "Habilidades Exigidas": { "Força": 0, "Destreza": 15, "Constituição": 0, "Inteligência": 9, "Sabedoria": 0, "Carisma": 0 },
           "Pré-Requisitos": [ "Inteligência" ],
           "Raças Permitidas": [ "Humano", "Meio-Elfo" ],
           tendencias: TENDENCIAS,
@@ -764,7 +775,7 @@
         },
         "Clérigo": {
           "Grupo": "Sacerdote",
-          "Habilidades Exigidas": { "Sabedoria": 9 },
+          "Habilidades Exigidas": { "Força": 0, "Destreza": 0, "Constituição": 0, "Inteligência": 0, "Sabedoria": 9, "Carisma": 0 },
           "Pré-Requisitos": [ "Sabedoria" ],
           "Raças Permitidas": [ "Humano", "Anão", "Elfo", "Gnomo", "Meio-Elfo", "Halfling" ],
           tendencias: TENDENCIAS,
@@ -788,7 +799,7 @@
         },
         "Druida": {
           "Grupo": "Sacerdote",
-          "Habilidades Exigidas": { "Sabedoria": 12, "Carisma": 15 },
+          "Habilidades Exigidas": { "Força": 0, "Destreza": 0, "Constituição": 0, "Inteligência": 0, "Sabedoria": 12, "Carisma": 15 },
           "Pré-Requisitos": [ "Sabedoria", "Carisma" ],
           "Raças Permitidas": [ "Humano", "Meio-Elfo" ],
           tendencias: ["Neutro"],
@@ -833,7 +844,7 @@
         },
         "Ladrão": {
           "Grupo": "Ladino",
-          "Habilidades Exigidas": { "Destreza": 9 },
+          "Habilidades Exigidas": { "Força": 0, "Destreza": 9, "Constituição": 0, "Inteligência": 0, "Sabedoria": 0, "Carisma": 0 },
           "Pré-Requisitos": [ "Destreza" ],
           "Raças Permitidas": [ "Humano", "Anão", "Elfo", "Gnomo", "Meio-Elfo", "Halfling" ],
           tendencias: [
@@ -889,7 +900,7 @@
         },
         "Bardo": {
           "Grupo": "Ladino",
-          "Habilidades Exigidas": { "Destreza": 12, "Inteligência": 13, "Carisma": 15 },
+          "Habilidades Exigidas": { "Força": 0, "Destreza": 12, "Constituição": 0, "Inteligência": 13, "Sabedoria": 0, "Carisma": 15 },
           "Pré-Requisitos": [ "Destreza", "Carisma" ],
           "Raças Permitidas": [ "Humano", "Meio-Elfo" ],
           tendencias: [
@@ -2469,6 +2480,78 @@
         }
       }
 
+      function obter_dados_json_personagem(forca, destreza, constituicao, inteligencia, sabedoria, carisma) {
+        return {
+          "Raça": '',
+          "Classe": '',
+          "Tendência": '',
+          "Dados Básicos": {
+            "Pontos de Vida": 0,
+            "Gênero": '',
+            "Idade": 0,
+            "Altura": 0,
+            "Peso": 0
+          },
+          "Habilidades": {
+            "Força": {
+              "Valor da Habilidade": forca,
+              "Chance de Acertar": 0,
+              "Ajuste de Dano": 0,
+              "Carga Permitida": 0,
+              "Sustentação": 0,
+              "Abrir Portas": 0,
+              "Barras/Portais": "0%"
+            },
+            "Destreza": {
+              "Valor da Habilidade": destreza,
+              "Ajuste de Reação": 0,
+              "Ataque à Distância": 0,
+              "Ajuste Defensivo": 0
+            },
+            "Constituição": {
+              "Valor da Habilidade": constituicao,
+              "Ajuste dos Pontos de Vida": 0,
+              "Colapso": "0%",
+              "Chance de Ressurreição": "0%",
+              "Resistência contra Veneno": 0,
+              "Regeneração": "Não há"
+            },
+            "Inteligência": {
+              "Valor da Habilidade": inteligencia,
+              "Número de Línguas": 0,
+              "Círculo de Magia": "Nenhum",
+              "Chance de Aprender Magia": "Nenhuma",
+              "Número Máx Magias/Círculo": "Nenhuma",
+              "Imunidade a Magias": "Nenhuma"
+            },
+            "Sabedoria": {
+              "Valor da Habilidade": sabedoria,
+              "Ajuste de Defesa Contra Magia": 0,
+              "Magias Extras": "Nenhuma",
+              "Chance da Magia Falhar": "0%",
+              "Imunidade à Magia": []
+            },
+            "Carisma": {
+              "Valor da Habilidade": carisma,
+              "Nº Máximo de aliados": 0,
+              "Fator de Lealdade": 0,
+              "Ajuste de reação": 0
+            },
+          },
+          "Idiomas": [],
+          "Pontos de Perícia": {
+            "Perícias Armas Inicial": 0,
+            "Perícias Armas Nº Níveis": 0,
+            "Perícias Armas Penalidades": 0,
+            "Perícias Comuns Inicial": 0,
+            "Perícias Comuns Nº Níveis": 0
+          },
+          "Perícias": {},
+          "Especialização": [],
+          "Detalhes": []
+        };
+      }
+
       function sortear_atributos(callback) {
         rolar3d6(forca => {
           rolar3d6(destreza => {
@@ -2476,75 +2559,32 @@
               rolar3d6(inteligencia => {
                 rolar3d6(sabedoria => {
                   rolar3d6(carisma => {
-                    callback({
-                      "Raça": '',
-                      "Classe": '',
-                      "Tendência": '',
-                      "Dados Básicos": {
-                        "Pontos de Vida": 0,
-                        "Gênero": '',
-                        "Idade": 0,
-                        "Altura": 0,
-                        "Peso": 0
-                      },
-                      "Habilidades": {
-                        "Força": {
-                          "Valor da Habilidade": forca,
-                          "Chance de Acertar": 0,
-                          "Ajuste de Dano": 0,
-                          "Carga Permitida": 0,
-                          "Sustentação": 0,
-                          "Abrir Portas": 0,
-                          "Barras/Portais": "0%"
-                        },
-                        "Destreza": {
-                          "Valor da Habilidade": destreza,
-                          "Ajuste de Reação": 0,
-                          "Ataque à Distância": 0,
-                          "Ajuste Defensivo": 0
-                        },
-                        "Constituição": {
-                          "Valor da Habilidade": constituicao,
-                          "Ajuste dos Pontos de Vida": 0,
-                          "Colapso": "0%",
-                          "Chance de Ressurreição": "0%",
-                          "Resistência contra Veneno": 0,
-                          "Regeneração": "Não há"
-                        },
-                        "Inteligência": {
-                          "Valor da Habilidade": inteligencia,
-                          "Número de Línguas": 0,
-                          "Círculo de Magia": "Nenhum",
-                          "Chance de Aprender Magia": "Nenhuma",
-                          "Número Máx Magias/Círculo": "Nenhuma",
-                          "Imunidade a Magias": "Nenhuma"
-                        },
-                        "Sabedoria": {
-                          "Valor da Habilidade": sabedoria,
-                          "Ajuste de Defesa Contra Magia": 0,
-                          "Magias Extras": "Nenhuma",
-                          "Chance da Magia Falhar": "0%",
-                          "Imunidade à Magia": []
-                        },
-                        "Carisma": {
-                          "Valor da Habilidade": carisma,
-                          "Nº Máximo de aliados": 0,
-                          "Fator de Lealdade": 0,
-                          "Ajuste de reação": 0
-                        },
-                      },
-                      "Idiomas": [],
-                      "Pontos de Perícia": {
-                        "Perícias Armas Inicial": 0,
-                        "Perícias Armas Nº Níveis": 0,
-                        "Perícias Armas Penalidades": 0,
-                        "Perícias Comuns Inicial": 0,
-                        "Perícias Comuns Nº Níveis": 0
-                      },
-                      "Perícias": {},
-                      "Especialização": [],
-                      "Detalhes": []
-                    });
+
+                    habilidades_sorteadas = {
+                      "Força": forca,
+                      "Destreza": destreza,
+                      "Constituição": constituicao,
+                      "Inteligência": inteligencia,
+                      "Sabedoria": sabedoria,
+                      "Carisma": carisma
+                    };
+
+                    if (forcar_classe != 'Todas') {
+                      let classe_ajustada = ajustar_nome_classe_variavel(forcar_classe);
+                      let keys_habilidades = Object.keys(CLASSES[classe_ajustada]["Habilidades Exigidas"]);
+                      keys_habilidades.forEach((habilidade, index_habilidade) => {
+
+                        if (CLASSES[classe_ajustada]["Habilidades Exigidas"][habilidade] > habilidades_sorteadas[habilidade]) {
+                          habilidades_sorteadas[habilidade] = CLASSES[classe_ajustada]["Habilidades Exigidas"][habilidade];
+                        }
+
+                        if (index_habilidade == (keys_habilidades.length - 1)) {
+                          callback(obter_dados_json_personagem(habilidades_sorteadas["Força"], habilidades_sorteadas["Destreza"], habilidades_sorteadas["Constituição"], habilidades_sorteadas["Inteligência"], habilidades_sorteadas["Sabedoria"], habilidades_sorteadas["Carisma"]));
+                        }
+                      });
+                    } else {
+                      callback(obter_dados_json_personagem(habilidades_sorteadas["Força"], habilidades_sorteadas["Destreza"], habilidades_sorteadas["Constituição"], habilidades_sorteadas["Inteligência"], habilidades_sorteadas["Sabedoria"], habilidades_sorteadas["Carisma"]));
+                    }
                   });
                 });
               });
@@ -2597,8 +2637,18 @@
 
       function sortear_raca(personagem, callback) {
         validar_habilidades(personagem, racas => {
-          let index = Math.floor(Math.random() * racas.length);
-          let raca = racas[index];
+
+          let raca = '';
+
+          if (forcar_classe == 'Todas') {
+            let index = Math.floor(Math.random() * racas.length);
+            raca = racas[index];
+          } else {
+            let classe_ajustada = ajustar_nome_classe_variavel(forcar_classe);
+            let index = Math.floor(Math.random() * CLASSES[classe_ajustada]["Raças Permitidas"].length);
+            raca = CLASSES[classe_ajustada]["Raças Permitidas"][index];
+          }
+
           personagem["Raça"] = raca;
 
           if (raca == "Elfo") {
@@ -2696,92 +2746,102 @@
               let classes_fortes = ["Paladino", "Ranger", "Abjurante", "Conjurador", "Adivinho", "Feiticeiro", "Ilusionista", "Invocador", "Necromante", "Transmutador", "Druida", "Bardo"];
               let classes_selecionadas = [];
               classes_fortes.forEach((classe_forte, index_classes_fortes) => {
+
+                /*
                 classes_permitidas.forEach((classe_permitida, index_classe_permitida) => {
                   if (classe_permitida == classe_forte) {
                     classes_selecionadas.push(classe_permitida);
                   }
                 });
+                */
+
+                for (let index_classe_permitida = 0; index_classe_permitida < classes_permitidas.length; index_classe_permitida++) {
+                  if (classes_permitidas[index_classe_permitida] == classe_forte) {
+                    classes_selecionadas.push(classes_permitidas[index_classe_permitida]);
+                  }
+                }
 
                 if (index_classes_fortes == (classes_fortes.length - 1)) {
 
-                  if (classes_selecionadas.length > 0) {
+                  let classe_final = '';
 
+                  if (forcar_classe != "Todas") {
+                    classe_final = forcar_classe;
+                  } else if (classes_selecionadas.length > 0) {
                     let index = Math.floor(Math.random() * classes_selecionadas.length);
-                    personagem["Classe"] = classes_selecionadas[index];
-
+                    classe_final = classes_selecionadas[index];
                   } else {
-
                     let index = Math.floor(Math.random() * classes_permitidas.length);
-                    let classe_final = classes_permitidas[index];
-
-                    if (classe_final == "Ranger") {
-                      personagem["Perícias"]["Rastrear"] = PERICIAS["Rastrear"];
-                    }
-
-                    if (classe_final == "Clérigo") {
-                      let lista_clerigos = [
-                        "Clérigo", "Clérigo", "Clérigo", "Clérigo",
-                        "Clérigo", "Clérigo", "Clérigo", "Clérigo",
-                        "Clérigo", "Clérigo", "Clérigo", "Clérigo",
-                        "Clérigo", "Clérigo", "Clérigo", "Clérigo",
-                        "Clérigo", "Clérigo", "Clérigo", "Clérigo",
-                        "Clérigo da Agricultura",
-                        "Clérigo dos Ferreiros",
-                        "Clérigo da Morte",
-                        "Clérigo da Doença",
-                        "Clérigo da Terra",
-                        "Clérigo da Cura",
-                        "Clérigo da Caça",
-                        "Clérigo do Relâmpago",
-                        "Clérigo do Amor",
-                        "Clérigo da Natureza",
-                        "Clérigo dos Oceanos",
-                        "Clérigo da Paz",
-                        "Clérigo da Força",
-                        "Clérigo do Trovão",
-                        "Clérigo da Guerra",
-                        "Clérigo dos Ventos"
-                      ];
-                      let index_clerigo = Math.floor(Math.random() * lista_clerigos.length);
-                      classe_final = lista_clerigos[index_clerigo];
-
-                      if (classe_final == "Clérigo da Agricultura") {
-                        CLASSES['Clérigo'].armas_divindade = ["Podão", "Foice", "Mangual"];
-                      } else if (classe_final == "Clérigo dos Ferreiros") {
-                        CLASSES['Clérigo'].armas_divindade = ["Martelo de Batalha"];
-                      } else if (classe_final == "Clérigo da Morte") {
-                        CLASSES['Clérigo'].armas_divindade = ["Foice"];
-                      } else if (classe_final == "Clérigo da Doença") {
-                        CLASSES['Clérigo'].armas_divindade = ["Açoite", "Chicote"];
-                      } else if (classe_final == "Clérigo da Terra") {
-                        CLASSES['Clérigo'].armas_divindade = ["Alvião"];
-                      } else if (classe_final == "Clérigo da Cura") {
-                        CLASSES['Clérigo'].armas_divindade = ["Aprisionador", "Bordão"];
-                      } else if (classe_final == "Clérigo da Caça") {
-                        CLASSES['Clérigo'].armas_divindade = ["Arco", "Azagaia", "Lança de Cavalaria", "Funda"];
-                      } else if (classe_final == "Clérigo do Relâmpago") {
-                        CLASSES['Clérigo'].armas_divindade = ["Dardo", "Lança", "Azagaia"];
-                      } else if (classe_final == "Clérigo do Amor") {
-                        CLASSES['Clérigo'].armas_divindade = ["Arco", "Aprisionador"];
-                      } else if (classe_final == "Clérigo da Natureza") {
-                        CLASSES['Clérigo'].armas_divindade = ["Clava", "Cimitara", "Foice"];
-                      } else if (classe_final == "Clérigo dos Oceanos") {
-                        CLASSES['Clérigo'].armas_divindade = ["Arpão", "Lança", "Tridente"];
-                      } else if (classe_final == "Clérigo da Paz") {
-                        CLASSES['Clérigo'].armas_divindade = ["Bordão"];
-                      } else if (classe_final == "Clérigo da Força") {
-                        CLASSES['Clérigo'].armas_divindade = ["Martelo"];
-                      } else if (classe_final == "Clérigo do Trovão") {
-                        CLASSES['Clérigo'].armas_divindade = ["Clava", "Maça", "Martelo de Batalha"];
-                      } else if (classe_final == "Clérigo da Guerra") {
-                        CLASSES['Clérigo'].armas_divindade = ["Machado de Batalha", "Maça", "Maça-Estrela", "Montante", "Espada"];
-                      } else if (classe_final == "Clérigo dos Ventos") {
-                        CLASSES['Clérigo'].armas_divindade = ["Zarabatana", "Dardo"];
-                      }
-                    }
-
-                    personagem["Classe"] = classe_final;
+                    classe_final = classes_permitidas[index];
                   }
+
+                  if (classe_final == "Ranger") {
+                    personagem["Perícias"]["Rastrear"] = PERICIAS["Rastrear"];
+                  }
+
+                  if ( (classe_final == "Clérigo") && (forcar_classe == "Todas") ) {
+                    let lista_clerigos = [
+                      "Clérigo", "Clérigo", "Clérigo", "Clérigo",
+                      "Clérigo", "Clérigo", "Clérigo", "Clérigo",
+                      "Clérigo", "Clérigo", "Clérigo", "Clérigo",
+                      "Clérigo", "Clérigo", "Clérigo", "Clérigo",
+                      "Clérigo", "Clérigo", "Clérigo", "Clérigo",
+                      "Clérigo da Agricultura",
+                      "Clérigo dos Ferreiros",
+                      "Clérigo da Morte",
+                      "Clérigo da Doença",
+                      "Clérigo da Terra",
+                      "Clérigo da Cura",
+                      "Clérigo da Caça",
+                      "Clérigo do Relâmpago",
+                      "Clérigo do Amor",
+                      "Clérigo da Natureza",
+                      "Clérigo dos Oceanos",
+                      "Clérigo da Paz",
+                      "Clérigo da Força",
+                      "Clérigo do Trovão",
+                      "Clérigo da Guerra",
+                      "Clérigo dos Ventos"
+                    ];
+                    let index_clerigo = Math.floor(Math.random() * lista_clerigos.length);
+                    classe_final = lista_clerigos[index_clerigo];
+                  }
+
+                  if (classe_final == "Clérigo da Agricultura") {
+                    CLASSES['Clérigo'].armas_divindade = ["Podão", "Foice", "Mangual"];
+                  } else if (classe_final == "Clérigo dos Ferreiros") {
+                    CLASSES['Clérigo'].armas_divindade = ["Martelo de Batalha"];
+                  } else if (classe_final == "Clérigo da Morte") {
+                    CLASSES['Clérigo'].armas_divindade = ["Foice"];
+                  } else if (classe_final == "Clérigo da Doença") {
+                    CLASSES['Clérigo'].armas_divindade = ["Açoite", "Chicote"];
+                  } else if (classe_final == "Clérigo da Terra") {
+                    CLASSES['Clérigo'].armas_divindade = ["Alvião"];
+                  } else if (classe_final == "Clérigo da Cura") {
+                    CLASSES['Clérigo'].armas_divindade = ["Aprisionador", "Bordão"];
+                  } else if (classe_final == "Clérigo da Caça") {
+                    CLASSES['Clérigo'].armas_divindade = ["Arco", "Azagaia", "Lança de Cavalaria", "Funda"];
+                  } else if (classe_final == "Clérigo do Relâmpago") {
+                    CLASSES['Clérigo'].armas_divindade = ["Dardo", "Lança", "Azagaia"];
+                  } else if (classe_final == "Clérigo do Amor") {
+                    CLASSES['Clérigo'].armas_divindade = ["Arco", "Aprisionador"];
+                  } else if (classe_final == "Clérigo da Natureza") {
+                    CLASSES['Clérigo'].armas_divindade = ["Clava", "Cimitara", "Foice"];
+                  } else if (classe_final == "Clérigo dos Oceanos") {
+                    CLASSES['Clérigo'].armas_divindade = ["Arpão", "Lança", "Tridente"];
+                  } else if (classe_final == "Clérigo da Paz") {
+                    CLASSES['Clérigo'].armas_divindade = ["Bordão"];
+                  } else if (classe_final == "Clérigo da Força") {
+                    CLASSES['Clérigo'].armas_divindade = ["Martelo"];
+                  } else if (classe_final == "Clérigo do Trovão") {
+                    CLASSES['Clérigo'].armas_divindade = ["Clava", "Maça", "Martelo de Batalha"];
+                  } else if (classe_final == "Clérigo da Guerra") {
+                    CLASSES['Clérigo'].armas_divindade = ["Machado de Batalha", "Maça", "Maça-Estrela", "Montante", "Espada"];
+                  } else if (classe_final == "Clérigo dos Ventos") {
+                    CLASSES['Clérigo'].armas_divindade = ["Zarabatana", "Dardo"];
+                  }
+
+                  personagem["Classe"] = classe_final;
 
                   callback({ valores_invalidos: false });
                 }
@@ -2824,12 +2884,16 @@
         });
       }
 
-      function ajustar_nome_classe(personagem) {
-        let classe = personagem["Classe"];
+      function ajustar_nome_classe_variavel(classe) {
         if (classe.indexOf('Clérigo') > -1) {
           classe = 'Clérigo';
         }
         return classe;
+      }
+
+      function ajustar_nome_classe(personagem) {
+        let classe = personagem["Classe"];
+        return ajustar_nome_classe_variavel(classe);
       }
 
       function sortear_tendencia(personagem, callback) {
@@ -2885,6 +2949,50 @@
         }
       }
 
+      function sortear_pontos_talentos(classe, personagem, callback) {
+        let pontos_extras = 60;
+        let limites = {
+          'Furtar Bolsos': 30,
+          'Abrir Fechaduras': 30,
+          'Achar/Desarmar Armadilhas': 30,
+          'Mover-se em Silêncio': 30,
+          'Esconder-se nas Sombras': 30,
+          'Ouvir Ruídos': 30,
+          'Escalar Muros': 30,
+          'Decifrar Linguagens': 30,
+          'Ataque pelas Costas': 0,
+          'Gíria dos ladrões': 0,
+          'Usar Pergaminhos': 30,
+          'Identificar Item Mágico': 30
+        };
+
+        if (personagem['Classe'] == "Bardo") {
+          pontos_extras = 20;
+        }
+
+        let keys_talentos = Object.keys(CLASSES[classe].talentos);
+        while (pontos_extras > 0) {
+          let index = Math.floor(Math.random() * keys_talentos.length);
+          let talento = keys_talentos[index];
+          if (limites[talento] > 0) {
+
+              let extra = 1000;
+              while (extra > pontos_extras) {
+                extra = Math.floor(Math.random() * limites[talento]) + 1;
+              }
+
+              console.log(talento + ": " + personagem["Talentos"][talento] + " + " + extra);
+              limites[talento] = limites[talento] - extra;
+              pontos_extras = pontos_extras - extra;
+              personagem["Talentos"][talento] = personagem["Talentos"][talento] + extra;
+
+          }
+          if (pontos_extras == 0) {
+            callback();
+          }
+        }
+      }
+
       function definir_talentos(classe, personagem, callback) {
         if (CLASSES[classe]["Grupo"] == "Ladino") {
           personagem["Talentos"] = {};
@@ -2898,7 +3006,9 @@
               RACAS[raca].talentos[talento];
 
             if (index_talento == (keys_talentos.length - 1)) {
-              callback();
+              sortear_pontos_talentos(classe, personagem, () => {
+                callback();
+              });
             }
           });
         } else {
