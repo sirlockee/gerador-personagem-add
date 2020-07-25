@@ -98,11 +98,29 @@
         background-color: #eee;
         width: 100% !important;
       }
+      #botao::after {
+        content: '';
+        display: block;
+        height: 0;
+        clear: both;
+      }
       #ficha {
         margin-bottom: 30px;
       }
       button {
         background-color: #ddd;
+      }
+      label {
+        display: block;
+        float: left;
+        margin-top: 1px;
+        margin-right: 5px;
+      }
+      input[type=radio] {
+        margin-top: 1px;
+        margin-bottom: 5px;
+        display: block;
+        float: left;
       }
     </style>
   </head>
@@ -113,9 +131,44 @@
     </header>
     <div id="botao">
       Force a rolagem para um tipo específico de classe:
-      <br /><br />
-      <button type="button">Rolar</button>
-      <span></span>
+      <br style="clear: both" />
+      <form>
+        <label for="Todas"><input type="radio" id="Todas" name="forcar_classe" value="Todas" checked="checked">Todas</label>
+        <label for="Guerreiro"><input type="radio" id="Guerreiro" name="forcar_classe" value="Guerreiro">Guerreiro</label>
+        <label for="Paladino"><input type="radio" id="Paladino" name="forcar_classe" value="Paladino">Paladino</label>
+        <label for="Ranger"><input type="radio" id="Ranger" name="forcar_classe" value="Ranger">Ranger</label>
+        <label for="Mago"><input type="radio" id="Mago" name="forcar_classe" value="Mago">Mago</label>
+        <label for="Abjurante"><input type="radio" id="Abjurante" name="forcar_classe" value="Abjurante">Abjurante</label>
+        <label for="Conjurador"><input type="radio" id="Conjurador" name="forcar_classe" value="Conjurador">Conjurador</label>
+        <label for="Adivinho"><input type="radio" id="Adivinho" name="forcar_classe" value="Adivinho">Adivinho</label>
+        <label for="Feiticeiro"><input type="radio" id="Feiticeiro" name="forcar_classe" value="Feiticeiro">Feiticeiro</label>
+        <label for="Ilusionista"><input type="radio" id="Ilusionista" name="forcar_classe" value="Ilusionista">Ilusionista</label>
+        <label for="Invocador"><input type="radio" id="Invocador" name="forcar_classe" value="Invocador">Invocador</label>
+        <label for="Necromante"><input type="radio" id="Necromante" name="forcar_classe" value="Necromante">Necromante</label>
+        <label for="Transmutador"><input type="radio" id="Transmutador" name="forcar_classe" value="Transmutador">Transmutador</label>
+        <label for="Clérigo"><input type="radio" id="Clérigo" name="forcar_classe" value="Clérigo">Clérigo</label>
+        <label for="Clérigo da Agricultura"><input type="radio" id="Clérigo da Agricultura" name="forcar_classe" value="Clérigo da Agricultura">Clérigo da Agricultura</label>
+        <label for="Clérigo dos Ferreiros"><input type="radio" id="Clérigo dos Ferreiros" name="forcar_classe" value="Clérigo dos Ferreiros">Clérigo dos Ferreiros</label>
+        <label for="Clérigo da Morte"><input type="radio" id="Clérigo da Morte" name="forcar_classe" value="Clérigo da Morte">Clérigo da Morte</label>
+        <label for="Clérigo da Doença"><input type="radio" id="Clérigo da Doença" name="forcar_classe" value="Clérigo da Doença">Clérigo da Doença</label>
+        <label for="Clérigo da Terra"><input type="radio" id="Clérigo da Terra" name="forcar_classe" value="Clérigo da Terra">Clérigo da Terra</label>
+        <label for="Clérigo da Cura"><input type="radio" id="Clérigo da Cura" name="forcar_classe" value="Clérigo da Cura">Clérigo da Cura</label>
+        <label for="Clérigo da Caça"><input type="radio" id="Clérigo da Caça" name="forcar_classe" value="Clérigo da Caça">Clérigo da Caça</label>
+        <label for="Clérigo do Relâmpago"><input type="radio" id="Clérigo do Relâmpago" name="forcar_classe" value="Clérigo do Relâmpago">Clérigo do Relâmpago</label>
+        <label for="Clérigo do Amor"><input type="radio" id="Clérigo do Amor" name="forcar_classe" value="Clérigo do Amor">Clérigo do Amor</label>
+        <label for="Clérigo da Natureza"><input type="radio" id="Clérigo da Natureza" name="forcar_classe" value="Clérigo da Natureza">Clérigo da Natureza</label>
+        <label for="Clérigo dos Oceanos"><input type="radio" id="Clérigo dos Oceanos" name="forcar_classe" value="Clérigo dos Oceanos">Clérigo dos Oceanos</label>
+        <label for="Clérigo da Paz"><input type="radio" id="Clérigo da Paz" name="forcar_classe" value="Clérigo da Paz">Clérigo da Paz</label>
+        <label for="Clérigo da Força"><input type="radio" id="Clérigo da Força" name="forcar_classe" value="Clérigo da Força">Clérigo da Força</label>
+        <label for="Clérigo do Trovão"><input type="radio" id="Clérigo do Trovão" name="forcar_classe" value="Clérigo do Trovão">Clérigo do Trovão</label>
+        <label for="Clérigo da Guerra"><input type="radio" id="Clérigo da Guerra" name="forcar_classe" value="Clérigo da Guerra">Clérigo da Guerra</label>
+        <label for="Clérigo dos Ventos"><input type="radio" id="Clérigo dos Ventos" name="forcar_classe" value="Clérigo dos Ventos">Clérigo dos Ventos</label>
+        <label for="Druida"><input type="radio" id="Druida" name="forcar_classe" value="Druida">Druida</label>
+        <label for="Ladrão"><input type="radio" id="Ladrão" name="forcar_classe" value="Ladrão">Ladrão</label>
+        <label for="Bardo"><input type="radio" id="Bardo" name="forcar_classe" value="Bardo">Bardo</label>
+        <br style="clear: both" />
+        <button type="submit">Rolar</button>
+      </form>
     </div>
     <div id="ficha"></div>
 
@@ -124,7 +177,6 @@
 
       /* debug */
       let forcar_classe = 'Todas';
-      forcar_classe = 'Paladino';
 
       /*
       function fallbackCopyTextToClipboard(text) {
@@ -174,6 +226,18 @@
         });
       });
       */
+
+      document.querySelector("div#botao > form").addEventListener("submit", evento => {
+        evento.preventDefault();
+        var radios = document.getElementsByName('forcar_classe');
+        for (var i = 0, length = radios.length; i < length; i++) {
+          if (radios[i].checked) {
+            forcar_classe = radios[i].value;
+            render();
+            break;
+          }
+        }
+      });
 
       const PERICIAS = {
         "Rastrear": {}
@@ -2854,6 +2918,7 @@
       function render() {
         obter_dados_personagem(personagem => {
           let output = document.getElementById('ficha');
+          output.innerHTML = "";
           var node = prettyPrint(personagem);
           document.getElementById('ficha').appendChild(node);
         });
@@ -2981,7 +3046,6 @@
                 extra = Math.floor(Math.random() * limites[talento]) + 1;
               }
 
-              console.log(talento + ": " + personagem["Talentos"][talento] + " + " + extra);
               limites[talento] = limites[talento] - extra;
               pontos_extras = pontos_extras - extra;
               personagem["Talentos"][talento] = personagem["Talentos"][talento] + extra;
@@ -3237,7 +3301,10 @@
           /* Ajustar talentos dos ladinos */
           definir_talentos(classe, personagem, () => {
 
-            // 60 pontos talentos ladrão, sendo no maximo 30 por item
+            /* Detalhes */
+            personagem["Detalhes"].push.apply(personagem["Detalhes"], CLASSES[classe].detalhes);
+
+
             // movimentação
             // calcular CA
             // instrumento musical do bardo, já com a perícia
