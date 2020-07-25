@@ -482,10 +482,10 @@
       ];
 
       const ESCUDOS = [
-        { nome: 'Escudo de Corpo', ca_melee: 1, ca_distancia: 2, preco: { quantidade: 10, moeda: 'po' }, peso: 7.5, ataques_por_rodada: 0 },
-        { nome: 'Broquei (escudo)', ca_melee: 1, ca_distancia: 1, preco: { quantidade: 1, moeda: 'po' }, peso: 1.5, ataques_por_rodada: 1 },
-        { nome: 'Escudo Médio', ca_melee: 1, ca_distancia: 1, preco: { quantidade: 7, moeda: 'po' }, peso: 5, ataques_por_rodada: 0 },
-        { nome: 'Escudo Pequeno', ca_melee: 1, ca_distancia: 1, preco: { quantidade: 3, moeda: 'po' }, peso: 2.5, ataques_por_rodada: 2 }
+        { nome: 'Escudo de Corpo', ca: 1, preco: { quantidade: 10, moeda: 'po' }, peso: 7.5, ataques_por_rodada: 0, detalhes: [ "O Escudo de Corpo fornece +1 de Categoria de Armadura para ataques à distância." ] },
+        { nome: 'Broquei (escudo)', ca: 1, preco: { quantidade: 1, moeda: 'po' }, peso: 1.5, ataques_por_rodada: 1 },
+        { nome: 'Escudo Médio', ca: 1, preco: { quantidade: 7, moeda: 'po' }, peso: 5, ataques_por_rodada: 0 },
+        { nome: 'Escudo Pequeno', ca: 1, preco: { quantidade: 3, moeda: 'po' }, peso: 2.5, ataques_por_rodada: 2 }
       ];
 
       const ARMADURAS = [
@@ -2554,7 +2554,8 @@
             "Gênero": '',
             "Idade": 0,
             "Altura": 0,
-            "Peso": 0
+            "Peso": 0,
+            "Moedas": 0
           },
           "Habilidades": {
             "Força": {
@@ -3149,6 +3150,34 @@
         } else { return 0; }
       }
 
+      function sortear_itens(classe, personagem, callback) {
+
+        if (CLASSES[classe]["Grupo"] == "Homem de Armas") {
+          personagem["Dados Básicos"]["Moedas"] = (
+            (Math.floor(Math.random() * 4) + 1) +
+            (Math.floor(Math.random() * 4) + 1) +
+            (Math.floor(Math.random() * 4) + 1) +
+            (Math.floor(Math.random() * 4) + 1) +
+            (Math.floor(Math.random() * 4) + 1)
+          ) * 10;
+        } else if (CLASSES[classe]["Grupo"] == "Arcano") {
+          personagem["Dados Básicos"]["Moedas"] = ((Math.floor(Math.random() * 4) + 1) + 1) * 10;
+        } else if (CLASSES[classe]["Grupo"] == "Sacerdote") {
+          personagem["Dados Básicos"]["Moedas"] = (
+            (Math.floor(Math.random() * 6) + 1) +
+            (Math.floor(Math.random() * 6) + 1) +
+            (Math.floor(Math.random() * 6) + 1)
+          ) * 10;
+        } else if (CLASSES[classe]["Grupo"] == "Ladino") {
+          personagem["Dados Básicos"]["Moedas"] = (
+            (Math.floor(Math.random() * 6) + 1) +
+            (Math.floor(Math.random() * 6) + 1)
+          ) * 10;
+        }
+
+        callback();
+      }
+
       function sortear_dados_basicos(personagem, callback) {
         let classe = ajustar_nome_classe(personagem);
         let raca = ajustar_nome_raca(personagem);
@@ -3304,13 +3333,16 @@
             /* Detalhes */
             personagem["Detalhes"].push.apply(personagem["Detalhes"], CLASSES[classe].detalhes);
 
+            sortear_itens(classe, personagem, () => {
 
-            // movimentação
-            // calcular CA
-            // instrumento musical do bardo, já com a perícia
-            // perícia História Local para o bardo
+              // movimentação
+              // calcular CA
+              // instrumento musical do bardo, já com a perícia
+              // perícia História Local para o bardo
 
-            callback();
+              callback();
+
+            });
 
           });
 
