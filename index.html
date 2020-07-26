@@ -2555,6 +2555,7 @@
             "Idade": 0,
             "Altura": 0,
             "Peso": 0,
+            "Peso dos Equipamentos": 0,
             "Moedas": 0
           },
           "Habilidades": {
@@ -2613,6 +2614,7 @@
           },
           "Perícias": {},
           "Especialização": [],
+          "Itens": [],
           "Detalhes": []
         };
       }
@@ -3150,6 +3152,30 @@
         } else { return 0; }
       }
 
+      function reduzir_moedas(moedas, preco) {
+        // preco: { quantidade: 10, moeda: 'po' }
+        if (preco.moeda == "pc") {
+          let multiplicador = 100;
+          let final = ( ((moedas * multiplicador) - preco.quantidade) / multiplicador );
+          return { moedas: final, valido: (final >= 0) };
+        } else if (preco.moeda == "pp") {
+          let multiplicador = 10;
+          let final = ( ((moedas * multiplicador) - preco.quantidade) / multiplicador );
+          return { moedas: final, valido: (final >= 0) };
+        } else if (preco.moeda == "pe") {
+          let multiplicador = 2;
+          let final = ( ((moedas * multiplicador) - preco.quantidade) / multiplicador );
+          return { moedas: final, valido: (final >= 0) };
+        } else if (preco.moeda == "po") {
+          let final = ( moedas - preco.quantidade );
+          return { moedas: final, valido: (final >= 0) };
+        } else if (preco.moeda == "pl") {
+          let divisor = 5;
+          let final = ( ((moedas / divisor) - preco.quantidade) * divisor );
+          return { moedas: final, valido: (final >= 0) };
+        }
+      }
+
       function sortear_itens(classe, personagem, callback) {
 
         if (CLASSES[classe]["Grupo"] == "Homem de Armas") {
@@ -3175,7 +3201,54 @@
           ) * 10;
         }
 
-        callback();
+        let moedas = (personagem["Dados Básicos"]["Moedas"] - 11);
+        let peso = (Math.floor(personagem["Dados Básicos"]["Peso"] / 2) - 10);
+        let peso_equipamentos = 0;
+
+        let index_itens = 0;
+
+        while ((peso_equipamentos <= peso) && (peso > 0)) {
+
+          /* Escudos */
+          if (index_itens == 0) {
+            let index_escudo = -1;
+            if (CLASSES[classe].escudos.length >= 0) {
+              index_escudo = Math.floor(Math.random() * CLASSES[classe].escudos.length);
+            }
+            if (index_escudo > 0) {
+              let escudo = CLASSES[classe].escudos[index_escudo];
+              let moedas_temp = reduzir_moedas(moedas, escudo.preco);
+              // { moedas: final, valido: (final >= 0) };
+              if (!moedas_temp.valido) {
+                callback(moedas,peso_equipamentos);
+              } else {
+                if ((escudo.peso + peso_equipamentos) > peso) {
+                  callback(moedas,peso_equipamentos);
+                } else {
+                  //{ nome: 'Escudo de Corpo', ca: 1, preco: { quantidade: 10, moeda: 'po' }, peso: 7.5, ataques_por_rodada: 0, detalhes: [ "O Escudo de Corpo fornece +1 de Categoria de Armadura para ataques à distância." ] },
+                  peso_equipamentos = peso_equipamentos + escudo.peso;
+                  moeda = moedas_temp.moedas;
+                  personagem["Itens"].push(escudo);
+                }
+              }
+            }
+
+            index_itens = index_itens + 1;
+          } else if (index_itens == 1) {
+            callback(moedas,peso);
+            peso = 0;
+            peso_equipamentos = peso + 1;
+          }
+
+          /*
+          let escudo_length = ESCUDOS.length;
+          let keys_talentos = Object.keys(CLASSES[classe].talentos);
+          personagem["Itens"]
+          armas_importantes
+          */
+
+        }
+
       }
 
       function sortear_dados_basicos(personagem, callback) {
@@ -3333,7 +3406,10 @@
             /* Detalhes */
             personagem["Detalhes"].push.apply(personagem["Detalhes"], CLASSES[classe].detalhes);
 
-            sortear_itens(classe, personagem, () => {
+            sortear_itens(classe, personagem, (moedas,peso) => {
+
+              personagem["Dados Básicos"]["Moedas"] = moedas;
+              personagem["Dados Básicos"]["Peso dos Equipamentos"] = peso;
 
               // movimentação
               // calcular CA
