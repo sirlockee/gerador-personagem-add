@@ -483,9 +483,9 @@
 
       const ESCUDOS = [
         { nome: 'Escudo de Corpo', ca: 1, preco: { quantidade: 10, moeda: 'po' }, peso: 7.5, ataques_por_rodada: 0, detalhes: [ "O Escudo de Corpo fornece +1 de Categoria de Armadura para ataques à distância." ] },
-        { nome: 'Broquei (escudo)', ca: 1, preco: { quantidade: 1, moeda: 'po' }, peso: 1.5, ataques_por_rodada: 1 },
-        { nome: 'Escudo Médio', ca: 1, preco: { quantidade: 7, moeda: 'po' }, peso: 5, ataques_por_rodada: 0 },
-        { nome: 'Escudo Pequeno', ca: 1, preco: { quantidade: 3, moeda: 'po' }, peso: 2.5, ataques_por_rodada: 2 }
+        { nome: 'Broquei (escudo)', ca: 1, preco: { quantidade: 1, moeda: 'po' }, peso: 1.5, ataques_por_rodada: 1, detalhes: [] },
+        { nome: 'Escudo Médio', ca: 1, preco: { quantidade: 7, moeda: 'po' }, peso: 5, ataques_por_rodada: 0, detalhes: [] },
+        { nome: 'Escudo Pequeno', ca: 1, preco: { quantidade: 3, moeda: 'po' }, peso: 2.5, ataques_por_rodada: 2, detalhes: [] }
       ];
 
       const ARMADURAS = [
@@ -3176,6 +3176,41 @@
         }
       }
 
+      function sortear_itens_escudos(moeda_limite, peso_limite, classe, personagem, callback) {
+        let ca_escudo = false;
+        if (CLASSES[classe].escudos.length > 0) {
+          let index_item = Math.floor(Math.random() * (CLASSES[classe].escudos.length + 1));
+          if (index_item == CLASSES[classe].escudos.length) {
+            callback(moeda_limite, peso_limite, ca_escudo);
+          } else {
+            let escudo = CLASSES[classe].escudos[index_item];
+            /*{
+                nome: 'Escudo de Corpo',
+                ca: 1,
+                preco: { quantidade: 10, moeda: 'po' },
+                peso: 7.5,
+                ataques_por_rodada: 0,
+                detalhes: [ "O Escudo de Corpo fornece +1 de Categoria de Armadura para ataques à distância." ]
+              },*/
+            let resultado_moedas = reduzir_moedas(moedas_atuais, escudo.preco);
+            let resultado_peso = peso_limite - escudo.peso;
+            if ( (resultado_moedas.valido) && (resultado_peso >= 0) ) {
+
+              ca_escudo = true;
+              personagem["Itens"].push(escudo.nome + ', Ataques por rodada: ' + escudo.ataques_por_rodada + ', ' + escudo.peso + ', ' + escudo.preco.quantidade + ' ' + escudo.preco.moeda);
+              if (escudo.detalhes.length > 0) {
+                personagem["Detalhes"].push.apply(personagem["Detalhes"], escudo.detalhes);
+              }
+              callback(resultado_moedas.moedas, resultado_peso, ca_escudo);
+            } else {
+              callback(moeda_limite, peso_limite, ca_escudo);
+            }
+          }
+        } else {
+          callback(moeda_limite, peso_limite, ca_escudo);
+        }
+      }
+
       function sortear_itens(classe, personagem, callback) {
 
         if (CLASSES[classe]["Grupo"] == "Homem de Armas") {
@@ -3201,53 +3236,10 @@
           ) * 10;
         }
 
-        let moedas = (personagem["Dados Básicos"]["Moedas"] - 11);
-        let peso = (Math.floor(personagem["Dados Básicos"]["Peso"] / 2) - 10);
-        let peso_equipamentos = 0;
-
-        let index_itens = 0;
-
-        while ((peso_equipamentos <= peso) && (peso > 0)) {
-
-          /* Escudos */
-          if (index_itens == 0) {
-            let index_escudo = -1;
-            if (CLASSES[classe].escudos.length >= 0) {
-              index_escudo = Math.floor(Math.random() * CLASSES[classe].escudos.length);
-            }
-            if (index_escudo > 0) {
-              let escudo = CLASSES[classe].escudos[index_escudo];
-              let moedas_temp = reduzir_moedas(moedas, escudo.preco);
-              // { moedas: final, valido: (final >= 0) };
-              if (!moedas_temp.valido) {
-                callback(moedas,peso_equipamentos);
-              } else {
-                if ((escudo.peso + peso_equipamentos) > peso) {
-                  callback(moedas,peso_equipamentos);
-                } else {
-                  //{ nome: 'Escudo de Corpo', ca: 1, preco: { quantidade: 10, moeda: 'po' }, peso: 7.5, ataques_por_rodada: 0, detalhes: [ "O Escudo de Corpo fornece +1 de Categoria de Armadura para ataques à distância." ] },
-                  peso_equipamentos = peso_equipamentos + escudo.peso;
-                  moeda = moedas_temp.moedas;
-                  personagem["Itens"].push(escudo);
-                }
-              }
-            }
-
-            index_itens = index_itens + 1;
-          } else if (index_itens == 1) {
-            callback(moedas,peso);
-            peso = 0;
-            peso_equipamentos = peso + 1;
-          }
-
-          /*
-          let escudo_length = ESCUDOS.length;
-          let keys_talentos = Object.keys(CLASSES[classe].talentos);
-          personagem["Itens"]
-          armas_importantes
-          */
-
-        }
+        let moedas_limite = (personagem["Dados Básicos"]["Moedas"] - 11);
+        let moedas_atuais = 0;
+        let peso_limite = (Math.floor(personagem["Dados Básicos"]["Peso"] / 2) - 10);
+        let peso_atual = 0;
 
       }
 
