@@ -451,7 +451,7 @@
           ajustes: { "Destreza": 1, "Força": -1 },
           detalhes: [
             'Halflings não jogam os dados para obter Força Extraordinária.',
-            'Halflings têm uma grande resistência à magia. Para cada 33½  pontos de Constituição, o personagem ganha um bônus de resistênaade + 1 contra varinhas de condão, baStões, cajados e magias.',
+            'Halflings têm uma grande resistência à magia. Para cada 33½  pontos de Constituição, o personagem ganha um bônus de resistência de +1 contra varinhas de condão, bastões, cajados e magias.',
             'Possuem resistência contra venenos. Seus testes de resistência contra veneno possuem bônus +1 para cada 3½ pontos de Constituição.',
             'Halflings ganham um bônus de +l em suas jogadas de ataque sempre que estiverem usando armas de arremesso e fundas.',
             'Um halfling pode obter bônus de Surpresa contra seus oponentes, mas somente se não estiver usando armadura de metal. Mesmo assim, o halfling precisa estar sozinho, ou num grupo formado só de elfos ou halflings (que também não podem usar armaduras de metal), ou, no mínimo, a 30 metros de seus companheiros para ganhar o bônus. Se o halfling cumprir essas condições, os oponentes sofrerão uma penalidade de -4 em testes de Surpresa. Se uma porta ou um obstáculo precisar ser transposto, a penalidade reduz-se para -2.',
@@ -519,97 +519,106 @@
       ];
 
       const MISSEIS = {
-        "Dardo Farpado": { quantidade: 1, preco: { quantidade: 1, moeda: 'pp' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 0, dano_p: '1d3', dano_mg: '1d3' },
-        "Dardo Agulha": { quantidade: 1, preco: { quantidade: 2, moeda: 'pc' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 0, dano_p: '1', dano_mg: '1' },
-        "Flecha de Caça": { quantidade: 12, preco: { quantidade: 3, moeda: 'pp' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 0, dano_p: '1d6', dano_mg: '1d6' },
-        "Flecha da Guerra": { quantidade: 6, preco: { quantidade: 3, moeda: 'pp' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 0, dano_p: '1d8', dano_mg: '1d8' },
-        "Quadrelo de Mão": { preco: { quantidade: 1, moeda: 'po' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 0, dano_p: '1d3', dano_mg: '1d2' },
-        "Quadrelo Grande": { preco: { quantidade: 2, moeda: 'pp' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 0, dano_p: '1d4+1', dano_mg: '1d6+1' },
-        "Quadrelo Pequeno": { preco: { quantidade: 1, moeda: 'pp' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 0, dano_p: '1d4', dano_mg: '1d4' },
-        "Chumbo de Funda": { preco: { quantidade: 1, moeda: 'pc' }, peso: 0.25, tamanho: 'Pequeno', tipo: 'Concussão', velocidade: 0, dano_p: '1d4+1', dano_mg: '1d6+1' }
-        "Pedra de Funda": { preco: { quantidade: 0, moeda: 'po' }, peso: 0.25, tamanho: 'Pequeno', tipo: 'Concussão', velocidade: 4, dano_p: '1d4', dano_mg: '1d4' }
+        "Dardo Farpado": { quantidade: 20, preco: { quantidade: 20, moeda: 'pp' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 0, dano_p: '1d3', dano_mg: '1d3', cadencia: '2/1' },
+        "Dardo Agulha": { quantidade: 20, preco: { quantidade: 40, moeda: 'pc' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 0, dano_p: '1', dano_mg: '1', cadencia: '2/1' },
+        "Flecha de Caça": { quantidade: 20, preco: { quantidade: 5, moeda: 'pp' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 0, dano_p: '1d6', dano_mg: '1d6', cadencia: '2/1' },
+        "Flecha da Guerra": { quantidade: 20, preco: { quantidade: 10, moeda: 'pp' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 0, dano_p: '1d8', dano_mg: '1d8', cadencia: '2/1' },
+        "Quadrelo de Mão": { quantidade: 20, preco: { quantidade: 20, moeda: 'po' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 0, dano_p: '1d3', dano_mg: '1d2', cadencia: '1/1' },
+        "Quadrelo Grande": { quantidade: 20, preco: { quantidade: 40, moeda: 'pp' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 0, dano_p: '1d4+1', dano_mg: '1d6+1', cadencia: '1/1' },
+        "Quadrelo Pequeno": { quantidade: 20, preco: { quantidade: 20, moeda: 'pp' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 0, dano_p: '1d4', dano_mg: '1d4', cadencia: '1/2' },
+        "Chumbo de Funda": { quantidade: 20, preco: { quantidade: 20, moeda: 'pc' }, peso: 0.25, tamanho: 'Pequeno', tipo: 'Concussão', velocidade: 0, dano_p: '1d4+1', dano_mg: '1d6+1', cadencia: '2/1' },
+        "Pedra de Funda": { quantidade: 20, preco: { quantidade: 0, moeda: 'po' }, peso: 0.25, tamanho: 'Pequeno', tipo: 'Concussão', velocidade: 4, dano_p: '1d4', dano_mg: '1d4', cadencia: '2/1' }
       };
 
       const ARMAS = {
-        "Arcabuz": { preco: { quantidade: 500, moeda: 'po' }, peso: 5, tamanho: 'Médio', tipo: 'Perfurante', velocidade: 15, dano_p: '1d10', dano_mg: '1d10', detalhes: [] },
-        "Machado de Guerra": { preco: { quantidade: 5, moeda: 'po' }, peso: 3.5, tamanho: 'Médio', tipo: 'Cortante', velocidade: 7, dano_p: '1d8', dano_mg: '1d8', detalhes: [] },
-        "Zarabatana": { preco: { quantidade: 5, moeda: 'po' }, peso: 1, tamanho: 'Grande', tipo: '', velocidade: 5, dano_p: '', dano_mg: '', detalhes: [] },
-        "Arco Longo Composto": { preco: { quantidade: 100, moeda: 'po' }, peso: 1.5, tamanho: 'Grande', tipo: '', velocidade: 7, dano_p: '', dano_mg: '', detalhes: [] },
-        "Arco Curto Composto": { preco: { quantidade: 75, moeda: 'po' }, peso: 1, tamanho: 'Médio', tipo: '', velocidade: 6, dano_p: '', dano_mg: '', detalhes: [] },
-        "Arco Longo": { preco: { quantidade: 75, moeda: 'po' }, peso: 1.5, tamanho: 'Grande', tipo: '', velocidade: 8, dano_p: '', dano_mg: '', detalhes: [] },
-        "Arco Curto": { preco: { quantidade: 30, moeda: 'po' }, peso: 1, tamanho: 'Médio', tipo: '', velocidade: 7, dano_p: '', dano_mg: '', detalhes: [] },
-        "Clava": { preco: { quantidade: 0, moeda: 'po' }, peso: 1.5, tamanho: 'Médio', tipo: 'Concussão', velocidade: 4, dano_p: '1d6', dano_mg: '1d3', detalhes: [] },
-        "Besta de Mão": { preco: { quantidade: 300, moeda: 'po' }, peso: 1.5, tamanho: 'Pequeno', tipo: '', velocidade: 5, dano_p: '', dano_mg: '', detalhes: [] },
-        "Besta Pesada": { preco: { quantidade: 50, moeda: 'po' }, peso: 7, tamanho: 'Médio', tipo: '', velocidade: 10, dano_p: '', dano_mg: '', detalhes: [] },
-        "Besta Leve": { preco: { quantidade: 35, moeda: 'po' }, peso: 3.5, tamanho: 'Médio', tipo: '', velocidade: 7, dano_p: '', dano_mg: '', detalhes: [] },
-        "Adaga": { preco: { quantidade: 2, moeda: 'po' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 2, dano_p: '1d4', dano_mg: '1d3', detalhes: [] },
-        "Punhal": { preco: { quantidade: 2, moeda: 'po' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 2, dano_p: '1d4', dano_mg: '1d3', detalhes: [] },
-        "Dardo": { preco: { quantidade: 5, moeda: 'pp' }, peso: 0.25, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 2, dano_p: '1d3', dano_mg: '1d2', detalhes: [] },
-        "Mangual de Infantaria": { preco: { quantidade: 15, moeda: 'po' }, peso: 7.5, tamanho: 'Médio', tipo: 'Concussão', velocidade: 7, dano_p: '1d6+1', dano_mg: '2d4', detalhes: [] },
-        "Maça de Infantaria": { preco: { quantidade: 8, moeda: 'po' }, peso: 5, tamanho: 'Médio', tipo: 'Concussão', velocidade: 7, dano_p: '1d6+1', dano_mg: '1d6', detalhes: [] },
-        "Alvião de Infantaria": { preco: { quantidade: 8, moeda: 'po' }, peso: 3, tamanho: 'Médio', tipo: 'Perfurante', velocidade: 7, dano_p: '1d6+1', dano_mg: '2d4', detalhes: [] },
-        "Machadinha": { preco: { quantidade: 1, moeda: 'po' }, peso: 2.5, tamanho: 'Médio', tipo: 'Cortante', velocidade: 4, dano_p: '1d6', dano_mg: '1d6', detalhes: [] },
-        "Arpão": { preco: { quantidade: 20, moeda: 'po' }, peso: 3, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 7, dano_p: '2d4', dano_mg: '2d6', detalhes: [] },
-        "Mangual de Cavalaria": { preco: { quantidade: 8, moeda: 'po' }, peso: 2.5, tamanho: 'Médio', tipo: 'Concussão', velocidade: 6, dano_p: '1d4+1', dano_mg: '1d4', detalhes: [] },
-        "Maça de Cavalaria": { preco: { quantidade: 5, moeda: 'po' }, peso: 3, tamanho: 'Médio', tipo: 'Concussão', velocidade: 6, dano_p: '1d6', dano_mg: '1d4', detalhes: [] },
-        "Alvião de Cavalaria": { preco: { quantidade: 7, moeda: 'po' }, peso: 2, tamanho: 'Médio', tipo: 'Perfurante', velocidade: 5, dano_p: '1d4+1', dano_mg: '1d4', detalhes: [] },
-        "Azagaia": { preco: { quantidade: 5, moeda: 'pp' }, peso: 1, tamanho: 'Médio', tipo: 'Perfurante', velocidade: 4, dano_p: '1d6', dano_mg: '1d6', detalhes: [] },
-        "Faca": { preco: { quantidade: 5, moeda: 'pp' }, peso: 0.25, tamanho: 'Pequeno', tipo: 'Perfurante/Cortante', velocidade: 2, dano_p: '1d3', dano_mg: '1d2', detalhes: [] },
-        "Lança de Cavalaria Pesada": { preco: { quantidade: 15, moeda: 'po' }, peso: 7.5, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 8, dano_p: '1d8+1', dano_mg: '3d6', detalhes: [ "A Lança de Cavalaria Pesada inflige dano duplo quando usada por atacante em montaria." ] },
-        "Lança de Cavalaria Leve": { preco: { quantidade: 6, moeda: 'po' }, peso: 2.5, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 6, dano_p: '1d6', dano_mg: '1d8', detalhes: [ "A Lança de Cavalaria Leve inflige dano duplo quando usada por atacante em montaria." ] },
-        "Lança de Tornoio": { preco: { quantidade: 20, moeda: 'po' }, peso: 20, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 10, dano_p: '1d3-1', dano_mg: '1d2-1', detalhes: [ "A Lança de Tornoio inflige dano duplo quando usada por atacante em montaria." ] },
-        "Lança de Cavalaria Média": { preco: { quantidade: 10, moeda: 'po' }, peso: 5, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 7, dano_p: '1d6+1', dano_mg: '2d6', detalhes: [ "A Lança de Cavalaria Média inflige dano duplo quando usada por atacante em montaria." ] },
-        "Aprisionador": { preco: { quantidade: 30, moeda: 'po' }, peso: 4, tamanho: 'Grande', tipo: '', velocidade: 7, dano_p: '', dano_mg: '', detalhes: [ "O Aprisionador pode derrubar um cavaleiro num golpe bem sucedido." ] },
-        "Maça Estrela": { preco: { quantidade: 10, moeda: 'po' }, peso: 6, tamanho: 'Médio', tipo: 'Concussão', velocidade: 7, dano_p: '2d4', dano_mg: '1d6+1', detalhes: [] },
-        "Pique": { preco: { quantidade: 5, moeda: 'po' }, peso: 6, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 13, dano_p: '1d6', dano_mg: '1d12', detalhes: [ "O Pique inflige dano duplo quando firmemente presa para receber ataque." ] },
-        "Bardiche": { preco: { quantidade: 7, moeda: 'po' }, peso: 6, tamanho: 'Grande', tipo: 'Cortante', velocidade: 9, dano_p: '2d4', dano_mg: '2d6', detalhes: [] },
-        "Bec de Corbin": { preco: { quantidade: 8, moeda: 'po' }, peso: 5, tamanho: 'Grande', tipo: 'Perfurante/Concussão', velocidade: 9, dano_p: '1d8', dano_mg: '1d6', detalhes: [] },
-        "Bill-Guisarme": { preco: { quantidade: 7, moeda: 'po' }, peso: 7.5, tamanho: 'Grande', tipo: 'Perfurante/Cortante', velocidade: 10, dano_p: '2d4', dano_mg: '1d10', detalhes: [] },
-        "Fauchard": { preco: { quantidade: 5, moeda: 'po' }, peso: 3.5, tamanho: 'Grande', tipo: 'Perfurante/Cortante', velocidade: 8, dano_p: '1d6', dano_mg: '1d8', detalhes: [] },
-        "Bordona": { preco: { quantidade: 8, moeda: 'po' }, peso: 3.5, tamanho: 'Grande', tipo: 'Perfurante/Cortante', velocidade: 8, dano_p: '1d8', dano_mg: '1d10', detalhes: [] },
-        "Glaive": { preco: { quantidade: 6, moeda: 'po' }, peso: 4, tamanho: 'Grande', tipo: 'Cortante', velocidade: 8, dano_p: '1d6', dano_mg: '1d10', detalhes: [ "A Glaive inflige dano duplo se usada contra atacantes de tamanho G ou maiores." ] },
-        "Glaive Guisarme": { preco: { quantidade: 10, moeda: 'po' }, peso: 5, tamanho: 'Grande', tipo: 'Perfurante/Cortante', velocidade: 9, dano_p: '2d4', dano_mg: '2d6', detalhes: [ "A Glaive Guisarme inflige dano duplo se usada contra atacantes de tamanho G ou maiores." ] },
-        "Guisarme": { preco: { quantidade: 5, moeda: 'po' }, peso: 4, tamanho: 'Grande', tipo: 'Cortante', velocidade: 8, dano_p: '2d4', dano_mg: '1d8', detalhes: [] },
-        "Guisarme Voulge": { preco: { quantidade: 8, moeda: 'po' }, peso: 7.5, tamanho: 'Grande', tipo: 'Perfurante/Cortante', velocidade: 10, dano_p: '2d4', dano_mg: '2d4', detalhes: [] },
-        "Alabarda": { preco: { quantidade: 10, moeda: 'po' }, peso: 7.5, tamanho: 'Grande', tipo: 'Perfurante/Cortante', velocidade: 9, dano_p: '1d10', dano_mg: '2d6', detalhes: [] },
-        "Fauchard Gancho": { preco: { quantidade: 10, moeda: 'po' }, peso: 4, tamanho: 'Grande', tipo: 'Perfurante/Cortante', velocidade: 9, dano_p: '1d4', dano_mg: '1d4', detalhes: [] },
-        "Martelo Lucerno": { preco: { quantidade: 7, moeda: 'po' }, peso: 7.5, tamanho: 'Grande', tipo: 'Perfurante/Concussão', velocidade: 9, dano_p: '2d4', dano_mg: '1d6', detalhes: [ "O Martelo Lucerno inflige dano duplo quando firmemente presa para receber ataque." ] },
-        "Bidente": { preco: { quantidade: 5, moeda: 'po' }, peso: 3.5, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 7, dano_p: '1d8', dano_mg: '2d4', detalhes: [] },
-        "Partisan": { preco: { quantidade: 10, moeda: 'po' }, peso: 4, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 9, dano_p: '1d6', dano_mg: '1d6+1', detalhes: [ "O Partisan inflige dano duplo quando firmemente presa para receber ataque." ] },
-        "Ranseur": { preco: { quantidade: 6, moeda: 'po' }, peso: 3.5, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 8, dano_p: '2d4', dano_mg: '2d4', detalhes: [ "O Ranseur inflige dano duplo quando firmemente presa para receber ataque." ] },
-        "Spetum": { preco: { quantidade: 5, moeda: 'po' }, peso: 3.5, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 8, dano_p: '1d6+1', dano_mg: '2d6', detalhes: [ "O Spetum inflige dano duplo quando firmemente presa para receber ataque." ] },
-        "Voulge": { preco: { quantidade: 5, moeda: 'po' }, peso: 6, tamanho: 'Grande', tipo: 'Cortante', velocidade: 10, dano_p: '2d4', dano_mg: '2d4', detalhes: [] },
-        "Bordão": { preco: { quantidade: 0, moeda: 'po' }, peso: 2, tamanho: 'Grande', tipo: 'Concussão', velocidade: 4, dano_p: '1d6', dano_mg: '1d6', detalhes: [] },
-        "Açoite": { preco: { quantidade: 1, moeda: 'po' }, peso: 1, tamanho: 'Pequeno', tipo: '', velocidade: 5, dano_p: '1d4', dano_mg: '1d2', detalhes: [] },
-        "Foice": { preco: { quantidade: 6, moeda: 'pp' }, peso: 1.5, tamanho: 'Pequeno', tipo: 'Cortante', velocidade: 4, dano_p: '1d4+1', dano_mg: '1d4', detalhes: [] },
-        "Funda": { preco: { quantidade: 5, moeda: 'pc' }, peso: 0, tamanho: 'Pequeno', tipo: '', velocidade: 6, dano_p: '', dano_mg: '', detalhes: [] },
-        "Lança": { preco: { quantidade: 8, moeda: 'pp' }, peso: 2.5, tamanho: 'Médio', tipo: 'Perfurante', velocidade: 6, dano_p: '1d6', dano_mg: '1d8', detalhes: [] },
-        "Cajado-Funda": { preco: { quantidade: 2, moeda: 'pp' }, peso: 1, tamanho: 'Médio', tipo: '', velocidade: 11, dano_p: '', dano_mg: '', detalhes: [] },
-        "Espada Bastarda": { preco: { quantidade: 25, moeda: 'po' }, peso: 5, tamanho: 'Médio', tipo: 'Cortante', velocidade: 6, dano_p: '1d8', dano_mg: '1d12', detalhes: [ "Quando usada com duas mãos, a Espada Bastarda possui velocidade 8, dano a personagens P de 2d4 e personagens M ou G de 2d8." ] },
-        "Espada Larga": { preco: { quantidade: 10, moeda: 'po' }, peso: 2, tamanho: 'Médio', tipo: 'Cortante', velocidade: 5, dano_p: '2d4', dano_mg: '1d6+1', detalhes: [] },
-        "Khopesh": { preco: { quantidade: 10, moeda: 'po' }, peso: 3.5, tamanho: 'Médio', tipo: 'Cortante', velocidade: 9, dano_p: '2d4', dano_mg: '1d6', detalhes: [] },
-        "Espada Longa": { preco: { quantidade: 15, moeda: 'po' }, peso: 2, tamanho: 'Médio', tipo: 'Cortante', velocidade: 5, dano_p: '1d8', dano_mg: '1d12', detalhes: [] },
-        "Cimitarra": { preco: { quantidade: 15, moeda: 'po' }, peso: 2, tamanho: 'Médio', tipo: 'Cortante', velocidade: 5, dano_p: '1d8', dano_mg: '1d8', detalhes: [] },
-        "Espada Curta": { preco: { quantidade: 10, moeda: 'po' }, peso: 1.5, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 3, dano_p: '1d6', dano_mg: '1d8', detalhes: [] },
-        "Montante": { preco: { quantidade: 50, moeda: 'po' }, peso: 7.5, tamanho: 'Grande', tipo: 'Cortante', velocidade: 10, dano_p: '1d10', dano_mg: '3d6', detalhes: [] },
-        "Tridente": { preco: { quantidade: 15, moeda: 'po' }, peso: 3.5, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 7, dano_p: '1d6+1', dano_mg: '3d4', detalhes: [] },
-        "Martelo de Batalha": { preco: { quantidade: 2, moeda: 'po' }, peso: 3, tamanho: 'Médio', tipo: 'Concussão', velocidade: 4, dano_p: '1d4+1', dano_mg: '1d4', detalhes: [] },
-        "Chicote": { preco: { quantidade: 1, moeda: 'pp' }, peso: 1, tamanho: 'Médio', tipo: '', velocidade: 8, dano_p: '1d2', dano_mg: '1', detalhes: [] },
-        "Rapieira": { preco: { quantidade: 10, moeda: 'po' }, peso: 1.5, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 3, dano_p: '1d6', dano_mg: '1d8', detalhes: [] },
-        "Flamberge": { preco: { quantidade: 10, moeda: 'po' }, peso: 2, tamanho: 'Médio', tipo: 'Cortante', velocidade: 5, dano_p: '2d4', dano_mg: '1d6+1', detalhes: [] },
-        "Gládio": { preco: { quantidade: 12, moeda: 'po' }, peso: 1.5, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 3, dano_p: '1d6', dano_mg: '1d6+1', detalhes: [] },
-        "Falchion": { preco: { quantidade: 12, moeda: 'po' }, peso: 1, tamanho: 'Pequeno', tipo: 'Cortante', velocidade: 3, dano_p: '1d4', dano_mg: '1d6', detalhes: [] },
-        "Alfange": { preco: { quantidade: 10, moeda: 'po' }, peso: 3.5, tamanho: 'Médio', tipo: 'Cortante', velocidade: 9, dano_p: '2d4', dano_mg: '1d6', detalhes: [] },
-        "Claymore": { preco: { quantidade: 50, moeda: 'po' }, peso: 7.5, tamanho: 'Grande', tipo: 'Cortante', velocidade: 10, dano_p: '1d10', dano_mg: '3d6', detalhes: [] },
-        "Machete": { preco: { quantidade: 5, moeda: 'po' }, peso: 1, tamanho: 'Pequeno', tipo: 'Cortante', velocidade: 2, dano_p: '1d4', dano_mg: '1d4+1', detalhes: [] },
-        "Sabre": { preco: { quantidade: 10, moeda: 'po' }, peso: 3.5, tamanho: 'Médio', tipo: 'Cortante', velocidade: 9, dano_p: '2d4', dano_mg: '1d6', detalhes: [] },
-        "Zweihander": { preco: { quantidade: 25, moeda: 'po' }, peso: 5, tamanho: 'Médio', tipo: 'Cortante', velocidade: 6, dano_p: '1d8', dano_mg: '1d12', detalhes: [ "Quando usada com duas mãos, a Zweihander possui velocidade 8, dano a personagens P de 2d4 e personagens M ou G de 2d8." ] },
-        "Wakizashi": { preco: { quantidade: 20, moeda: 'po' }, peso: 1, tamanho: 'Pequeno', tipo: 'Cortante', velocidade: 2, dano_p: '1d6+1', dano_mg: '1d8+1', detalhes: [] },
-        "Katana": { preco: { quantidade: 25, moeda: 'po' }, peso: 2, tamanho: 'Médio', tipo: 'Cortante', velocidade: 4, dano_p: '1d8+1', dano_mg: '1d12+1', detalhes: [] },
-        "Tachi": { preco: { quantidade: 15, moeda: 'po' }, peso: 1.5, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 3, dano_p: '1d6', dano_mg: '1d8', detalhes: [] },
-        "Tanto": { preco: { quantidade: 10, moeda: 'pp' }, peso: 0.25, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 2, dano_p: '1d3', dano_mg: '1d3', detalhes: [] },
-        "Shuriken": { preco: { quantidade: 5, moeda: 'pp' }, peso: 0.25, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 2, dano_p: '1d2', dano_mg: '1d2', detalhes: [] },
-        "Corrente": { preco: { quantidade: 1, moeda: 'pp' }, peso: 1, tamanho: 'Médio', tipo: '', velocidade: 8, dano_p: '1d2', dano_mg: '1', detalhes: [] }
+        "Arcabuz": { preco: { quantidade: 500, moeda: 'po' }, peso: 5, tamanho: 'Médio', tipo: 'Perfurante', velocidade: 15, dano_p: '1d10', dano_mg: '1d10', dano: 10, detalhes: [] },
+        "Machado de Guerra": { preco: { quantidade: 5, moeda: 'po' }, peso: 3.5, tamanho: 'Médio', tipo: 'Cortante', velocidade: 7, dano_p: '1d8', dano_mg: '1d8', dano: 8, detalhes: [] },
+        "Zarabatana": { preco: { quantidade: 5, moeda: 'po' }, peso: 1, tamanho: 'Grande', tipo: '', velocidade: 5, dano_p: '', dano_mg: '', dano: 3, detalhes: [] },
+        "Arco Longo Composto": { preco: { quantidade: 100, moeda: 'po' }, peso: 1.5, tamanho: 'Grande', tipo: '', velocidade: 7, dano_p: '', dano_mg: '', dano: 8, detalhes: [] },
+        "Arco Curto Composto": { preco: { quantidade: 75, moeda: 'po' }, peso: 1, tamanho: 'Médio', tipo: '', velocidade: 6, dano_p: '', dano_mg: '', dano: 6, detalhes: [] },
+        "Arco Longo": { preco: { quantidade: 75, moeda: 'po' }, peso: 1.5, tamanho: 'Grande', tipo: '', velocidade: 8, dano_p: '', dano_mg: '', dano: 8, detalhes: [] },
+        "Arco Curto": { preco: { quantidade: 30, moeda: 'po' }, peso: 1, tamanho: 'Médio', tipo: '', velocidade: 7, dano_p: '', dano_mg: '', dano: 6, detalhes: [] },
+        "Clava": { preco: { quantidade: 0, moeda: 'po' }, peso: 1.5, tamanho: 'Médio', tipo: 'Concussão', velocidade: 4, dano_p: '1d6', dano_mg: '1d3', dano: 3, detalhes: [] },
+        "Besta de Mão": { preco: { quantidade: 300, moeda: 'po' }, peso: 1.5, tamanho: 'Pequeno', tipo: '', velocidade: 5, dano_p: '', dano_mg: '', dano: 2, detalhes: [] },
+        "Besta Pesada": { preco: { quantidade: 50, moeda: 'po' }, peso: 7, tamanho: 'Médio', tipo: '', velocidade: 10, dano_p: '', dano_mg: '', dano: 7, detalhes: [] },
+        "Besta Leve": { preco: { quantidade: 35, moeda: 'po' }, peso: 3.5, tamanho: 'Médio', tipo: '', velocidade: 7, dano_p: '', dano_mg: '', dano: 4, detalhes: [] },
+        "Adaga": { preco: { quantidade: 2, moeda: 'po' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 2, dano_p: '1d4', dano_mg: '1d3', dano: 3, detalhes: [] },
+        "Punhal": { preco: { quantidade: 2, moeda: 'po' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 2, dano_p: '1d4', dano_mg: '1d3', dano: 3, detalhes: [] },
+        "Dardo": { preco: { quantidade: 5, moeda: 'pp' }, peso: 0.25, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 2, dano_p: '1d3', dano_mg: '1d2', dano: 2, detalhes: [] },
+        "Mangual de Infantaria": { preco: { quantidade: 15, moeda: 'po' }, peso: 7.5, tamanho: 'Médio', tipo: 'Concussão', velocidade: 7, dano_p: '1d6+1', dano_mg: '2d4', dano: 8, detalhes: [] },
+        "Mangual": { preco: { quantidade: 10, moeda: 'po' }, peso: 5, tamanho: 'Médio', tipo: 'Concussão', velocidade: 7, dano_p: '1d6', dano_mg: '2d4', dano: 8, detalhes: [] },
+        "Maça de Infantaria": { preco: { quantidade: 8, moeda: 'po' }, peso: 5, tamanho: 'Médio', tipo: 'Concussão', velocidade: 7, dano_p: '1d6+1', dano_mg: '1d6', dano: 6, detalhes: [] },
+        "Maça": { preco: { quantidade: 6, moeda: 'po' }, peso: 4, tamanho: 'Médio', tipo: 'Concussão', velocidade: 7, dano_p: '1d6', dano_mg: '1d6', dano: 6, detalhes: [] },
+        "Alvião de Infantaria": { preco: { quantidade: 8, moeda: 'po' }, peso: 3, tamanho: 'Médio', tipo: 'Perfurante', velocidade: 7, dano_p: '1d6+1', dano_mg: '2d4', dano: 8, detalhes: [] },
+        "Alvião": { preco: { quantidade: 7, moeda: 'po' }, peso: 3, tamanho: 'Médio', tipo: 'Perfurante', velocidade: 7, dano_p: '1d6', dano_mg: '2d4', dano: 9, detalhes: [] },
+        "Machadinha": { preco: { quantidade: 1, moeda: 'po' }, peso: 2.5, tamanho: 'Médio', tipo: 'Cortante', velocidade: 4, dano_p: '1d6', dano_mg: '1d6', dano: 6, detalhes: [] },
+        "Arpão": { preco: { quantidade: 20, moeda: 'po' }, peso: 3, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 7, dano_p: '2d4', dano_mg: '2d6', dano: 13, detalhes: [] },
+        "Mangual de Cavalaria": { preco: { quantidade: 8, moeda: 'po' }, peso: 2.5, tamanho: 'Médio', tipo: 'Concussão', velocidade: 6, dano_p: '1d4+1', dano_mg: '1d4', dano: 4, detalhes: [] },
+        "Maça de Cavalaria": { preco: { quantidade: 5, moeda: 'po' }, peso: 3, tamanho: 'Médio', tipo: 'Concussão', velocidade: 6, dano_p: '1d6', dano_mg: '1d4', dano: 4, detalhes: [] },
+        "Alvião de Cavalaria": { preco: { quantidade: 7, moeda: 'po' }, peso: 2, tamanho: 'Médio', tipo: 'Perfurante', velocidade: 5, dano_p: '1d4+1', dano_mg: '1d4', dano: 4, detalhes: [] },
+        "Azagaia": { preco: { quantidade: 5, moeda: 'pp' }, peso: 1, tamanho: 'Médio', tipo: 'Perfurante', velocidade: 4, dano_p: '1d6', dano_mg: '1d6', dano: 6, detalhes: [] },
+        "Faca": { preco: { quantidade: 5, moeda: 'pp' }, peso: 0.25, tamanho: 'Pequeno', tipo: 'Perfurante/Cortante', velocidade: 2, dano_p: '1d3', dano_mg: '1d2', dano: 2, detalhes: [] },
+        "Lança de Cavalaria Pesada": { preco: { quantidade: 15, moeda: 'po' }, peso: 7.5, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 8, dano_p: '1d8+1', dano_mg: '3d6', dano: 20, detalhes: [ "A Lança de Cavalaria Pesada inflige dano duplo quando usada por atacante em montaria." ] },
+        "Lança de Cavalaria": { preco: { quantidade: 6, moeda: 'po' }, peso: 2.5, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 6, dano_p: '1d6', dano_mg: '1d8', dano: 8, detalhes: [ "A Lança de Cavalaria Leve inflige dano duplo quando usada por atacante em montaria." ] },
+        "Lança de Tornoio": { preco: { quantidade: 20, moeda: 'po' }, peso: 20, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 10, dano_p: '1d3-1', dano_mg: '1d2-1', dano: 1, detalhes: [ "A Lança de Tornoio inflige dano duplo quando usada por atacante em montaria." ] },
+        "Lança de Cavalaria Média": { preco: { quantidade: 10, moeda: 'po' }, peso: 5, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 7, dano_p: '1d6+1', dano_mg: '2d6', dano: 13, detalhes: [ "A Lança de Cavalaria Média inflige dano duplo quando usada por atacante em montaria." ] },
+        "Aprisionador": { preco: { quantidade: 30, moeda: 'po' }, peso: 4, tamanho: 'Grande', tipo: '', velocidade: 7, dano_p: '', dano_mg: '', dano: 1, detalhes: [ "O Aprisionador pode derrubar um cavaleiro num golpe bem sucedido." ] },
+        "Maça-Estrela": { preco: { quantidade: 10, moeda: 'po' }, peso: 6, tamanho: 'Médio', tipo: 'Concussão', velocidade: 7, dano_p: '2d4', dano_mg: '1d6+1', dano: 7, detalhes: [] },
+        "Pique": { preco: { quantidade: 5, moeda: 'po' }, peso: 6, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 13, dano_p: '1d6', dano_mg: '1d12', dano: 12, detalhes: [ "O Pique inflige dano duplo quando firmemente presa para receber ataque." ] },
+        "Bardiche": { preco: { quantidade: 7, moeda: 'po' }, peso: 6, tamanho: 'Grande', tipo: 'Cortante', velocidade: 9, dano_p: '2d4', dano_mg: '2d6', dano: 13, detalhes: [] },
+        "Bec de Corbin": { preco: { quantidade: 8, moeda: 'po' }, peso: 5, tamanho: 'Grande', tipo: 'Perfurante/Concussão', velocidade: 9, dano_p: '1d8', dano_mg: '1d6', dano: 6, detalhes: [] },
+        "Bill-Guisarme": { preco: { quantidade: 7, moeda: 'po' }, peso: 7.5, tamanho: 'Grande', tipo: 'Perfurante/Cortante', velocidade: 10, dano_p: '2d4', dano_mg: '1d10', dano: 10, detalhes: [] },
+        "Fauchard": { preco: { quantidade: 5, moeda: 'po' }, peso: 3.5, tamanho: 'Grande', tipo: 'Perfurante/Cortante', velocidade: 8, dano_p: '1d6', dano_mg: '1d8', dano: 8, detalhes: [] },
+        "Bordona": { preco: { quantidade: 8, moeda: 'po' }, peso: 3.5, tamanho: 'Grande', tipo: 'Perfurante/Cortante', velocidade: 8, dano_p: '1d8', dano_mg: '1d10', dano: 10, detalhes: [] },
+        "Glaive": { preco: { quantidade: 6, moeda: 'po' }, peso: 4, tamanho: 'Grande', tipo: 'Cortante', velocidade: 8, dano_p: '1d6', dano_mg: '1d10', dano: 10, detalhes: [ "A Glaive inflige dano duplo se usada contra atacantes de tamanho G ou maiores." ] },
+        "Glaive Guisarme": { preco: { quantidade: 10, moeda: 'po' }, peso: 5, tamanho: 'Grande', tipo: 'Perfurante/Cortante', velocidade: 9, dano_p: '2d4', dano_mg: '2d6', dano: 13, detalhes: [ "A Glaive Guisarme inflige dano duplo se usada contra atacantes de tamanho G ou maiores." ] },
+        "Guisarme": { preco: { quantidade: 5, moeda: 'po' }, peso: 4, tamanho: 'Grande', tipo: 'Cortante', velocidade: 8, dano_p: '2d4', dano_mg: '1d8', dano: 8, detalhes: [] },
+        "Guisarme Voulge": { preco: { quantidade: 8, moeda: 'po' }, peso: 7.5, tamanho: 'Grande', tipo: 'Perfurante/Cortante', velocidade: 10, dano_p: '2d4', dano_mg: '2d4', dano: 9, detalhes: [] },
+        "Alabarda": { preco: { quantidade: 10, moeda: 'po' }, peso: 7.5, tamanho: 'Grande', tipo: 'Perfurante/Cortante', velocidade: 9, dano_p: '1d10', dano_mg: '2d6', dano: 13, detalhes: [] },
+        "Fauchard Gancho": { preco: { quantidade: 10, moeda: 'po' }, peso: 4, tamanho: 'Grande', tipo: 'Perfurante/Cortante', velocidade: 9, dano_p: '1d4', dano_mg: '1d4', dano: 4, detalhes: [] },
+        "Martelo Lucerno": { preco: { quantidade: 7, moeda: 'po' }, peso: 7.5, tamanho: 'Grande', tipo: 'Perfurante/Concussão', velocidade: 9, dano_p: '2d4', dano_mg: '1d6', dano: 6, detalhes: [ "O Martelo Lucerno inflige dano duplo quando firmemente presa para receber ataque." ] },
+        "Bidente": { preco: { quantidade: 5, moeda: 'po' }, peso: 3.5, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 7, dano_p: '1d8', dano_mg: '2d4', dano: 9, detalhes: [] },
+        "Partisan": { preco: { quantidade: 10, moeda: 'po' }, peso: 4, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 9, dano_p: '1d6', dano_mg: '1d6+1', dano: 7, detalhes: [ "O Partisan inflige dano duplo quando firmemente presa para receber ataque." ] },
+        "Ranseur": { preco: { quantidade: 6, moeda: 'po' }, peso: 3.5, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 8, dano_p: '2d4', dano_mg: '2d4', dano: 9, detalhes: [ "O Ranseur inflige dano duplo quando firmemente presa para receber ataque." ] },
+        "Spetum": { preco: { quantidade: 5, moeda: 'po' }, peso: 3.5, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 8, dano_p: '1d6+1', dano_mg: '2d6', dano: 13, detalhes: [ "O Spetum inflige dano duplo quando firmemente presa para receber ataque." ] },
+        "Voulge": { preco: { quantidade: 5, moeda: 'po' }, peso: 6, tamanho: 'Grande', tipo: 'Cortante', velocidade: 10, dano_p: '2d4', dano_mg: '2d4', dano: 9, detalhes: [] },
+        "Bordão": { preco: { quantidade: 0, moeda: 'po' }, peso: 2, tamanho: 'Grande', tipo: 'Concussão', velocidade: 4, dano_p: '1d6', dano_mg: '1d6', dano: 6, detalhes: [] },
+        "Açoite": { preco: { quantidade: 1, moeda: 'po' }, peso: 1, tamanho: 'Pequeno', tipo: '', velocidade: 5, dano_p: '1d4', dano_mg: '1d2', dano: 2, detalhes: [] },
+        "Foice": { preco: { quantidade: 6, moeda: 'pp' }, peso: 1.5, tamanho: 'Pequeno', tipo: 'Cortante', velocidade: 4, dano_p: '1d4+1', dano_mg: '1d4', dano: 4, detalhes: [] },
+        "Funda": { preco: { quantidade: 5, moeda: 'pc' }, peso: 0, tamanho: 'Pequeno', tipo: '', velocidade: 6, dano_p: '', dano_mg: '', dano: 7, detalhes: [] },
+        "Lança": { preco: { quantidade: 8, moeda: 'pp' }, peso: 2.5, tamanho: 'Médio', tipo: 'Perfurante', velocidade: 6, dano_p: '1d6', dano_mg: '1d8', dano: 8, detalhes: [] },
+        "Cajado-Funda": { preco: { quantidade: 2, moeda: 'pp' }, peso: 1, tamanho: 'Médio', tipo: '', velocidade: 11, dano_p: '', dano_mg: '', dano: 7, detalhes: [] },
+        "Espada Bastarda": { preco: { quantidade: 25, moeda: 'po' }, peso: 5, tamanho: 'Médio', tipo: 'Cortante', velocidade: 6, dano_p: '1d8', dano_mg: '1d12', dano: 12, detalhes: [ "Quando usada com duas mãos, a Espada Bastarda possui velocidade 8, dano a personagens P de 2d4 e personagens M ou G de 2d8." ] },
+        "Espada Larga": { preco: { quantidade: 10, moeda: 'po' }, peso: 2, tamanho: 'Médio', tipo: 'Cortante', velocidade: 5, dano_p: '2d4', dano_mg: '1d6+1', dano: 7, detalhes: [] },
+        "Khopesh": { preco: { quantidade: 10, moeda: 'po' }, peso: 3.5, tamanho: 'Médio', tipo: 'Cortante', velocidade: 9, dano_p: '2d4', dano_mg: '1d6', dano: 6, detalhes: [] },
+        "Espada Longa": { preco: { quantidade: 15, moeda: 'po' }, peso: 2, tamanho: 'Médio', tipo: 'Cortante', velocidade: 5, dano_p: '1d8', dano_mg: '1d12', dano: 12, detalhes: [] },
+        "Cimitarra": { preco: { quantidade: 15, moeda: 'po' }, peso: 2, tamanho: 'Médio', tipo: 'Cortante', velocidade: 5, dano_p: '1d8', dano_mg: '1d8', dano: 8, detalhes: [] },
+        "Espada Curta": { preco: { quantidade: 10, moeda: 'po' }, peso: 1.5, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 3, dano_p: '1d6', dano_mg: '1d8', dano: 8, detalhes: [] },
+        "Montante": { preco: { quantidade: 50, moeda: 'po' }, peso: 7.5, tamanho: 'Grande', tipo: 'Cortante', velocidade: 10, dano_p: '1d10', dano_mg: '3d6', dano: 20, detalhes: [] },
+        "Tridente": { preco: { quantidade: 15, moeda: 'po' }, peso: 3.5, tamanho: 'Grande', tipo: 'Perfurante', velocidade: 7, dano_p: '1d6+1', dano_mg: '3d4', dano: 14, detalhes: [] },
+        "Martelo de Batalha": { preco: { quantidade: 10, moeda: 'po' }, peso: 4, tamanho: 'Médio', tipo: 'Concussão', velocidade: 4, dano_p: '1d6', dano_mg: '1d6+1', dano: 7, detalhes: [] },
+        "Martelo": { preco: { quantidade: 1, moeda: 'po' }, peso: 2, tamanho: 'Médio', tipo: 'Concussão', velocidade: 3, dano_p: '1d4', dano_mg: '1d4', dano: 4, detalhes: [] },
+        "Chicote": { preco: { quantidade: 1, moeda: 'pp' }, peso: 1, tamanho: 'Médio', tipo: '', velocidade: 8, dano_p: '1d2', dano_mg: '1', dano: 1, detalhes: [] },
+        "Rapieira": { preco: { quantidade: 10, moeda: 'po' }, peso: 1.5, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 3, dano_p: '1d6', dano_mg: '1d8', dano: 8, detalhes: [] },
+        "Flamberge": { preco: { quantidade: 10, moeda: 'po' }, peso: 2, tamanho: 'Médio', tipo: 'Cortante', velocidade: 5, dano_p: '2d4', dano_mg: '1d6+1', dano: 7, detalhes: [] },
+        "Gládio": { preco: { quantidade: 12, moeda: 'po' }, peso: 1.5, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 3, dano_p: '1d6', dano_mg: '1d6+1', dano: 7, detalhes: [] },
+        "Falchion": { preco: { quantidade: 12, moeda: 'po' }, peso: 1, tamanho: 'Pequeno', tipo: 'Cortante', velocidade: 3, dano_p: '1d4', dano_mg: '1d6', dano: 6, detalhes: [] },
+        "Alfange": { preco: { quantidade: 10, moeda: 'po' }, peso: 3.5, tamanho: 'Médio', tipo: 'Cortante', velocidade: 9, dano_p: '2d4', dano_mg: '1d6', dano: 6, detalhes: [] },
+        "Claymore": { preco: { quantidade: 50, moeda: 'po' }, peso: 7.5, tamanho: 'Grande', tipo: 'Cortante', velocidade: 10, dano_p: '1d10', dano_mg: '3d6', dano: 20, detalhes: [] },
+        "Machete": { preco: { quantidade: 5, moeda: 'po' }, peso: 1, tamanho: 'Pequeno', tipo: 'Cortante', velocidade: 2, dano_p: '1d4', dano_mg: '1d4+1', dano: 5, detalhes: [] },
+        "Sabre": { preco: { quantidade: 10, moeda: 'po' }, peso: 3.5, tamanho: 'Médio', tipo: 'Cortante', velocidade: 9, dano_p: '2d4', dano_mg: '1d6', dano: 6, detalhes: [] },
+        "Zweihander": { preco: { quantidade: 25, moeda: 'po' }, peso: 5, tamanho: 'Médio', tipo: 'Cortante', velocidade: 6, dano_p: '1d8', dano_mg: '1d12', dano: 12, detalhes: [ "Quando usada com duas mãos, a Zweihander possui velocidade 8, dano a personagens P de 2d4 e personagens M ou G de 2d8." ] },
+        "Wakizashi": { preco: { quantidade: 20, moeda: 'po' }, peso: 1, tamanho: 'Pequeno', tipo: 'Cortante', velocidade: 2, dano_p: '1d6+1', dano_mg: '1d8+1', dano: 9, detalhes: [] },
+        "Katana": { preco: { quantidade: 25, moeda: 'po' }, peso: 2, tamanho: 'Médio', tipo: 'Cortante', velocidade: 4, dano_p: '1d8+1', dano_mg: '1d12+1', dano: 13, detalhes: [] },
+        "Tachi": { preco: { quantidade: 15, moeda: 'po' }, peso: 1.5, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 3, dano_p: '1d6', dano_mg: '1d8', dano: 8, detalhes: [] },
+        "Tanto": { preco: { quantidade: 10, moeda: 'pp' }, peso: 0.25, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 2, dano_p: '1d3', dano_mg: '1d3', dano: 3, detalhes: [] },
+        "Shuriken": { preco: { quantidade: 5, moeda: 'pp' }, peso: 0.25, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 2, dano_p: '1d2', dano_mg: '1d2', dano: 2, detalhes: [] },
+        "Corrente": { preco: { quantidade: 1, moeda: 'pp' }, peso: 1, tamanho: 'Médio', tipo: '', velocidade: 8, dano_p: '1d2', dano_mg: '1', dano: 1, detalhes: [] },
+        "Cajado": { preco: { quantidade: 10, moeda: 'pp' }, peso: 1, tamanho: 'Grande', tipo: 'Concussão', velocidade: 3, dano_p: '1d4', dano_mg: '1d4', dano: 4, detalhes: [] },
+        "Cetro": { preco: { quantidade: 1, moeda: 'po' }, peso: 1, tamanho: 'Grande', tipo: 'Concussão', velocidade: 5, dano_p: '1d4', dano_mg: '1d4+1', dano: 5, detalhes: [] },
+        "Cajado Pequeno": { preco: { quantidade: 5, moeda: 'pp' }, peso: 1, tamanho: 'Médio', tipo: 'Concussão', velocidade: 3, dano_p: '1d3', dano_mg: '1d3', dano: 3, detalhes: [] },
+        "Bastão": { preco: { quantidade: 5, moeda: 'pp' }, peso: 1, tamanho: 'Médio', tipo: 'Concussão', velocidade: 3, dano_p: '1d3', dano_mg: '1d3', dano: 3, detalhes: [] },
+        "Laço": { preco: { quantidade: 1, moeda: 'pp' }, peso: 1, tamanho: 'Médio', tipo: '', velocidade: 8, dano_p: '1d2', dano_mg: '1', dano: 1, detalhes: [] }
       };
 
       const ESCUDOS_DRUIDA = [
@@ -960,7 +969,7 @@
             'Ao alcançar o 8° nível, o clérigo automaticamente atrai um grupo de seguidores fanaticamente leais, contanto que o personagem tenha estabelecido um local de adoração de bom tamanho.',
             'No 9º nível, o clérigo pode receber autorização oficial para construir uma fortaleza religiosa, seja um mosteiro fortificado ou um convento isolado.'
           ],
-          armas: ["Mangual", "Martelo de Batalha", "Açoite", "Chicote", "Alvião", "Aprisionador", "Bordão", "Arco", "Azagaia", "Lança de Cavalaria", "Funda", "Dardo", "Lança", "Clava", "Arpão", "Tridente", "Martelo", "Maça", "Maça-Estrela", "Zarabatana"],
+          armas: ["Mangual", "Martelo de Batalha", "Açoite", "Chicote", "Alvião", "Aprisionador", "Bordão", "Arco Curto", "Azagaia", "Lança de Cavalaria", "Funda", "Dardo", "Lança", "Clava", "Arpão", "Tridente", "Martelo", "Maça", "Maça-Estrela", "Zarabatana"],
           armaduras: ARMADURAS,
           escudos: ESCUDOS,
           armas_divindade: []
@@ -2998,13 +3007,13 @@
                   } else if (classe_final == "Clérigo da Cura") {
                     CLASSES['Clérigo'].armas_divindade = ["Aprisionador", "Bordão"];
                   } else if (classe_final == "Clérigo da Caça") {
-                    CLASSES['Clérigo'].armas_divindade = ["Arco", "Azagaia", "Lança de Cavalaria", "Funda"];
+                    CLASSES['Clérigo'].armas_divindade = ["Arco Curto", "Azagaia", "Lança de Cavalaria", "Funda"];
                   } else if (classe_final == "Clérigo do Relâmpago") {
                     CLASSES['Clérigo'].armas_divindade = ["Dardo", "Lança", "Azagaia"];
                   } else if (classe_final == "Clérigo do Amor") {
-                    CLASSES['Clérigo'].armas_divindade = ["Arco", "Aprisionador"];
+                    CLASSES['Clérigo'].armas_divindade = ["Arco Curto", "Aprisionador"];
                   } else if (classe_final == "Clérigo da Natureza") {
-                    CLASSES['Clérigo'].armas_divindade = ["Clava", "Cimitara", "Foice"];
+                    CLASSES['Clérigo'].armas_divindade = ["Clava", "Cimitarra", "Foice"];
                   } else if (classe_final == "Clérigo dos Oceanos") {
                     CLASSES['Clérigo'].armas_divindade = ["Arpão", "Lança", "Tridente"];
                   } else if (classe_final == "Clérigo da Paz") {
@@ -3363,7 +3372,214 @@
         }
       }
 
-      function sortear_itens(classe, personagem, callback) {
+      function restringir_armas(array_completo, array_restrito, callback) {
+        let array_final = [];
+        if ((array_restrito != undefined) && (array_restrito != null) && (array_restrito.length > 0)) {
+          array_completo.forEach((item_completo, index_completo) => {
+            array_restrito.forEach((item_restrito, index_restrito) => {
+
+              if (item_completo == item_restrito) {
+                array_final.push(item_completo);
+              }
+
+              if (index_restrito == (array_restrito.length - 1)) {
+                if (index_completo == (array_completo.length - 1)) {
+                  callback(array_final);
+                }
+              }
+            });
+          });
+        } else {
+          return callback(array_completo);
+        }
+      }
+
+      function formatar_misseis(nome_missel, missel) {
+        /*
+        "Dardo Farpado": { quantidade: 20, preco: { quantidade: 20, moeda: 'pp' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 0, dano_p: '1d3', dano_mg: '1d3' },
+        */
+        return missel.quantidade + "x " + nome_missel + ", " +
+              (missel.peso * missel.quantidade).toFixed(2) + "kg, " + missel.tamanho + ", " +
+              missel.tipo + ", Velocidade " + missel.velocidade + ", Dano (P) " + missel.dano_p + ", Dano (MG) " + missel.dano_mg + ", Disparos/Rodada: " + missel.cadencia;
+      }
+
+      function formatar_arma(nome_arma, arma) {
+        /*
+        "Arcabuz": { preco: { quantidade: 500, moeda: 'po' }, peso: 5, tamanho: 'Médio', tipo: 'Perfurante', velocidade: 15, dano_p: '1d10', dano_mg: '1d10', dano: 10, detalhes: [] },
+        */
+        let tamanho = '';
+        if (arma.tamanho != '') {
+          tamanho = arma.tamanho + ", ";
+        }
+        let tipo = '';
+        if (arma.tipo != '') {
+          tipo = arma.tipo + ", ";
+        }
+        let danos = '';
+        if (arma.dano_p != '') {
+          danos = ", Dano (P) " + arma.dano_p + ", Dano (MG) " + arma.dano_mg;
+        }
+        return nome_arma + ", " + arma.peso + "kg, " + tamanho + tipo + "Velocidade " + arma.velocidade + danos;
+      }
+
+      function sortear_itens_armas(moeda_limite, peso_limite, classe, raca, personagem, callback) {
+        let arma_talento = '';
+        let itens_extras = [];
+        let keys_armas = Object.keys(ARMAS);
+        let arma_mais_forte = { arma: '', dano: 0 };
+        let moeda_descontada_final = moeda_limite;
+        let peso_descontado_final = peso_limite;
+        let armas_ja_sorteadas = [];
+
+        restringir_armas(keys_armas, CLASSES[classe].armas, sorteio_armas_1 => {
+          restringir_armas(sorteio_armas_1, RACAS[raca].armas_importantes, sorteio_armas_2 => {
+            restringir_armas(sorteio_armas_2, CLASSES[classe].armas_divindade, sorteio_armas_3 => {
+              if (sorteio_armas_3.length == 0) {
+                if ( (CLASSES[classe].armas_divindade != undefined) && (CLASSES[classe].armas_divindade != null) && (CLASSES[classe].armas_divindade.length > 0) ) {
+                  sorteio_armas_3 = CLASSES[classe].armas_divindade.slice();
+                } else if (CLASSES[classe].armas.length > 0) {
+                  sorteio_armas_3 = CLASSES[classe].armas.slice();
+                } else if (RACAS[raca].armas_importantes.length > 0) {
+                  sorteio_armas_3 = RACAS[raca].armas_importantes.slice();
+                } else {
+                  sorteio_armas_3.push("Adaga");
+                  sorteio_armas_3.push("Punhal");
+                  sorteio_armas_3.push("Faca");
+                  sorteio_armas_3.push("Chicote");
+                  sorteio_armas_3.push("Cajado");
+                }
+              }
+
+              /* Sortear arma */
+              let quantidade_armas = Math.floor(Math.random() * 4) + 2;
+              for (let qtde = 0; qtde < quantidade_armas; qtde++) {
+
+                let index_sorteio = Math.floor(Math.random() * sorteio_armas_3.length);
+                let nome_arma = sorteio_armas_3[index_sorteio];
+                let arma = ARMAS[nome_arma];
+                let arma_preco = { quantidade: 10000, moeda: 'po' };
+
+                if ((arma == 'undefined') || (arma == undefined) || (arma == null) || (arma == '')) {
+                  console.log('A arma ' + nome_arma + ' não foi encontrada na lista de armas.');
+                } else {
+                  arma_preco = arma.preco;
+                }
+
+                let moeda_descontada = reduzir_moedas(moeda_descontada_final, arma_preco);
+                if ( (!armas_ja_sorteadas.includes(nome_arma)) && (moeda_descontada.valido) && (peso_descontado_final >= arma.peso) ) {
+
+                  /*
+                    "Arcabuz": { preco: { quantidade: 500, moeda: 'po' }, peso: 5, tamanho: 'Médio', tipo: 'Perfurante', velocidade: 15, dano_p: '1d10', dano_mg: '1d10', dano: 10, detalhes: [] },
+                  */
+
+                  if (arma_mais_forte.dano < arma.dano) {
+                    arma_mais_forte.arma = nome_arma;
+                    arma_mais_forte.dano = arma.dano;
+                  }
+
+                  moeda_descontada_final = reduzir_moedas(moeda_descontada_final, arma.preco).moedas;
+                  peso_descontado_final = peso_descontado_final - arma.peso;
+                  personagem["Itens"].push(formatar_arma(nome_arma, arma));
+                  armas_ja_sorteadas.push(nome_arma);
+
+                  if (arma.detalhes.length > 0) {
+                    personagem["Detalhes"].push.apply(personagem["Detalhes"], arma.detalhes);
+                  }
+
+                  /*
+                    "Zarabatana" "Dardo Agulha"
+                    "Arco Longo Composto" "Flecha da Guerra"
+                    "Arco Curto Composto" "Flecha de Caça"
+                    "Arco Longo" "Flecha da Guerra"
+                    "Arco Curto" "Flecha de Caça"
+                    "Besta de Mão" "Quadrelo de Mão"
+                    "Besta Pesada" "Quadrelo Grande"
+                    "Besta Leve" "Quadrelo Pequeno"
+                    "Funda" "Chumbo de Funda"
+                    "Cajado-Funda" "Chumbo de Funda"
+                  */
+                  if ( (nome_arma == "Arco Longo Composto") || (nome_arma == "Arco Longo") ) {
+                    itens_extras.push( "Aljava" );
+                    let missel = MISSEIS["Flecha da Guerra"];
+                    let nome_formatado = formatar_misseis("Flecha da Guerra", missel);
+                    personagem["Itens"].push(nome_formatado);
+                    moeda_descontada_final = reduzir_moedas(moeda_descontada_final, missel.preco).moedas;
+                    if (moeda_descontada_final < 0) moeda_descontada_final = 0;
+                    peso_descontado_final = peso_descontado_final - missel.peso;
+                    if (peso_descontado_final < 0) peso_descontado_final = 0;
+                  } else if ( (nome_arma == "Arco Curto Composto") || (nome_arma == "Arco Curto") ) {
+                    itens_extras.push( "Aljava" );
+                    let missel = MISSEIS["Flecha de Caça"];
+                    let nome_formatado = formatar_misseis("Flecha de Caça", missel);
+                    personagem["Itens"].push(nome_formatado);
+                    moeda_descontada_final = reduzir_moedas(moeda_descontada_final, missel.preco).moedas;
+                    if (moeda_descontada_final < 0) moeda_descontada_final = 0;
+                    peso_descontado_final = peso_descontado_final - missel.peso;
+                    if (peso_descontado_final < 0) peso_descontado_final = 0;
+                  } else if ( nome_arma == "Zarabatana" ) {
+                    let missel = MISSEIS["Dardo Agulha"];
+                    let nome_formatado = formatar_misseis("Dardo Agulha", missel);
+                    personagem["Itens"].push(nome_formatado);
+                    moeda_descontada_final = reduzir_moedas(moeda_descontada_final, missel.preco).moedas;
+                    if (moeda_descontada_final < 0) moeda_descontada_final = 0;
+                    peso_descontado_final = peso_descontado_final - missel.peso;
+                    if (peso_descontado_final < 0) peso_descontado_final = 0;
+                  } else if ( nome_arma == "Besta de Mão" ) {
+                    itens_extras.push( "Aljava" );
+                    let missel = MISSEIS["Quadrelo de Mão"];
+                    let nome_formatado = formatar_misseis("Quadrelo de Mão", missel);
+                    personagem["Itens"].push(nome_formatado);
+                    moeda_descontada_final = reduzir_moedas(moeda_descontada_final, missel.preco).moedas;
+                    if (moeda_descontada_final < 0) moeda_descontada_final = 0;
+                    peso_descontado_final = peso_descontado_final - missel.peso;
+                    if (peso_descontado_final < 0) peso_descontado_final = 0;
+                  } else if ( nome_arma == "Besta Pesada" ) {
+                    itens_extras.push( "Aljava" );
+                    let missel = MISSEIS["Quadrelo Grande"];
+                    let nome_formatado = formatar_misseis("Quadrelo Grande", missel);
+                    personagem["Itens"].push(nome_formatado);
+                    moeda_descontada_final = reduzir_moedas(moeda_descontada_final, missel.preco).moedas;
+                    if (moeda_descontada_final < 0) moeda_descontada_final = 0;
+                    peso_descontado_final = peso_descontado_final - missel.peso;
+                    if (peso_descontado_final < 0) peso_descontado_final = 0;
+                  } else if ( nome_arma == "Besta Leve" ) {
+                    itens_extras.push( "Aljava" );
+                    let missel = MISSEIS["Quadrelo Pequeno"];
+                    let nome_formatado = formatar_misseis("Quadrelo Pequeno", missel);
+                    personagem["Itens"].push(nome_formatado);
+                    moeda_descontada_final = reduzir_moedas(moeda_descontada_final, missel.preco).moedas;
+                    if (moeda_descontada_final < 0) moeda_descontada_final = 0;
+                    peso_descontado_final = peso_descontado_final - missel.peso;
+                    if (peso_descontado_final < 0) peso_descontado_final = 0;
+                  } else if ( (nome_arma == "Funda") || (nome_arma == "Cajado-Funda") ) {
+                    let missel = MISSEIS["Chumbo de Funda"];
+                    let nome_formatado = formatar_misseis("Chumbo de Funda", missel);
+                    personagem["Itens"].push(nome_formatado);
+                    moeda_descontada_final = reduzir_moedas(moeda_descontada_final, missel.preco).moedas;
+                    if (moeda_descontada_final < 0) moeda_descontada_final = 0;
+                    peso_descontado_final = peso_descontado_final - missel.peso;
+                    if (peso_descontado_final < 0) peso_descontado_final = 0;
+                  }
+                }
+
+                if (qtde == (quantidade_armas - 1)) {
+
+                  if (arma_mais_forte.dano > 0) {
+                    arma_talento = arma_mais_forte.arma;
+                  }
+
+                  moeda_limite = moeda_limite - moeda_descontada_final;
+                  peso_limite = peso_limite - peso_descontado_final;
+                  callback(moeda_limite, peso_limite, arma_talento, itens_extras);
+                }
+              }
+
+            });
+          });
+        });
+      }
+
+      function sortear_itens(classe, raca, personagem, callback) {
 
         if (CLASSES[classe]["Grupo"] == "Homem de Armas") {
           personagem["Dados Básicos"]["Moedas"] = (
@@ -3389,16 +3605,19 @@
         }
 
         let moeda_limite = (personagem["Dados Básicos"]["Moedas"] - 11);
-        let peso_limite = (Math.floor(personagem["Dados Básicos"]["Peso"] / 2) - 10);
+        let peso_limite = personagem["Habilidades"]["Força"]["Carga Permitida"] - 2;
+        if (peso_limite < 0) { peso_limite = 0; }
 
         sortear_itens_escudos(moeda_limite, peso_limite, classe, personagem, (resultado_moedas, resultado_peso, ca_escudo) => {
           sortear_itens_armaduras(resultado_moedas, resultado_peso, classe, personagem, (resultado_moedas, resultado_peso, armadura) => {
-            personagem["Dados Básicos"]["Moedas"] = resultado_moedas;
-            personagem["Dados Básicos"]["Peso dos Equipamentos"] = resultado_peso;
+            sortear_itens_armas(resultado_moedas, resultado_peso, classe, raca, personagem, (resultado_moedas, resultado_peso, arma_talento, itens_extras) => {
 
+              personagem["Dados Básicos"]["Moedas"] = resultado_moedas.toFixed(2);
+              personagem["Dados Básicos"]["Peso dos Equipamentos"] = resultado_peso;
+              callback(arma_talento);
 
+            });
           });
-          callback();
         });
       }
 
@@ -3584,9 +3803,7 @@
             /* Detalhes */
             personagem["Detalhes"].push.apply(personagem["Detalhes"], CLASSES[classe].detalhes);
 
-            sortear_itens(classe, personagem, (moedas,peso) => {
-
-
+            sortear_itens(classe, raca, personagem, (arma_talento) => {
 
               // movimentação
               // calcular CA
