@@ -89,6 +89,16 @@
         border: 0 !important;
         white-space: normal !important;
       }
+      tbody tr:nth-child(12) td tbody tr td:last-child {
+        background-color: #eee !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
+      tbody tr:nth-child(13) td tbody tr td:last-child {
+        background-color: #eee !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
       td {
         max-width: 320px !important;
       }
@@ -340,7 +350,7 @@
           peso: { "Masculino": { minimo: 45, maximo: 61 }, "Feminino": { minimo: 35, maximo: 51 }},
           linguas_importantes: [ "comum", 'élfico' ],
           linguas: [ 'dos gnomos', 'dos halflings', 'dos goblins', 'dos robgoblins', 'dos orcs', 'dos gnolls' ],
-          armas_importantes: [ 'Arco longo composto', 'Arco curto composto', 'Arco longo', 'Arco curto', 'Espada longa', 'Espada curta' ],
+          armas_importantes: [ 'Arco Longo Composto', 'Arco Curto Composto', 'Arco Longo', 'Arco Curto', 'Espada Longa', 'Espada Curta' ],
           talentos: {
             'Furtar Bolsos': 5,
             'Abrir Fechaduras': -5,
@@ -451,7 +461,7 @@
           peso: { "Masculino": { minimo: 26, maximo: 46 }, "Feminino": { minimo: 24, maximo: 44 }},
           linguas_importantes: [ "comum", "dos halflings" ],
           linguas: [ "dos anões", "élfico", "dos gnomos", "dos goblins", "dos orcs" ],
-          armas_importantes: [ 'Funda', 'Dardo', 'Arco curto', 'Zarabatana' ],
+          armas_importantes: [ 'Funda', 'Dardo', 'Arco Curto', 'Zarabatana' ],
           talentos: {
             'Furtar Bolsos': 5,
             'Abrir Fechaduras': 5,
@@ -507,6 +517,113 @@
         { nome: 'Elmo Grande', ca: 0, preco: { quantidade: 30, moeda: 'po' }, peso: 5 },
         { nome: 'Basinet', ca: 0, preco: { quantidade: 8, moeda: 'po' }, peso: 2.5 }
       ];
+
+      const MISSEIS = {
+        "Dardo Farpado": { quantidade: 1, preco: { quantidade: 1, moeda: 'pp' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 0, dano_p: '1d3', dano_mg: '1d3' },
+        "Dardo Agulha": { quantidade: 1, preco: { quantidade: 2, moeda: 'pc' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 0, dano_p: '1', dano_mg: '1' },
+        "Flecha de Caça": { quantidade: 12, preco: { quantidade: 3, moeda: 'pp' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 0, dano_p: '1d6', dano_mg: '1d6' },
+        "Flecha da Guerra": { quantidade: 6, preco: { quantidade: 3, moeda: 'pp' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 0, dano_p: '1d8', dano_mg: '1d8' },
+        "Quadrelo de Mão": { preco: { quantidade: 1, moeda: 'po' }, peso: 0, tamanho: 'Pequeno', tipo: 'Perfurante', velocidade: 0, dano_p: '1d3', dano_mg: '1d2' },
+        "Ouadrvlo trande": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' }
+      };
+
+      const ARMAS = {
+        "Arcabuz": { preco: { quantidade: 500, moeda: 'po' }, peso: 5, tamanho: 'Médio', tipo: 'Perfurante', velocidade: 15, dano_p: '1d10', dano_mg: '1d10' },
+        "Machado de Guerra": { preco: { quantidade: 5, moeda: 'po' }, peso: 3.5, tamanho: 'Médio', tipo: 'Cortante', velocidade: 7, dano_p: '1d8', dano_mg: '1d8' },
+        "Zarabatana": { preco: { quantidade: 5, moeda: 'po' }, peso: 1, tamanho: 'Grande', tipo: '', velocidade: 5, dano_p: '', dano_mg: '' },
+        "Arco Longo Composto": { preco: { quantidade: 100, moeda: 'po' }, peso: 1.5, tamanho: 'Grande', tipo: '', velocidade: 7, dano_p: '', dano_mg: '' },
+        "Arco Curto Composto": { preco: { quantidade: 75, moeda: 'po' }, peso: 1, tamanho: 'Médio', tipo: '', velocidade: 6, dano_p: '', dano_mg: '' },
+        "Arco Longo": { preco: { quantidade: 75, moeda: 'po' }, peso: 1.5, tamanho: 'Grande', tipo: '', velocidade: 8, dano_p: '', dano_mg: '' },
+        "Arco Curto": { preco: { quantidade: 30, moeda: 'po' }, peso: 1, tamanho: 'Médio', tipo: '', velocidade: 7, dano_p: '', dano_mg: '' },
+        "Clava": { preco: { quantidade: 0, moeda: 'po' }, peso: 1.5, tamanho: 'Médio', tipo: 'Concussão', velocidade: 4, dano_p: '1d6', dano_mg: '1d3' },
+        "Besta de Mão": { preco: { quantidade: 300, moeda: 'po' }, peso: 1.5, tamanho: 'Pequeno', tipo: '', velocidade: 5, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+        "": { preco: { quantidade: 0, moeda: 'po' }, peso: 0, tamanho: '', tipo: '', velocidade: 0, dano_p: '', dano_mg: '' },
+      };
 
       const ESCUDOS_DRUIDA = [
         ESCUDOS[1],
@@ -2604,6 +2721,13 @@
               "Ajuste de reação": 0
             },
           },
+          "Resistência": {
+            "Paralisação, Veneno ou Morte por Magia": 0,
+            "Bastão, Cajado ou Varinha": 0,
+            "Petrificação ou Transformação": 0,
+            "Sopro-de-Dragão": 0,
+            "Magia": 0
+          },
           "Idiomas": [],
           "Pontos de Perícia": {
             "Perícias Armas Inicial": 0,
@@ -3192,12 +3316,16 @@
                 ataques_por_rodada: 0,
                 detalhes: [ "O Escudo de Corpo fornece +1 de Categoria de Armadura para ataques à distância." ]
               },*/
-            let resultado_moedas = reduzir_moedas(moedas_atuais, escudo.preco);
+            let resultado_moedas = reduzir_moedas(moeda_limite, escudo.preco);
             let resultado_peso = peso_limite - escudo.peso;
             if ( (resultado_moedas.valido) && (resultado_peso >= 0) ) {
 
               ca_escudo = true;
-              personagem["Itens"].push(escudo.nome + ', Ataques por rodada: ' + escudo.ataques_por_rodada + ', ' + escudo.peso + ', ' + escudo.preco.quantidade + ' ' + escudo.preco.moeda);
+              let ataques_por_rodada = '';
+              if (escudo.ataques_por_rodada > 0) {
+                ataques_por_rodada = 'Ataques por rodada: ' + escudo.ataques_por_rodada + ', ';
+              }
+              personagem["Itens"].push(escudo.nome + ', ' + ataques_por_rodada + escudo.peso + 'kg, ' + escudo.preco.quantidade + ' ' + escudo.preco.moeda);
               if (escudo.detalhes.length > 0) {
                 personagem["Detalhes"].push.apply(personagem["Detalhes"], escudo.detalhes);
               }
@@ -3208,6 +3336,43 @@
           }
         } else {
           callback(moeda_limite, peso_limite, ca_escudo);
+        }
+      }
+
+      function sortear_itens_armaduras(moeda_limite, peso_limite, classe, personagem, callback) {
+        let armadura = '';
+        if (CLASSES[classe].armaduras.length > 0) {
+
+          let sorteio_armadura = [];
+
+          CLASSES[classe].armaduras.forEach((armadura, index_armadura) => {
+
+            /*
+              { nome: 'Corselete de Couro Simples', ca: 8, preco: { quantidade: 5, moeda: 'po' }, peso: 7.5 },
+            */
+            let moeda_descontada = reduzir_moedas((moeda_limite * 0.9), armadura.preco);
+            if ( (moeda_descontada.valido) && (peso_limite >= armadura.peso) ) {
+              sorteio_armadura.push(armadura);
+            }
+
+            if (index_armadura == (CLASSES[classe].armaduras.length - 1)) {
+              if (sorteio_armadura.length > 0) {
+
+                let index_sorteio = Math.floor(Math.random() * sorteio_armadura.length);
+                armadura = sorteio_armadura[index_sorteio];
+                let moeda_descontada_final = reduzir_moedas(moeda_limite, armadura.preco);
+                let peso_descontado_final = peso_limite - armadura.peso;
+                personagem["Itens"].push(armadura.nome + ', ' + armadura.peso + 'kg, ' + armadura.preco.quantidade + ' ' + armadura.preco.moeda);
+                callback(moeda_descontada_final.moedas, peso_descontado_final, armadura);
+
+              } else {
+                callback(moeda_limite, peso_limite, armadura);
+              }
+            }
+          });
+
+        } else {
+          callback(moeda_limite, peso_limite, armadura);
         }
       }
 
@@ -3236,11 +3401,18 @@
           ) * 10;
         }
 
-        let moedas_limite = (personagem["Dados Básicos"]["Moedas"] - 11);
-        let moedas_atuais = 0;
+        let moeda_limite = (personagem["Dados Básicos"]["Moedas"] - 11);
         let peso_limite = (Math.floor(personagem["Dados Básicos"]["Peso"] / 2) - 10);
-        let peso_atual = 0;
 
+        sortear_itens_escudos(moeda_limite, peso_limite, classe, personagem, (resultado_moedas, resultado_peso, ca_escudo) => {
+          sortear_itens_armaduras(resultado_moedas, resultado_peso, classe, personagem, (resultado_moedas, resultado_peso, armadura) => {
+            personagem["Dados Básicos"]["Moedas"] = resultado_moedas;
+            personagem["Dados Básicos"]["Peso dos Equipamentos"] = resultado_peso;
+
+
+          });
+          callback();
+        });
       }
 
       function sortear_dados_basicos(personagem, callback) {
@@ -3361,24 +3533,51 @@
             personagem["Pontos de Perícia"]["Perícias Armas Penalidades"] = -2;
             personagem["Pontos de Perícia"]["Perícias Comuns Inicial"] = 3 + numero_de_linguas;
             personagem["Pontos de Perícia"]["Perícias Comuns Nº Níveis"] = 3;
+
+            personagem["Resistência"]["Paralisação, Veneno ou Morte por Magia"] = 14;
+            personagem["Resistência"]["Bastão, Cajado ou Varinha"] = 16;
+            personagem["Resistência"]["Petrificação ou Transformação"] = 15;
+            personagem["Resistência"]["Sopro-de-Dragão"] = 17;
+            personagem["Resistência"]["Magia"] = 17;
+
           } else if (CLASSES[classe]["Grupo"] == "Arcano") {
             personagem["Pontos de Perícia"]["Perícias Armas Inicial"] = 1;
             personagem["Pontos de Perícia"]["Perícias Armas Nº Níveis"] = 6;
             personagem["Pontos de Perícia"]["Perícias Armas Penalidades"] = -5;
             personagem["Pontos de Perícia"]["Perícias Comuns Inicial"] = 4 + numero_de_linguas;
             personagem["Pontos de Perícia"]["Perícias Comuns Nº Níveis"] = 3;
+
+            personagem["Resistência"]["Paralisação, Veneno ou Morte por Magia"] = 14;
+            personagem["Resistência"]["Bastão, Cajado ou Varinha"] = 11;
+            personagem["Resistência"]["Petrificação ou Transformação"] = 13;
+            personagem["Resistência"]["Sopro-de-Dragão"] = 15;
+            personagem["Resistência"]["Magia"] = 12;
+
           } else if (CLASSES[classe]["Grupo"] == "Sacerdote") {
             personagem["Pontos de Perícia"]["Perícias Armas Inicial"] = 2;
             personagem["Pontos de Perícia"]["Perícias Armas Nº Níveis"] = 4;
             personagem["Pontos de Perícia"]["Perícias Armas Penalidades"] = -3;
             personagem["Pontos de Perícia"]["Perícias Comuns Inicial"] = 4 + numero_de_linguas;
             personagem["Pontos de Perícia"]["Perícias Comuns Nº Níveis"] = 3;
+
+            personagem["Resistência"]["Paralisação, Veneno ou Morte por Magia"] = 10;
+            personagem["Resistência"]["Bastão, Cajado ou Varinha"] = 14;
+            personagem["Resistência"]["Petrificação ou Transformação"] = 13;
+            personagem["Resistência"]["Sopro-de-Dragão"] = 16;
+            personagem["Resistência"]["Magia"] = 15;
+
           } else if (CLASSES[classe]["Grupo"] == "Ladino") {
             personagem["Pontos de Perícia"]["Perícias Armas Inicial"] = 2;
             personagem["Pontos de Perícia"]["Perícias Armas Nº Níveis"] = 4;
             personagem["Pontos de Perícia"]["Perícias Armas Penalidades"] = -3;
             personagem["Pontos de Perícia"]["Perícias Comuns Inicial"] = 3 + numero_de_linguas;
             personagem["Pontos de Perícia"]["Perícias Comuns Nº Níveis"] = 4;
+
+            personagem["Resistência"]["Paralisação, Veneno ou Morte por Magia"] = 13;
+            personagem["Resistência"]["Bastão, Cajado ou Varinha"] = 14;
+            personagem["Resistência"]["Petrificação ou Transformação"] = 12;
+            personagem["Resistência"]["Sopro-de-Dragão"] = 16;
+            personagem["Resistência"]["Magia"] = 15;
           }
 
           let sabedoria = personagem["Habilidades"]["Sabedoria"]["Valor da Habilidade"];
@@ -3400,8 +3599,7 @@
 
             sortear_itens(classe, personagem, (moedas,peso) => {
 
-              personagem["Dados Básicos"]["Moedas"] = moedas;
-              personagem["Dados Básicos"]["Peso dos Equipamentos"] = peso;
+
 
               // movimentação
               // calcular CA
