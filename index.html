@@ -212,10 +212,6 @@
         }
       });
 
-      const PERICIAS = {
-        "Rastrear": {}
-      };
-
       const RACAS = {
         "Humano": {
           "Força": { minimo: 3, maximo: 18 },
@@ -454,6 +450,117 @@
         "Cruel (caótico e maligno)"
       ];
 
+      function formatar_pericia_comum(pericia) {
+        /*
+          { nome: "", "Nº Pontos Necessários": 0, "Habilidade Relevante": 'Força Destreza Constituição Inteligência Sabedoria Carisma', "Modificador do Teste": 0 },
+          { nome: "Lutar no Escuro", pontos: 2, habilidade_relevante: '', modificador: 0 },
+        */
+        let habilidade = '';
+        if (pericia.habilidade_relevante != '') {
+          let modificador = pericia.modificador;
+          if (pericia.modificador > 0) {
+            modificador = "+" + modificador;
+          }
+          habilidade = ', Habilidade Relevante: ' + pericia.habilidade_relevante + ', Modificador do Teste: ' + modificador;
+        }
+        return pericia.nome + ", Nº Pontos Necessários: " + pericia.pontos + habilidade;
+      }
+
+      const PERICIAS = {
+        "Geral": [
+          { nome: "Agrícultura", pontos: 1, habilidade_relevante: 'Inteligência', modificador: 0 },
+          { nome: "Lidar com Animais", pontos: 1, habilidade_relevante: 'Sabedoria', modificador: -1 },
+          { nome: "Treinar Animais", pontos: 1, habilidade_relevante: 'Sabedoria', modificador: 0 },
+          { nome: "Talento Artístico", pontos: 1, habilidade_relevante: 'Sabedoria', modificador: 0 },
+          { nome: "Forjaria", pontos: 1, habilidade_relevante: 'Força', modificador: 0 },
+          { nome: "Preparar Bebidas", pontos: 1, habilidade_relevante: 'Inteligência', modificador: 0 },
+          { nome: "Carpintaria", pontos: 1, habilidade_relevante: 'Força', modificador: 0 },
+          { nome: "Sapataria", pontos: 1, habilidade_relevante: 'Destreza', modificador: 0 },
+          { nome: "Cozinhar", pontos: 1, habilidade_relevante: 'Inteligência', modificador: 0 },
+          { nome: "Dança", pontos: 1, habilidade_relevante: 'Destreza', modificador: 0 },
+          { nome: "Senso de Direção", pontos: 1, habilidade_relevante: 'Sabedoria', modificador: 1 },
+          { nome: "Etiqueta", pontos: 1, habilidade_relevante: 'Carisma', modificador: 0 },
+          { nome: "Preparar Fogueira", pontos: 1, habilidade_relevante: 'Sabedoria', modificador: -1 },
+          { nome: "Pesca", pontos: 1, habilidade_relevante: 'Sabedoria', modificador: -1 },
+          { nome: "Heráldica", pontos: 1, habilidade_relevante: 'Inteligência', modificador: 0 },
+          { nome: "Idiomas Modernos", pontos: 1, habilidade_relevante: 'Inteligência', modificador: 0 },
+          { nome: "Artesanato em Couro", pontos: 1, habilidade_relevante: 'Inteligência', modificador: 0 },
+          { nome: "Mineração", pontos: 2, habilidade_relevante: 'Sabedoria', modificador: -3 },
+          { nome: "Cerâmica", pontos: 1, habilidade_relevante: 'Destreza', modificador: -2 },
+          { nome: "Cavalgar Criatura Alada", pontos: 2, habilidade_relevante: 'Sabedoria', modificador: -2 },
+          { nome: "Cavalgar Criatura Terrestre", pontos: 1, habilidade_relevante: 'Sabedoria', modificador: 3 },
+          { nome: "Uso de Cordas", pontos: 1, habilidade_relevante: 'Destreza', modificador: 0 },
+          { nome: "Marinhagem", pontos: 1, habilidade_relevante: 'Destreza', modificador: 1 },
+          { nome: "Costura/Alfaiataria", pontos: 1, habilidade_relevante: 'Destreza', modificador: -1 },
+          { nome: "Cantar", pontos: 1, habilidade_relevante: 'Carisma', modificador: 0 },
+          { nome: "Trabalhar Pedra", pontos: 1, habilidade_relevante: 'Força', modificador: -2 },
+          { nome: "Natação", pontos: 1, habilidade_relevante: 'Força', modificador: 0 },
+          { nome: "Senso do Clima", pontos: 1, habilidade_relevante: 'Sabedoria', modificador: -1 },
+          { nome: "Tecelagem", pontos: 1, habilidade_relevante: 'Inteligência', modificador: -1 }
+        ],
+        "Homem de Armas": [
+          { nome: "Conhecimento dos Animais", pontos: 1, habilidade_relevante: 'Inteligência', modificador: 0 },
+          { nome: "Fazer Armaduras", pontos: 2, habilidade_relevante: 'Inteligência', modificador: -2 },
+          { nome: "Lutar no Escuro", pontos: 2, habilidade_relevante: '', modificador: 0 },
+          { nome: "Fabricação de Arcos e Flechas", pontos: 1, habilidade_relevante: 'Destreza', modificador: -1 },
+          { nome: "Conduzir Carruagem", pontos: 1, habilidade_relevante: 'Destreza', modificador: 2 },
+          { nome: "Vigor", pontos: 2, habilidade_relevante: 'Constituição', modificador: 0 },
+          { nome: "Jogo", pontos: 1, habilidade_relevante: 'Carisma', modificador: 0 },
+          { nome: "Caça", pontos: 1, habilidade_relevante: 'Sabedoria', modificador: -1 },
+          { nome: "Montanhismo", pontos: 1, habilidade_relevante: '', modificador: 0 },
+          { nome: "Navegação", pontos: 1, habilidade_relevante: 'Inteligência', modificador: -2 },
+          { nome: "Correr", pontos: 1, habilidade_relevante: 'Constituição', modificador: -6 },
+          { nome: "Preparar Armadilhas", pontos: 1, habilidade_relevante: 'Destreza', modificador: -1 },
+          { nome: "Sobrevivência", pontos: 2, habilidade_relevante: 'Inteligência', modificador: 0 },
+          { nome: "Rastrear", pontos: 2, habilidade_relevante: 'Sabedoria', modificador: 0 },
+          { nome: "Forjar Armas", pontos: 3, habilidade_relevante: 'Inteligência', modificador: -3 }
+        ],
+        "Arcano": [
+          { nome: "História Antiga", pontos: 1, habilidade_relevante: 'Inteligência', modificador: -1 },
+          { nome: "Astrologia", pontos: 2, habilidade_relevante: 'Inteligência', modificador: 0 },
+          { nome: "Engenharia", pontos: 2, habilidade_relevante: 'Inteligência', modificador: -3 },
+          { nome: "Lapidação", pontos: 2, habilidade_relevante: 'Destreza', modificador: -2 },
+          { nome: "Herbalismo", pontos: 2, habilidade_relevante: 'Inteligência', modificador: -2 },
+          { nome: "Idiomas Antigos", pontos: 1, habilidade_relevante: 'Inteligência', modificador: 0 },
+          { nome: "Navegação", pontos: 1, habilidade_relevante: 'Inteligência', modificador: -2 },
+          { nome: "Ler/Escrever", pontos: 1, habilidade_relevante: 'Inteligência', modificador: 1 },
+          { nome: "Religião", pontos: 1, habilidade_relevante: 'Sabedoria', modificador: 0 },
+          { nome: "Conhecimento Místico", pontos: 1, habilidade_relevante: 'Inteligência', modificador: -2 }
+        ],
+        "Sacerdote": [
+          { nome: "História Antiga", pontos: 1, habilidade_relevante: 'Inteligência', modificador: -1 },
+          { nome: "Astrologia", pontos: 2, habilidade_relevante: 'Inteligência', modificador: 0 },
+          { nome: "Engenharia", pontos: 2, habilidade_relevante: 'Inteligência', modificador: -3 },
+          { nome: "Cura", pontos: 2, habilidade_relevante: 'Sabedoria', modificador: -2 },
+          { nome: "Herbalismo", pontos: 2, habilidade_relevante: 'Inteligência', modificador: -2 },
+          { nome: "Idiomas Antigos", pontos: 1, habilidade_relevante: 'Inteligência', modificador: 0 },
+          { nome: "História Local", pontos: 1, habilidade_relevante: 'Carisma', modificador: 0 },
+          { nome: "Instrumento Musical", pontos: 1, habilidade_relevante: 'Destreza', modificador: -1 },
+          { nome: "Navegação", pontos: 1, habilidade_relevante: 'Inteligência', modificador: -2 },
+          { nome: "Ler/Escrever", pontos: 1, habilidade_relevante: 'Inteligência', modificador: 1 },
+          { nome: "Religião", pontos: 1, habilidade_relevante: 'Sabedoria', modificador: 0 },
+          { nome: "Conhecimento Místico", pontos: 1, habilidade_relevante: 'Inteligência', modificador: -2 }
+        ],
+        "Ladino": [
+          { nome: "História Antiga", pontos: 1, habilidade_relevante: 'Inteligência', modificador: -1 },
+          { nome: "Avaliação", pontos: 1, habilidade_relevante: 'Inteligência', modificador: 0 },
+          { nome: "Lutar no Escuro", pontos: 2, habilidade_relevante: '', modificador: 0 },
+          { nome: "Disfarce", pontos: 1, habilidade_relevante: 'Carisma', modificador: -1 },
+          { nome: "Falsificação", pontos: 1, habilidade_relevante: 'Destreza', modificador: -1 },
+          { nome: "Jogo", pontos: 1, habilidade_relevante: 'Carisma', modificador: 0 },
+          { nome: "Lapidação", pontos: 2, habilidade_relevante: 'Destreza', modificador: -2 },
+          { nome: "Malabarismo", pontos: 1, habilidade_relevante: 'Destreza', modificador: -1 },
+          { nome: "Saltar", pontos: 1, habilidade_relevante: 'Força', modificador: 0 },
+          { nome: "História Local", pontos: 1, habilidade_relevante: 'Carisma', modificador: 0 },
+          { nome: "Instrumento Musical", pontos: 1, habilidade_relevante: 'Destreza', modificador: -1 },
+          { nome: "Leitura de Lábios", pontos: 2, habilidade_relevante: 'Inteligência', modificador: -2 },
+          { nome: "Preparar Armadilhas", pontos: 1, habilidade_relevante: 'Destreza', modificador: -1 },
+          { nome: "Andar na Corda-Bamba", pontos: 1, habilidade_relevante: 'Destreza', modificador: 0 },
+          { nome: "Acrobacia", pontos: 1, habilidade_relevante: 'Destreza', modificador: 0 },
+          { nome: "Ventriloquismo", pontos: 1, habilidade_relevante: 'Inteligência', modificador: -2 }
+        ]
+      };
+
       const ITENS = [
         { nome: 'Sineta', preco: { quantidade: 1, moeda: 'po' }, peso: 0 },
         { nome: 'Algibeira Grande', preco: { quantidade: 1, moeda: 'po' }, peso: 0.5 },
@@ -537,6 +644,49 @@
 
       const INSTRUMENTOS = [ ITENS[28], ITENS[29], ITENS[30], ITENS[31], ITENS[32], ITENS[33], ITENS[34], ITENS[35], ITENS[36], ITENS[37] ];
 
+      const VESTIMENTAS = {
+        'Masculino': [
+          { nome: 'Botas de Montaria, Calças, Túnica', preco: { quantidade: 5, moeda: 'po' } },
+          { nome: 'Botas Normais, Calças, Túnica', preco: { quantidade: 3, moeda: 'po' } },
+          { nome: 'Sapatos, Calças, Túnica', preco: { quantidade: 3, moeda: 'po' } },
+          { nome: 'Sapatos, Calças, Túnica, Mitenes', preco: { quantidade: 4, moeda: 'po' } },
+          { nome: 'Botas Normais, Calças, Mitenes', preco: { quantidade: 4, moeda: 'po' } },
+          { nome: 'Botas Normais, Calças, Luvas', preco: { quantidade: 4, moeda: 'po' } },
+          { nome: 'Sapatos, Calças, Túnica, Luvas', preco: { quantidade: 4, moeda: 'po' } },
+          { nome: 'Botas de Montaria, Calças, Manto Comum', preco: { quantidade: 5, moeda: 'po' } },
+          { nome: 'Botas Normais, Calças, Manto Comum', preco: { quantidade: 3, moeda: 'po' } },
+          { nome: 'Sapatos, Calças, Manto Comum', preco: { quantidade: 3, moeda: 'po' } },
+          { nome: 'Botas Normais, Calças, Manto Comum, Cinto', preco: { quantidade: 3, moeda: 'po' } },
+          { nome: 'Botas de Montaria, Calças, Túnica, Cinto', preco: { quantidade: 5, moeda: 'po' } },
+          { nome: 'Botas Normais, Calças, Gibão de Seda', preco: { quantidade: 80, moeda: 'po' } },
+          { nome: 'Botas Normais, Calças, Gibão de Seda, Mitenes', preco: { quantidade: 80, moeda: 'po' } },
+          { nome: 'Botas Normais, Calças, Gibão de Seda, Luvas', preco: { quantidade: 80, moeda: 'po' } },
+          { nome: 'Botas Normais, Calças, Gibão de Seda, Cinto', preco: { quantidade: 80, moeda: 'po' } }
+        ],
+        'Feminino': [
+          { nome: 'Botas de Montaria, Calças, Túnica', preco: { quantidade: 5, moeda: 'po' } },
+          { nome: 'Botas Normais, Calças, Túnica', preco: { quantidade: 3, moeda: 'po' } },
+          { nome: 'Sandálias, Calças, Túnica', preco: { quantidade: 3, moeda: 'po' } },
+          { nome: 'Sandálias, Calças, Túnica, Mitenes', preco: { quantidade: 3, moeda: 'po' } },
+          { nome: 'Sandálias, Calças, Túnica Bordada', preco: { quantidade: 4, moeda: 'po' } },
+          { nome: 'Botas Normais, Calças, Túnica Bordada', preco: { quantidade: 4, moeda: 'po' } },
+          { nome: 'Sandálias, Calças, Túnica, Luvas', preco: { quantidade: 4, moeda: 'po' } },
+          { nome: 'Sandálias, Calças, Túnica Bordada, Luvas', preco: { quantidade: 5, moeda: 'po' } },
+          { nome: 'Botas Normais, Calças, Túnica Bordada, Luvas', preco: { quantidade: 5, moeda: 'po' } },
+          { nome: 'Sandálias, Calças, Manto Comum', preco: { quantidade: 2, moeda: 'po' } },
+          { nome: 'Botas Normais, Calças, Manto Comum', preco: { quantidade: 2, moeda: 'po' } },
+          { nome: 'Botas Normais, Calças, Túnica Bordada, Cinto', preco: { quantidade: 4, moeda: 'po' } },
+          { nome: 'Sandálias, Calças, Túnica, Luvas, Cinto', preco: { quantidade: 4, moeda: 'po' } },
+          { nome: 'Sandálias, Calças, Túnica Bordada, Cinto', preco: { quantidade: 5, moeda: 'po' } },
+          { nome: 'Botas Normais, Calças, Túnica Bordada, Cinto', preco: { quantidade: 5, moeda: 'po' } },
+          { nome: 'Sandálias, Vestido Simples, Cinto', preco: { quantidade: 3, moeda: 'po' } },
+          { nome: 'Sandálias, Vestido Ornamentado, Cinto', preco: { quantidade: 10, moeda: 'po' } },
+          { nome: 'Sandálias, Calças, Gibão de Seda, Luvas', preco: { quantidade: 80, moeda: 'po' } },
+          { nome: 'Botas Normais, Calças, Gibão de Seda, Luvas', preco: { quantidade: 80, moeda: 'po' } },
+          { nome: 'Sandálias, Calças, Gibão de Seda', preco: { quantidade: 80, moeda: 'po' } }
+        ]
+      };
+
       const ALIMENTOS = [
         { nome: 'Cerveja (1 garrafa)', preco: { quantidade: 1, moeda: 'pp' } },
         { nome: 'Cerveja Leve (1 garrafa)', preco: { quantidade: 2, moeda: 'pp' } },
@@ -609,9 +759,11 @@
         { nome: 'Armadura de Bronze', ca: 4, preco: { quantidade: 400 , moeda: 'po' }, peso: 22.5 },
         { nome: 'Armadura Simples', ca: 3, preco: { quantidade: 600, moeda: 'po' }, peso: 25 },
         { nome: 'Armadura de Batalha', ca: 2, preco: { quantidade: 2000, moeda: 'po' }, peso: 30 },
-        { nome: 'Armadura Completa', ca: 1, preco: { quantidade: 4000, moeda: 'po' }, peso: 35 },
+        { nome: 'Armadura Completa', ca: 1, preco: { quantidade: 4000, moeda: 'po' }, peso: 35 }
+        /*
         { nome: 'Elmo Grande', ca: 0, preco: { quantidade: 30, moeda: 'po' }, peso: 5 },
         { nome: 'Basinet', ca: 0, preco: { quantidade: 8, moeda: 'po' }, peso: 2.5 }
+        */
       ];
 
       const MISSEIS = {
@@ -2842,7 +2994,7 @@
             "Perícias Comuns Inicial": 0,
             "Perícias Comuns Nº Níveis": 0
           },
-          "Perícias": {},
+          "Perícias": [],
           "Especialização": [],
           "Itens": [],
           "Detalhes": []
@@ -3070,10 +3222,6 @@
                   } else {
                     let index = Math.floor(Math.random() * classes_permitidas.length);
                     classe_final = classes_permitidas[index];
-                  }
-
-                  if (classe_final == "Ranger") {
-                    personagem["Perícias"]["Rastrear"] = PERICIAS["Rastrear"];
                   }
 
                   if ( (classe_final == "Clérigo") && (forcar_classe == "Todas") ) {
@@ -3799,6 +3947,11 @@
         debug("Moedas sorteadas: " + personagem["Dados Básicos"]["Moedas"] + " po");
         debug("Peso sorteado: " + personagem["Habilidades"]["Força"]["Carga Permitida"]);
 
+        /* Vestimentas */
+        let lista_vestimentas = VESTIMENTAS[personagem["Dados Básicos"]["Gênero"]];
+        let vestimenta_sorteada = lista_vestimentas[Math.floor(Math.random() * lista_vestimentas.length)];
+        personagem["Itens"].push(formatar_item(vestimenta_sorteada));
+
         /* Alocar Mochila */
         let moeda_limite = (personagem["Dados Básicos"]["Moedas"] - 2);
         let peso_limite = personagem["Habilidades"]["Força"]["Carga Permitida"] - 1;
@@ -3861,11 +4014,25 @@
         });
       }
 
+      function sortear_pericias(arma_talento, classe, raca, personagem, callback) {
+
+        if (classe == "Bardo") {
+          personagem["Perícias"].push(formatar_pericia_comum(PERICIAS["Ladino"][10]));
+        } else if (classe == "Ranger") {
+          personagem["Perícias"].push(formatar_pericia_comum(PERICIAS["Homem de Armas"][13]));
+        }
+
+        callback();
+
+      }
+
       function sortear_dados_basicos(personagem, callback) {
         let classe = ajustar_nome_classe(personagem);
         let raca = ajustar_nome_raca(personagem);
 
         /* Ajustes de Resistências */
+        personagem["Detalhes"].push('Para realizar um teste de Perícias, adicione o modificador à Habilidade apropriada. Jogue 1d20, se o resultado for menor ou igual, houve sucesso (20 sempre é uma falha).');
+
         personagem["Detalhes"].push('Aplique o Ajuste Defensivo de Destreza ao lance 1d20 de Resistência contra ataques em que é possível esquivar-se (raios, rochas, etc).');
         if ( (raca == "Elfo") || (raca == "Gnomo") || (raca == "Meio-Elfo") || (raca == "Humano") ) {
           personagem["Detalhes"].push('Aplique a Resistência contra Veneno (Constituição) ao lance 1d20 de Resistência contra venenos.');
@@ -4099,12 +4266,15 @@
 
             sortear_itens(classe, raca, personagem, (arma_talento) => {
 
-              // movimentação
-              // calcular CA
-              // instrumento musical do bardo, já com a perícia
-              // perícia História Local para o bardo
+              sortear_pericias(arma_talento, classe, raca, personagem, () => {
 
-              callback();
+                // movimentação
+                // calcular CA
+                // perícia História Local para o bardo
+
+                callback();
+
+              });
 
             });
 
