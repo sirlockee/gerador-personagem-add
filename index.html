@@ -190,7 +190,7 @@
     <script type="text/javascript">
 
       /* debug */
-      const DEBUG = true;
+      const DEBUG = false;
       function debug(texto) {
         if (DEBUG) {
           console.log(texto);
@@ -3643,6 +3643,13 @@
         let classe = ajustar_nome_classe(personagem);
         let raca = ajustar_nome_raca(personagem);
 
+        /* Ajustes de Resistências */
+        personagem["Detalhes"].push('Aplique o Ajuste Defensivo de Destreza ao lance 1d20 de Resistência contra ataques em que é possível esquivar-se (raios, rochas, etc).');
+        if ( (raca == "Elfo") || (raca == "Gnomo") || (raca == "Meio-Elfo") || (raca == "Humano") ) {
+          personagem["Detalhes"].push('Aplique a Resistência contra Veneno (Constituição) ao lance 1d20 de Resistência contra venenos.');
+        }
+        personagem["Detalhes"].push('Aplique o Ajuste de Defesa Contra Magia (Sabedoria) ao lance 1d20 de Resistência contra magias que atacam a mente.');
+
         let generos = [ 'Masculino' , 'Feminino' ];
         let genero = generos[Math.floor(Math.random() * 2)];
         personagem["Dados Básicos"]["Gênero"] = genero;
@@ -3659,7 +3666,7 @@
         let peso = (Math.random() * ajuste_peso) + RACAS[raca].peso[genero].minimo;
         personagem["Dados Básicos"]["Peso"] = peso.toFixed(2);
 
-        personagem["Detalhes"] = RACAS[raca].detalhes;
+        personagem["Detalhes"].push.apply(personagem["Detalhes"], RACAS[raca].detalhes);
 
         let base_movimentacao = 0;
 
