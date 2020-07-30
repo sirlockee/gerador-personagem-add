@@ -538,7 +538,53 @@
       const INSTRUMENTOS = [ ITENS[28], ITENS[29], ITENS[30], ITENS[31], ITENS[32], ITENS[33], ITENS[34], ITENS[35], ITENS[36], ITENS[37] ];
 
       const ALIMENTOS = [
-        { nome: '', preco: { quantidade: 0, moeda: 'po' }, peso: 0 },
+        { nome: 'Cerveja (1 garrafa)', preco: { quantidade: 1, moeda: 'pp' } },
+        { nome: 'Cerveja Leve (1 garrafa)', preco: { quantidade: 2, moeda: 'pp' } },
+        { nome: 'Hidromel (1 garrafa)', preco: { quantidade: 1, moeda: 'pp' } },
+        { nome: 'Hidromel do Reino (1 garrafa)', preco: { quantidade: 1, moeda: 'po' } },
+        { nome: 'Pão (1 dia)', preco: { quantidade: 5, moeda: 'pc' } },
+        { nome: 'Lembas (1 dia)', preco: { quantidade: 1, moeda: 'po' } },
+        { nome: 'Pão de Viagem (1 dia)', preco: { quantidade: 10, moeda: 'pc' } },
+        { nome: 'Queijo (1 dia)', preco: { quantidade: 4, moeda: 'pp' } },
+        { nome: 'Queijo Halfling (1 dia)', preco: { quantidade: 5, moeda: 'pp' } },
+        { nome: 'Queijo de Viagem (1 dia)', preco: { quantidade: 5, moeda: 'pp' } },
+        { nome: 'Vinho (1 garrafa)', preco: { quantidade: 2, moeda: 'pp' } },
+        { nome: 'Vinho do Reino (1 garrafa)', preco: { quantidade: 1, moeda: 'po' } },
+        { nome: 'Ovos (1 dia)', preco: { quantidade: 1, moeda: 'pc' } },
+        { nome: 'Verduras Frescas, 500g', preco: { quantidade: 1, moeda: 'pc' } },
+        { nome: 'Legumes Frescos, 500g', preco: { quantidade: 1, moeda: 'pc' } },
+        { nome: 'Frutas, 500g', preco: { quantidade: 1, moeda: 'pc' } },
+        { nome: 'Frutas Secas, 500g', preco: { quantidade: 1, moeda: 'pc' } },
+        { nome: 'Frutas Vermelhas, 500g', preco: { quantidade: 3, moeda: 'pc' } },
+        { nome: 'Frutas Cítricas, 500g', preco: { quantidade: 3, moeda: 'pc' } },
+        { nome: 'Mel (1 garrafa)', preco: { quantidade: 5, moeda: 'pp' } },
+        { nome: 'Carne, 500g', preco: { quantidade: 1, moeda: 'pp' } },
+        { nome: 'Carne Seca, 500g', preco: { quantidade: 1, moeda: 'pp' } },
+        { nome: 'Sopa, 500ml', preco: { quantidade: 5, moeda: 'pc' } },
+        { nome: 'Ração de Viagem (1 dia)', preco: { quantidade: 0, moeda: 'po' } },
+        { nome: 'Coldre de Água', preco: { quantidade: 1, moeda: 'pp' } },
+        { nome: 'Chifre de Água', preco: { quantidade: 1, moeda: 'pp' } },
+        { nome: 'Garrafa de Água', preco: { quantidade: 1, moeda: 'pp' } },
+        { nome: 'Peixe, 500g', preco: { quantidade: 3, moeda: 'po' } },
+        { nome: 'Manteiga, 500g', preco: { quantidade: 2, moeda: 'pp' } },
+        { nome: 'Açúcar Mascavo, 500g', preco: { quantidade: 1, moeda: 'po' } },
+        { nome: 'Provisões Desidratadas (1 dia)', preco: { quantidade: 5, moeda: 'pp' } },
+        { nome: 'Figos, 500g', preco: { quantidade: 3, moeda: 'pp' } },
+        { nome: 'Nozes, 500g', preco: { quantidade: 1, moeda: 'po' } },
+        { nome: 'Uvas Passas, 500g', preco: { quantidade: 2, moeda: 'pp' } },
+        { nome: 'Arroz, 500g', preco: { quantidade: 2, moeda: 'pp' } },
+        { nome: 'Sal, 500g', preco: { quantidade: 1, moeda: 'pp' } },
+        { nome: 'Açafrão, 500g', preco: { quantidade: 15, moeda: 'po' } },
+        { nome: 'Cravo, 500g', preco: { quantidade: 15, moeda: 'po' } },
+        { nome: 'Pimenta, 500g', preco: { quantidade: 2, moeda: 'po' } },
+        { nome: 'Gengibre, 500g', preco: { quantidade: 2, moeda: 'po' } },
+        { nome: 'Canela, 500g', preco: { quantidade: 1, moeda: 'po' } },
+        { nome: 'Cidra (1 garrafa)', preco: { quantidade: 8, moeda: 'po' } },
+        { nome: 'Raízes Medicinais (1pv)', preco: { quantidade: 10, moeda: 'po' } },
+        { nome: 'Folhas Medicinais (1pv)', preco: { quantidade: 10, moeda: 'po' } },
+        { nome: 'Frutas Medicinais (1pv)', preco: { quantidade: 10, moeda: 'po' } },
+        { nome: 'Poção de Cura (2d4+2)', preco: { quantidade: 60, moeda: 'po' } },
+        { nome: 'Meia Poção de Cura (1d4+1)', preco: { quantidade: 30, moeda: 'po' } }
       ];
 
       const ESCUDOS = [
@@ -3505,7 +3551,11 @@
       }
 
       function formatar_item(item) {
-        return item.nome + ", " + item.preco.quantidade + " " + item.preco.moeda + ", " + item.peso + "kg";
+        let peso = '';
+        if ( (item.peso != undefined) && (item.peso != 'undefined') && (item.peso != null) && (item.peso != 0) ) {
+          peso = ", " + item.peso + "kg";
+        }
+        return item.nome + ", " + item.preco.quantidade + " " + item.preco.moeda + peso;
       }
 
       function sortear_itens_armas(moeda_limite, peso_limite, classe, raca, personagem, callback) {
@@ -3664,6 +3714,60 @@
         });
       }
 
+      function sortear_itens_comuns(moeda_limite, peso_limite, personagem, callback) {
+        let moeda_descontada_final = moeda_limite;
+        let peso_descontado_final = peso_limite;
+        let itens_ja_sorteados = [];
+
+        /* Sortear item */
+        let quantidade_itens = Math.floor(Math.random() * 6) + 2;
+        debug("Quantidade de itens sorteados: " + quantidade_itens);
+        for (let qtde = 0; qtde < quantidade_itens; qtde++) {
+
+          let index_sorteio = Math.floor(Math.random() * ITENS.length);
+          let item = ITENS[index_sorteio];
+
+          let moeda_descontada = reduzir_moedas(moeda_descontada_final, item.preco);
+          if ( (!itens_ja_sorteados.includes(item.nome)) && (moeda_descontada.valido) && (peso_descontado_final >= item.peso) ) {
+            moeda_descontada_final = reduzir_moedas(moeda_descontada_final, item.preco).moedas;
+            peso_descontado_final = peso_descontado_final - item.peso;
+            personagem["Itens"].push(formatar_item(item));
+            itens_ja_sorteados.push(item.nome);
+          }
+
+          if (qtde == (quantidade_itens - 1)) {
+            callback(moeda_descontada_final, peso_descontado_final);
+          }
+
+        }
+      }
+
+      function sortear_itens_alimentos(moeda_limite, personagem, callback) {
+        let moeda_descontada_final = moeda_limite;
+        let itens_ja_sorteados = [];
+
+        /* Sortear item */
+        let quantidade_itens = Math.floor(Math.random() * 4) + 2;
+        debug("Quantidade de itens sorteados: " + quantidade_itens);
+        for (let qtde = 0; qtde < quantidade_itens; qtde++) {
+
+          let index_sorteio = Math.floor(Math.random() * ALIMENTOS.length);
+          let item = ALIMENTOS[index_sorteio];
+
+          let moeda_descontada = reduzir_moedas(moeda_descontada_final, item.preco);
+          if ( (!itens_ja_sorteados.includes(item.nome)) && (moeda_descontada.valido) ) {
+            moeda_descontada_final = reduzir_moedas(moeda_descontada_final, item.preco).moedas;
+            personagem["Itens"].push(formatar_item(item));
+            itens_ja_sorteados.push(item.nome);
+          }
+
+          if (qtde == (quantidade_itens - 1)) {
+            callback(moeda_descontada_final);
+          }
+
+        }
+      }
+
       function sortear_itens(classe, raca, personagem, callback) {
 
         if (CLASSES[classe]["Grupo"] == "Homem de Armas") {
@@ -3733,18 +3837,25 @@
             sortear_itens_armas(resultado_moedas_2, resultado_peso_2, classe, raca, personagem, (resultado_moedas_3, resultado_peso_3, arma_talento, itens_extras) => {
               debug("Moedas pós armas: " + resultado_moedas_3 + " po");
               debug("Peso pós armas: " + resultado_peso_3);
+              sortear_itens_comuns(resultado_moedas_3, resultado_peso_3, personagem, (resultado_moedas_4, resultado_peso_4) => {
+                debug("Moedas pós itens: " + resultado_moedas_4 + " po");
+                debug("Peso pós itens: " + resultado_peso_4);
+                sortear_itens_alimentos(resultado_moedas_4, personagem, (resultado_moedas_5) => {
+                  debug("Moedas pós alimentos: " + resultado_moedas_5 + " po");
 
-              let ajuste_ca = personagem["Habilidades"]["Destreza"]["Ajuste Defensivo"];
-              let ca_final = ca_armadura + ajuste_ca;
-              if (ca_escudo) {
-                ca_final = ca_final - 1;
-              }
+                  let ajuste_ca = personagem["Habilidades"]["Destreza"]["Ajuste Defensivo"];
+                  let ca_final = ca_armadura + ajuste_ca;
+                  if (ca_escudo) {
+                    ca_final = ca_final - 1;
+                  }
 
-              personagem["Dados Básicos"]["Categoria de Armadura"] = ca_final;
-              personagem["Dados Básicos"]["Moedas"] = converter_po_em_moedas(resultado_moedas_3);
-              personagem["Dados Básicos"]["Peso dos Equipamentos"] = (personagem["Habilidades"]["Força"]["Carga Permitida"] - resultado_peso_3).toFixed(2);
-              callback(arma_talento);
+                  personagem["Dados Básicos"]["Categoria de Armadura"] = ca_final;
+                  personagem["Dados Básicos"]["Moedas"] = converter_po_em_moedas(resultado_moedas_5);
+                  personagem["Dados Básicos"]["Peso dos Equipamentos"] = (personagem["Habilidades"]["Força"]["Carga Permitida"] - resultado_peso_4).toFixed(2);
+                  callback(arma_talento);
 
+                });
+              });
             });
           });
         });
