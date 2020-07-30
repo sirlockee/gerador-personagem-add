@@ -454,6 +454,93 @@
         "Cruel (caótico e maligno)"
       ];
 
+      const ITENS = [
+        { nome: 'Sineta', preco: { quantidade: 1, moeda: 'po' }, peso: 0 },
+        { nome: 'Algibeira Grande', preco: { quantidade: 1, moeda: 'po' }, peso: 0.5 },
+        { nome: 'Algibeira Pequena', preco: { quantidade: 7, moeda: 'pp' }, peso: 0.25 },
+        { nome: 'Talha', preco: { quantidade: 5, moeda: 'po' }, peso: 2.5 },
+        { nome: 'Tecido Comum (1Om)', preco: { quantidade: 7, moeda: 'po' }, peso: 5 },
+        { nome: 'Tecido Fino (1Om)', preco: { quantidade: 50, moeda: 'po' }, peso: 5 },
+        { nome: 'Tecido Suntuoso (1Om)', preco: { quantidade: 100, moeda: 'po' }, peso: 5 },
+        { nome: 'Vela', preco: { quantidade: 1, moeda: 'pc' }, peso: 0 },
+        { nome: 'Lona (1m),', preco: { quantidade: 4, moeda: 'pp' }, peso: 0.5 },
+        { nome: 'Giz', preco: { quantidade: 1, moeda: 'pc' }, peso: 0 },
+        { nome: '10x Ganchos de Ferro', preco: { quantidade: 4, moeda: 'po' }, peso: 1 },
+        { nome: 'Rede de Pesca', preco: { quantidade: 4, moeda: 'po' }, peso: 2.5 },
+        { nome: 'Pederneira', preco: { quantidade: 5, moeda: 'pp' }, peso: 0 },
+        { nome: 'Garrafa de Vidro', preco: { quantidade: 10, moeda: 'po' }, peso: 0 },
+        { nome: 'Água Benta', preco: { quantidade: 25, moeda: 'po' }, peso: 0 },
+        { nome: 'Símbolo Divino', preco: { quantidade: 25, moeda: 'po' }, peso: 0 },
+        { nome: 'Ampulheta', preco: { quantidade: 25, moeda: 'po' }, peso: 0.5 },
+        { nome: 'Panela de Ferro', preco: { quantidade: 5, moeda: 'pc' }, peso: 1 },
+        { nome: 'Farolete', preco: { quantidade: 150, moeda: 'po' }, peso: 25 },
+        { nome: 'Lanterna Furta-Fogo', preco: { quantidade: 12, moeda: 'po' }, peso: 1.5 },
+        { nome: 'Lanterna com Cobertura', preco: { quantidade: 7, moeda: 'po' }, peso: 1 },
+        { nome: 'Cadeado Bom', preco: { quantidade: 100, moeda: 'po' }, peso: 0.5 },
+        { nome: 'Cadeado Razoável', preco: { quantidade: 20, moeda: 'po' }, peso: 0.5 },
+        { nome: 'Lente de Aumento', preco: { quantidade: 100, moeda: 'po' }, peso: 0 },
+        { nome: 'Porta-Mapas', preco: { quantidade: 8, moeda: 'pp' }, peso: 0.25 },
+        { nome: 'Porta-Pergaminhos', preco: { quantidade: 8, moeda: 'pp' }, peso: 0.25 },
+        { nome: 'Balança de Comerciante', preco: { quantidade: 2, moeda: 'po' }, peso: 0.5 },
+        { nome: 'Espelho Pequeno de Metal', preco: { quantidade: 10, moeda: 'po' }, peso: 0 },
+        { nome: 'Instrumento Musical: Alaúde', preco: { quantidade: 35, moeda: 'po' }, peso: 1 },
+        { nome: 'Instrumento Musical: Charamela', preco: { quantidade: 2, moeda: 'po' }, peso: 0.5 },
+        { nome: 'Instrumento Musical: Flauta Doce', preco: { quantidade: 2, moeda: 'po' }, peso: 0.5 },
+        { nome: 'Instrumento Musical: Flauta', preco: { quantidade: 12, moeda: 'po' }, peso: 1 },
+        { nome: 'Instrumento Musical: Gaita de Fole', preco: { quantidade: 30, moeda: 'po' }, peso: 2.5 },
+        { nome: 'Instrumento Musical: Lira', preco: { quantidade: 30, moeda: 'po' }, peso: 1 },
+        { nome: 'Instrumento Musical: Tambor', preco: { quantidade: 6, moeda: 'po' }, peso: 1.5 },
+        { nome: 'Instrumento Musical: Trombeta', preco: { quantidade: 3, moeda: 'po' }, peso: 1 },
+        { nome: 'Instrumento Musical: Viola', preco: { quantidade: 30, moeda: 'po' }, peso: 0.5 },
+        { nome: 'Instrumento Musical: Xilofone', preco: { quantidade: 25, moeda: 'po' }, peso: 4.5 },
+        { nome: 'Óleo para Lamparina', preco: { quantidade: 6, moeda: 'pc' }, peso: 0.5 },
+        { nome: 'Papel', preco: { quantidade: 2, moeda: 'po' }, peso: 0 },
+        { nome: 'Papiro', preco: { quantidade: 8, moeda: 'pp' }, peso: 0 },
+        { nome: 'Pergaminho', preco: { quantidade: 1, moeda: 'po' }, peso: 0 },
+        { nome: 'Perfume', preco: { quantidade: 5, moeda: 'po' }, peso: 0 },
+        { nome: 'Piton', preco: { quantidade: 3, moeda: 'pc' }, peso: 0.5 },
+        { nome: '3x Piton', preco: { quantidade: 9, moeda: 'pc' }, peso: 1.5 },
+        { nome: '5x Piton', preco: { quantidade: 15, moeda: 'pc' }, peso: 2.5 },
+        { nome: '10x Piton', preco: { quantidade: 30, moeda: 'pc' }, peso: 5 },
+        { nome: 'Aljava', preco: { quantidade: 8, moeda: 'pp' }, peso: 0.25 },
+        { nome: 'Corda de Cânhamo (5m)', preco: { quantidade: 5, moeda: 'pp' }, peso: 5 },
+        { nome: 'Corda de Cânhamo (10m)', preco: { quantidade: 7, moeda: 'pp' }, peso: 7 },
+        { nome: 'Corda de Cânhamo (15m)', preco: { quantidade: 1, moeda: 'po' }, peso: 10 },
+        { nome: 'Corda de Cânhamo (20m)', preco: { quantidade: 2, moeda: 'po' }, peso: 15 },
+        { nome: 'Corda de Fio de Seda (15m)', preco: { quantidade: 10, moeda: 'po' }, peso: 4 },
+        { nome: 'Corda de Fio de Seda (5m)', preco: { quantidade: 6, moeda: 'po' }, peso: 1 },
+        { nome: 'Saco Grande', preco: { quantidade: 2, moeda: 'pp' }, peso: 0.25 },
+        { nome: 'Saco Pequeno', preco: { quantidade: 5, moeda: 'pc' }, peso: 0 },
+        { nome: 'Cera para Velas, 500g', preco: { quantidade: 1, moeda: 'po' }, peso: 0.5 },
+        { nome: 'Cera para Lacrar, 500g', preco: { quantidade: 1, moeda: 'po' }, peso: 0.5 },
+        { nome: 'Agulha de Costura', preco: { quantidade: 5, moeda: 'pc' }, peso: 0 },
+        { nome: 'Apito de Advertência', preco: { quantidade: 8, moeda: 'pp' }, peso: 0 },
+        { nome: 'Anel com Selo Personalizado', preco: { quantidade: 5, moeda: 'po' }, peso: 0 },
+        { nome: 'Sabão, 500g', preco: { quantidade: 5, moeda: 'pp' }, peso: 0.5 },
+        { nome: 'Pequeno Telescópio', preco: { quantidade: 1000, moeda: 'po' }, peso: 0.5 },
+        { nome: 'Tenda Grande', preco: { quantidade: 25, moeda: 'po' }, peso: 10 },
+        { nome: 'Tenda Pavilhão', preco: { quantidade: 100, moeda: 'po' }, peso: 25 },
+        { nome: 'Tenda Pequena', preco: { quantidade: 5, moeda: 'po' }, peso: 5 },
+        { nome: 'Saco de Dormir', preco: { quantidade: 3, moeda: 'po' }, peso: 2 },
+        { nome: 'Ferramentas para Ladrões', preco: { quantidade: 30, moeda: 'po' }, peso: 0.5 },
+        { nome: 'Tocha', preco: { quantidade: 1, moeda: 'pc' }, peso: 0.5 },
+        { nome: '2x Tocha', preco: { quantidade: 2, moeda: 'pc' }, peso: 1 },
+        { nome: '3x Tocha', preco: { quantidade: 3, moeda: 'pc' }, peso: 1.5 },
+        { nome: '4x Tocha', preco: { quantidade: 4, moeda: 'pc' }, peso: 2 },
+        { nome: '5x Tocha', preco: { quantidade: 5, moeda: 'pc' }, peso: 2.5 },
+        { nome: 'Clepsidra', preco: { quantidade: 1000, moeda: 'po' }, peso: 100 },
+        { nome: 'Esmeril', preco: { quantidade: 2, moeda: 'pc' }, peso: 0.5 },
+        { nome: 'Odre de Vinho', preco: { quantidade: 8, moeda: 'pp' }, peso: 0.5 },
+        { nome: 'Coberta de inverno', preco: { quantidade: 3, moeda: 'po' }, peso: 2 },
+        { nome: 'Tinta de Escrever, 10ml', preco: { quantidade: 8, moeda: 'po' }, peso: 0 }
+      ];
+
+      const INSTRUMENTOS = [ ITENS[28], ITENS[29], ITENS[30], ITENS[31], ITENS[32], ITENS[33], ITENS[34], ITENS[35], ITENS[36], ITENS[37] ];
+
+      const ALIMENTOS = [
+        { nome: '', preco: { quantidade: 0, moeda: 'po' }, peso: 0 },
+      ];
+
       const ESCUDOS = [
         { nome: 'Escudo de Corpo', ca: 1, preco: { quantidade: 10, moeda: 'po' }, peso: 7.5, ataques_por_rodada: 0, detalhes: [ "O Escudo de Corpo fornece +1 de Categoria de Armadura para ataques à distância." ] },
         { nome: 'Broquei (escudo)', ca: 1, preco: { quantidade: 1, moeda: 'po' }, peso: 1.5, ataques_por_rodada: 1, detalhes: [] },
@@ -3417,6 +3504,10 @@
         return nome_arma + ", " + arma.peso + "kg, " + arma.preco.quantidade + " " + arma.preco.moeda + ", " + tamanho + tipo + "Velocidade " + arma.velocidade + danos;
       }
 
+      function formatar_item(item) {
+        return item.nome + ", " + item.preco.quantidade + " " + item.preco.moeda + ", " + item.peso + "kg";
+      }
+
       function sortear_itens_armas(moeda_limite, peso_limite, classe, raca, personagem, callback) {
         let arma_talento = '';
         let itens_extras = [];
@@ -3613,6 +3704,26 @@
         debug("Moedas pós mochila: " + moeda_limite + " po");
         debug("Peso pós mochila: " + peso_limite);
 
+        /* Itens Específicos */
+        let instrumento_bardo_nome = '';
+        if (classe == "Ladrão") {
+          let ferramenta_ladrao = ITENS[67];
+          peso_limite = peso_limite - ferramenta_ladrao.peso;
+          if (peso_limite < 0) { peso_limite = 0; }
+          personagem["Itens"].push(formatar_item(ferramenta_ladrao));
+        } else if (classe == "Bardo") {
+          let instrumento_bardo = INSTRUMENTOS[Math.floor(Math.random() * INSTRUMENTOS.length)];
+          instrumento_bardo_nome = instrumento_bardo.nome;
+          peso_limite = peso_limite - instrumento_bardo.peso;
+          if (peso_limite < 0) { peso_limite = 0; }
+          personagem["Itens"].push(formatar_item(instrumento_bardo));
+        } else if (classe == "Clérigo") {
+          let simbolo_sagrado = ITENS[15];
+          peso_limite = peso_limite - simbolo_sagrado.peso;
+          if (peso_limite < 0) { peso_limite = 0; }
+          personagem["Itens"].push(formatar_item(simbolo_sagrado));
+        }
+
         sortear_itens_escudos(moeda_limite, peso_limite, classe, personagem, (resultado_moedas_1, resultado_peso_1, ca_escudo) => {
           debug("Moedas pós escudo: " + resultado_moedas_1 + " po");
           debug("Peso pós escudo: " + resultado_peso_1);
@@ -3739,7 +3850,6 @@
         personagem["Movimentação"]["Escalada (Irregular, Seca)"] = personagem["Movimentação"]["Escalada (Irregular, Seca)"] + "cm";
 
         /* Ajustes atributos */
-
         let forca = personagem["Habilidades"]["Força"]["Valor da Habilidade"];
         let forca_extraordinaria = 0;
         if ( (forca == 18) && (personagem["Raça"].indexOf('Halfling') == -1) ) {
