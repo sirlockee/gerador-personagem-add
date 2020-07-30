@@ -59,10 +59,9 @@
         background-color: #eee !important;
         border: 0 !important;
       }
-      tbody tr:nth-child(6) td tbody tr td:last-child {
+      tbody tr:nth-child(5) td tbody tr td:last-child {
         background-color: #eee !important;
         border: 0 !important;
-        white-space: normal !important;
       }
       tbody tr:nth-child(7) td tbody tr td:last-child {
         background-color: #eee !important;
@@ -95,6 +94,11 @@
         white-space: normal !important;
       }
       tbody tr:nth-child(13) td tbody tr td:last-child {
+        background-color: #eee !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
+      tbody tr:nth-child(14) td tbody tr td:last-child {
         background-color: #eee !important;
         border: 0 !important;
         white-space: normal !important;
@@ -186,56 +190,15 @@
     <script type="text/javascript">
 
       /* debug */
+      const DEBUG = true;
+      function debug(texto) {
+        if (DEBUG) {
+          console.log(texto);
+        }
+      }
+
       let forcar_classe = 'Todas';
-
-      /*
-      function fallbackCopyTextToClipboard(text) {
-        var textArea = document.createElement("textarea");
-        textArea.value = text;
-
-        // Avoid scrolling to bottom
-        textArea.style.top = "0";
-        textArea.style.left = "0";
-        textArea.style.position = "fixed";
-
-        document.body.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
-
-        try {
-          var successful = document.execCommand('copy');
-          var msg = successful ? 'successful' : 'unsuccessful';
-          console.log('Fallback: Copying text command was ' + msg);
-        } catch (err) {
-          console.error('Fallback: Oops, unable to copy', err);
-        }
-
-        document.body.removeChild(textArea);
-      }
-
-      function copyTextToClipboard(text, callback) {
-        if (!navigator.clipboard) {
-          fallbackCopyTextToClipboard(text);
-          return;
-        }
-        navigator.clipboard.writeText(text).then(function() {
-          console.log('Async: Copying to clipboard was successful!');
-          callback(true);
-        }, function(err) {
-          console.error('Async: Could not copy text: ', err);
-          callback(false);
-        });
-      }
-
-      document.querySelector("div#botao > button").addEventListener("click", evento => {
-        let url = window.location.href;
-        copyTextToClipboard(url, resultado => {
-          let msg = "URL copiada!";
-          if (!resultado) msg = "Houve um problema para copiar a URL!";
-          document.querySelector("div#botao > span").textContent = msg;
-        });
-      });
-      */
+      //forcar_classe = 'Clérigo';
 
       document.querySelector("div#botao > form").addEventListener("submit", evento => {
         evento.preventDefault();
@@ -2663,13 +2626,27 @@
           "Classe": '',
           "Tendência": '',
           "Dados Básicos": {
-            "Pontos de Vida": 0,
             "Gênero": '',
             "Idade": 0,
             "Altura": 0,
             "Peso": 0,
+            "Pontos de Vida": 0,
+            "Categoria de Armadura": 10,
+            "Iniciativa": '1d10 (menor primeiro)',
+            "Teste de Surpresa": '',
+            "Infravisão": '0 metros no escuro',
             "Peso dos Equipamentos": 0,
             "Moedas": 0
+          },
+          "Movimentação": {
+            "Taxa-Base": 0,
+            "Em campo aberto": '',
+            "Correndo": '',
+            "Em dungeons": '',
+            "Em combates": '',
+            "Investida": '',
+            "Natação": '',
+            "Escalada (Irregular, Seca)": ''
           },
           "Habilidades": {
             "Força": {
@@ -3272,28 +3249,34 @@
         } else { return 0; }
       }
 
+      function converter_po_em_moedas(moedas) {
+        let moedas_po = Math.floor(moedas);
+        let moedas_pc = Math.round((moedas - moedas_po) * 100);
+        return moedas_po + " po, " + moedas_pc + " pc";
+      }
+
       function reduzir_moedas(moedas, preco) {
         // preco: { quantidade: 10, moeda: 'po' }
+        let final = 0;
         if (preco.moeda == "pc") {
-          let multiplicador = 100;
-          let final = ( ((moedas * multiplicador) - preco.quantidade) / multiplicador );
-          return { moedas: final, valido: (final >= 0) };
+          let preco_po = preco.quantidade / 100;
+          final = moedas - preco_po;
         } else if (preco.moeda == "pp") {
-          let multiplicador = 10;
-          let final = ( ((moedas * multiplicador) - preco.quantidade) / multiplicador );
-          return { moedas: final, valido: (final >= 0) };
+          let preco_po = preco.quantidade / 10;
+          final = moedas - preco_po;
         } else if (preco.moeda == "pe") {
-          let multiplicador = 2;
-          let final = ( ((moedas * multiplicador) - preco.quantidade) / multiplicador );
-          return { moedas: final, valido: (final >= 0) };
+          let preco_po = preco.quantidade / 2;
+          final = moedas - preco_po;
         } else if (preco.moeda == "po") {
-          let final = ( moedas - preco.quantidade );
-          return { moedas: final, valido: (final >= 0) };
+          final = moedas - preco.quantidade;
         } else if (preco.moeda == "pl") {
-          let divisor = 5;
-          let final = ( ((moedas / divisor) - preco.quantidade) * divisor );
-          return { moedas: final, valido: (final >= 0) };
+          let preco_po = preco.quantidade * 5;
+          final = moedas - preco_po;
+        } else {
+          debug("Erro ao calcular moedas:");
+          debug(preco);
         }
+        return { moedas: final, valido: (final >= 0) };
       }
 
       function sortear_itens_escudos(moeda_limite, peso_limite, classe, personagem, callback) {
@@ -3336,7 +3319,12 @@
       }
 
       function sortear_itens_armaduras(moeda_limite, peso_limite, classe, personagem, callback) {
-        let armadura = '';
+
+        let armadura_mais_leve = { peso: 1000, validar: true };
+        if (CLASSES[classe]["Grupo"] == "Homem de Armas") {
+          armadura_mais_leve.validar = false;
+        }
+
         if (CLASSES[classe].armaduras.length > 0) {
 
           let sorteio_armadura = [];
@@ -3346,29 +3334,36 @@
             /*
               { nome: 'Corselete de Couro Simples', ca: 8, preco: { quantidade: 5, moeda: 'po' }, peso: 7.5 },
             */
-            let moeda_descontada = reduzir_moedas((moeda_limite * 0.9), armadura.preco);
+            let moeda_descontada = reduzir_moedas(moeda_limite, armadura.preco);
             if ( (moeda_descontada.valido) && (peso_limite >= armadura.peso) ) {
-              sorteio_armadura.push(armadura);
+              if (armadura_mais_leve.validar) {
+                if (armadura.peso < armadura_mais_leve.peso) {
+                  armadura_mais_leve.peso = armadura.peso;
+                  sorteio_armadura.push(armadura);
+                }
+              } else {
+                sorteio_armadura.push(armadura);
+              }
             }
 
             if (index_armadura == (CLASSES[classe].armaduras.length - 1)) {
               if (sorteio_armadura.length > 0) {
 
                 let index_sorteio = Math.floor(Math.random() * sorteio_armadura.length);
-                armadura = sorteio_armadura[index_sorteio];
-                let moeda_descontada_final = reduzir_moedas(moeda_limite, armadura.preco);
-                let peso_descontado_final = peso_limite - armadura.peso;
-                personagem["Itens"].push(armadura.nome + ', ' + armadura.peso + 'kg, ' + armadura.preco.quantidade + ' ' + armadura.preco.moeda);
-                callback(moeda_descontada_final.moedas, peso_descontado_final, armadura);
+                let armadura_sorteada = sorteio_armadura[index_sorteio];
+                let moeda_descontada_final = reduzir_moedas(moeda_limite, armadura_sorteada.preco);
+                let peso_descontado_final = peso_limite - armadura_sorteada.peso;
+                personagem["Itens"].push(armadura_sorteada.nome + ', ' + armadura_sorteada.peso + 'kg, ' + armadura_sorteada.preco.quantidade + ' ' + armadura_sorteada.preco.moeda);
+                callback(moeda_descontada_final.moedas, peso_descontado_final, armadura_sorteada.ca);
 
               } else {
-                callback(moeda_limite, peso_limite, armadura);
+                callback(moeda_limite, peso_limite, 10);
               }
             }
           });
 
         } else {
-          callback(moeda_limite, peso_limite, armadura);
+          callback(moeda_limite, peso_limite, 10);
         }
       }
 
@@ -3419,7 +3414,7 @@
         if (arma.dano_p != '') {
           danos = ", Dano (P) " + arma.dano_p + ", Dano (MG) " + arma.dano_mg;
         }
-        return nome_arma + ", " + arma.peso + "kg, " + tamanho + tipo + "Velocidade " + arma.velocidade + danos;
+        return nome_arma + ", " + arma.peso + "kg, " + arma.preco.quantidade + " " + arma.preco.moeda + ", " + tamanho + tipo + "Velocidade " + arma.velocidade + danos;
       }
 
       function sortear_itens_armas(moeda_limite, peso_limite, classe, raca, personagem, callback) {
@@ -3452,6 +3447,7 @@
 
               /* Sortear arma */
               let quantidade_armas = Math.floor(Math.random() * 4) + 2;
+              debug("Quantidade de armas sorteadas: " + quantidade_armas);
               for (let qtde = 0; qtde < quantidade_armas; qtde++) {
 
                 let index_sorteio = Math.floor(Math.random() * sorteio_armas_3.length);
@@ -3568,9 +3564,7 @@
                     arma_talento = arma_mais_forte.arma;
                   }
 
-                  moeda_limite = moeda_limite - moeda_descontada_final;
-                  peso_limite = peso_limite - peso_descontado_final;
-                  callback(moeda_limite, peso_limite, arma_talento, itens_extras);
+                  callback(moeda_descontada_final, peso_descontado_final, arma_talento, itens_extras);
                 }
               }
 
@@ -3604,16 +3598,40 @@
           ) * 10;
         }
 
-        let moeda_limite = (personagem["Dados Básicos"]["Moedas"] - 11);
-        let peso_limite = personagem["Habilidades"]["Força"]["Carga Permitida"] - 2;
+        debug("");
+        debug("-------------------------------------------------------------------------");
+        debug("Calcular itens para " + raca + " e " + classe);
+        debug("Moedas sorteadas: " + personagem["Dados Básicos"]["Moedas"] + " po");
+        debug("Peso sorteado: " + personagem["Habilidades"]["Força"]["Carga Permitida"]);
+
+        /* Alocar Mochila */
+        let moeda_limite = (personagem["Dados Básicos"]["Moedas"] - 2);
+        let peso_limite = personagem["Habilidades"]["Força"]["Carga Permitida"] - 1;
         if (peso_limite < 0) { peso_limite = 0; }
+        personagem["Itens"].push("Mochila, 2 po, 1kg");
 
-        sortear_itens_escudos(moeda_limite, peso_limite, classe, personagem, (resultado_moedas, resultado_peso, ca_escudo) => {
-          sortear_itens_armaduras(resultado_moedas, resultado_peso, classe, personagem, (resultado_moedas, resultado_peso, armadura) => {
-            sortear_itens_armas(resultado_moedas, resultado_peso, classe, raca, personagem, (resultado_moedas, resultado_peso, arma_talento, itens_extras) => {
+        debug("Moedas pós mochila: " + moeda_limite + " po");
+        debug("Peso pós mochila: " + peso_limite);
 
-              personagem["Dados Básicos"]["Moedas"] = resultado_moedas.toFixed(2);
-              personagem["Dados Básicos"]["Peso dos Equipamentos"] = resultado_peso;
+        sortear_itens_escudos(moeda_limite, peso_limite, classe, personagem, (resultado_moedas_1, resultado_peso_1, ca_escudo) => {
+          debug("Moedas pós escudo: " + resultado_moedas_1 + " po");
+          debug("Peso pós escudo: " + resultado_peso_1);
+          sortear_itens_armaduras(resultado_moedas_1, resultado_peso_1, classe, personagem, (resultado_moedas_2, resultado_peso_2, ca_armadura) => {
+            debug("Moedas pós armadura: " + resultado_moedas_2 + " po");
+            debug("Peso pós armadura: " + resultado_peso_2);
+            sortear_itens_armas(resultado_moedas_2, resultado_peso_2, classe, raca, personagem, (resultado_moedas_3, resultado_peso_3, arma_talento, itens_extras) => {
+              debug("Moedas pós armas: " + resultado_moedas_3 + " po");
+              debug("Peso pós armas: " + resultado_peso_3);
+
+              let ajuste_ca = personagem["Habilidades"]["Destreza"]["Ajuste Defensivo"];
+              let ca_final = ca_armadura + ajuste_ca;
+              if (ca_escudo) {
+                ca_final = ca_final - 1;
+              }
+
+              personagem["Dados Básicos"]["Categoria de Armadura"] = ca_final;
+              personagem["Dados Básicos"]["Moedas"] = converter_po_em_moedas(resultado_moedas_3);
+              personagem["Dados Básicos"]["Peso dos Equipamentos"] = (personagem["Habilidades"]["Força"]["Carga Permitida"] - resultado_peso_3).toFixed(2);
               callback(arma_talento);
 
             });
@@ -3643,7 +3661,11 @@
 
         personagem["Detalhes"] = RACAS[raca].detalhes;
 
+        let base_movimentacao = 0;
+
         if (personagem["Raça"].indexOf('Halfling') > -1) {
+
+          base_movimentacao = 6;
 
           let detalheRobusto = 'Qualquer Halfling Robusto puro tem 15% de chance de ter uma infravisão normal, até 20 metros.';
           let detalheNaoRobustos = 'Halflings que não são Robustos puros, tem 25% de chance de ter uma infravisão limitada, até 10 metros.';
@@ -3657,19 +3679,57 @@
             resultadoDado = Math.floor(Math.random() * 100);
             if (resultadoDado < 15) {
               personagem["Detalhes"].push(detalheRobusto);
+              personagem["Dados Básicos"]["Infravisão"] = '20 metros no escuro';
             } else {
               resultadoDado = Math.floor(Math.random() * 100);
               if (resultadoDado < 25) {
                 personagem["Detalhes"].push(detalheNaoRobustos);
+                personagem["Dados Básicos"]["Infravisão"] = '10 metros no escuro';
               }
             }
           } else {
             resultadoDado = Math.floor(Math.random() * 100);
             if (resultadoDado < 25) {
               personagem["Detalhes"].push(detalheNaoRobustos);
+              personagem["Dados Básicos"]["Infravisão"] = '10 metros no escuro';
             }
           }
+        } else if (raca == "Anão") {
+          personagem["Dados Básicos"]["Infravisão"] = '20 metros no escuro';
+          base_movimentacao = 6;
+        } else if (raca == "Elfo") {
+          personagem["Dados Básicos"]["Infravisão"] = '20 metros no escuro';
+          base_movimentacao = 12;
+        } else if (raca == "Gnomo") {
+          personagem["Dados Básicos"]["Infravisão"] = '20 metros no escuro';
+          base_movimentacao = 6;
+        } else if (raca == "Meio-Elfo") {
+          personagem["Dados Básicos"]["Infravisão"] = '20 metros no escuro';
+          base_movimentacao = 12;
+        } else if (raca == "Humano") {
+          base_movimentacao = 12;
         }
+
+        /* Movimentação */
+        personagem["Movimentação"]["Taxa-Base"] = base_movimentacao;
+        personagem["Movimentação"]["Em campo aberto"] = (base_movimentacao * 9);
+        personagem["Movimentação"]["Correndo"] = (personagem["Movimentação"]["Em campo aberto"] * 2);
+        personagem["Movimentação"]["Em dungeons"] = Math.floor(personagem["Movimentação"]["Em campo aberto"] / 3);
+        personagem["Movimentação"]["Em combates"] = Math.floor(personagem["Movimentação"]["Em dungeons"] / 2);
+        personagem["Movimentação"]["Investida"] = Math.floor(personagem["Movimentação"]["Em combates"] * 1.5);
+        personagem["Movimentação"]["Natação"] = Math.floor(personagem["Movimentação"]["Em campo aberto"] / 2);
+        if (classe == "Ladrão") {
+          personagem["Movimentação"]["Escalada (Irregular, Seca)"] = (base_movimentacao * 60);
+        } else {
+          personagem["Movimentação"]["Escalada (Irregular, Seca)"] = (base_movimentacao * 30);
+        }
+        personagem["Movimentação"]["Em campo aberto"] = personagem["Movimentação"]["Em campo aberto"] + "m";
+        personagem["Movimentação"]["Correndo"] = personagem["Movimentação"]["Correndo"] + "m";
+        personagem["Movimentação"]["Em dungeons"] = personagem["Movimentação"]["Em dungeons"] + "m";
+        personagem["Movimentação"]["Em combates"] = personagem["Movimentação"]["Em combates"] + "m";
+        personagem["Movimentação"]["Investida"] = personagem["Movimentação"]["Investida"] + "m";
+        personagem["Movimentação"]["Natação"] = personagem["Movimentação"]["Natação"] + "m";
+        personagem["Movimentação"]["Escalada (Irregular, Seca)"] = personagem["Movimentação"]["Escalada (Irregular, Seca)"] + "cm";
 
         /* Ajustes atributos */
 
@@ -3690,6 +3750,12 @@
         personagem["Habilidades"]["Destreza"]["Ajuste de Reação"] = atributos_destreza("Ajuste de Reação", destreza);
         personagem["Habilidades"]["Destreza"]["Ataque à Distância"] = atributos_destreza("Ataque à Distância", destreza);
         personagem["Habilidades"]["Destreza"]["Ajuste Defensivo"] = atributos_destreza("Ajuste Defensivo", destreza);
+        personagem["Dados Básicos"]["Teste de Surpresa"] = "Até 3 em 1d10";
+        if (personagem["Habilidades"]["Destreza"]["Ajuste de Reação"] < 0) {
+          personagem["Dados Básicos"]["Teste de Surpresa"] = personagem["Dados Básicos"]["Teste de Surpresa"] + personagem["Habilidades"]["Destreza"]["Ajuste de Reação"];
+        } else if (personagem["Habilidades"]["Destreza"]["Ajuste de Reação"] > 0) {
+          personagem["Dados Básicos"]["Teste de Surpresa"] = personagem["Dados Básicos"]["Teste de Surpresa"] + "+" + personagem["Habilidades"]["Destreza"]["Ajuste de Reação"];
+        }
 
         let constituicao = personagem["Habilidades"]["Constituição"]["Valor da Habilidade"];
         let ajuste_pontos_de_vida = atributos_constituicao("Ajuste dos Pontos de Vida", constituicao, classe);
