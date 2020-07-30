@@ -833,9 +833,9 @@
         "Bordão": { preco: { quantidade: 0, moeda: 'po' }, peso: 2, tamanho: 'Grande', tipo: 'Concussão', velocidade: 4, dano_p: '1d6', dano_mg: '1d6', dano: 6, detalhes: [] },
         "Açoite": { preco: { quantidade: 1, moeda: 'po' }, peso: 1, tamanho: 'Pequeno', tipo: '', velocidade: 5, dano_p: '1d4', dano_mg: '1d2', dano: 2, detalhes: [] },
         "Foice": { preco: { quantidade: 6, moeda: 'pp' }, peso: 1.5, tamanho: 'Pequeno', tipo: 'Cortante', velocidade: 4, dano_p: '1d4+1', dano_mg: '1d4', dano: 4, detalhes: [] },
-        "Funda": { preco: { quantidade: 5, moeda: 'pc' }, peso: 0, tamanho: 'Pequeno', tipo: '', velocidade: 6, dano_p: '', dano_mg: '', dano: 7, detalhes: [] },
+        "Funda": { preco: { quantidade: 5, moeda: 'pc' }, peso: 0, tamanho: 'Pequeno', tipo: '', velocidade: 6, dano_p: '', dano_mg: '', dano: 4, detalhes: [] },
         "Lança": { preco: { quantidade: 8, moeda: 'pp' }, peso: 2.5, tamanho: 'Médio', tipo: 'Perfurante', velocidade: 6, dano_p: '1d6', dano_mg: '1d8', dano: 8, detalhes: [] },
-        "Cajado-Funda": { preco: { quantidade: 2, moeda: 'pp' }, peso: 1, tamanho: 'Médio', tipo: '', velocidade: 11, dano_p: '', dano_mg: '', dano: 7, detalhes: [] },
+        "Cajado-Funda": { preco: { quantidade: 2, moeda: 'pp' }, peso: 1, tamanho: 'Médio', tipo: '', velocidade: 11, dano_p: '', dano_mg: '', dano: 4, detalhes: [] },
         "Espada Bastarda": { preco: { quantidade: 25, moeda: 'po' }, peso: 5, tamanho: 'Médio', tipo: 'Cortante', velocidade: 6, dano_p: '1d8', dano_mg: '1d12', dano: 12, detalhes: [ "Quando usada com duas mãos, a Espada Bastarda possui velocidade 8, dano a personagens P de 2d4 e personagens M ou G de 2d8." ] },
         "Espada Larga": { preco: { quantidade: 10, moeda: 'po' }, peso: 2, tamanho: 'Médio', tipo: 'Cortante', velocidade: 5, dano_p: '2d4', dano_mg: '1d6+1', dano: 7, detalhes: [] },
         "Khopesh": { preco: { quantidade: 10, moeda: 'po' }, peso: 3.5, tamanho: 'Médio', tipo: 'Cortante', velocidade: 9, dano_p: '2d4', dano_mg: '1d6', dano: 6, detalhes: [] },
@@ -3707,10 +3707,9 @@
       }
 
       function sortear_itens_armas(moeda_limite, peso_limite, classe, raca, personagem, callback) {
-        let arma_talento = '';
         let itens_extras = [];
         let keys_armas = Object.keys(ARMAS);
-        let arma_mais_forte = { arma: '', dano: 0 };
+        let armas_mais_fortes = [];
         let moeda_descontada_final = moeda_limite;
         let peso_descontado_final = peso_limite;
         let armas_ja_sorteadas = [];
@@ -3757,9 +3756,15 @@
                     "Arcabuz": { preco: { quantidade: 500, moeda: 'po' }, peso: 5, tamanho: 'Médio', tipo: 'Perfurante', velocidade: 15, dano_p: '1d10', dano_mg: '1d10', dano: 10, detalhes: [] },
                   */
 
-                  if (arma_mais_forte.dano < arma.dano) {
-                    arma_mais_forte.arma = nome_arma;
-                    arma_mais_forte.dano = arma.dano;
+                  //{ arma: 'Nome', dano: 0 }
+                  if (armas_mais_fortes.length == 0) {
+                    armas_mais_fortes.push({ arma: nome_arma, dano: arma.dano });
+                  } else {
+                    if (arma.dano > armas_mais_fortes[0].dano) {
+                      armas_mais_fortes.unshift({ arma: nome_arma, dano: arma.dano });
+                    } else {
+                      armas_mais_fortes.push({ arma: nome_arma, dano: arma.dano });
+                    }
                   }
 
                   moeda_descontada_final = reduzir_moedas(moeda_descontada_final, arma.preco).moedas;
@@ -3848,12 +3853,7 @@
                 }
 
                 if (qtde == (quantidade_armas - 1)) {
-
-                  if (arma_mais_forte.dano > 0) {
-                    arma_talento = arma_mais_forte.arma;
-                  }
-
-                  callback(moeda_descontada_final, peso_descontado_final, arma_talento, itens_extras);
+                  callback(moeda_descontada_final, peso_descontado_final, armas_mais_fortes, itens_extras);
                 }
               }
 
@@ -3987,7 +3987,7 @@
           sortear_itens_armaduras(resultado_moedas_1, resultado_peso_1, classe, personagem, (resultado_moedas_2, resultado_peso_2, ca_armadura) => {
             debug("Moedas pós armadura: " + resultado_moedas_2 + " po");
             debug("Peso pós armadura: " + resultado_peso_2);
-            sortear_itens_armas(resultado_moedas_2, resultado_peso_2, classe, raca, personagem, (resultado_moedas_3, resultado_peso_3, arma_talento, itens_extras) => {
+            sortear_itens_armas(resultado_moedas_2, resultado_peso_2, classe, raca, personagem, (resultado_moedas_3, resultado_peso_3, armas_mais_fortes, itens_extras) => {
               debug("Moedas pós armas: " + resultado_moedas_3 + " po");
               debug("Peso pós armas: " + resultado_peso_3);
               sortear_itens_comuns(resultado_moedas_3, resultado_peso_3, personagem, (resultado_moedas_4, resultado_peso_4) => {
@@ -4005,7 +4005,7 @@
                   personagem["Dados Básicos"]["Categoria de Armadura"] = ca_final;
                   personagem["Dados Básicos"]["Moedas"] = converter_po_em_moedas(resultado_moedas_5);
                   personagem["Dados Básicos"]["Peso dos Equipamentos"] = (personagem["Habilidades"]["Força"]["Carga Permitida"] - resultado_peso_4).toFixed(2);
-                  callback(arma_talento);
+                  callback(armas_mais_fortes);
 
                 });
               });
@@ -4014,15 +4014,124 @@
         });
       }
 
-      function sortear_pericias(arma_talento, classe, raca, personagem, callback) {
+      function sortear_pericias(armas_mais_fortes, classe, raca, personagem, callback) {
 
+        /* Perícias fixas */
         if (classe == "Bardo") {
           personagem["Perícias"].push(formatar_pericia_comum(PERICIAS["Ladino"][10]));
         } else if (classe == "Ranger") {
           personagem["Perícias"].push(formatar_pericia_comum(PERICIAS["Homem de Armas"][13]));
         }
 
-        callback();
+        let qtde_pericias = personagem["Pontos de Perícia"]["Perícias Comuns Inicial"];
+        let qtde_pericias_gerais = Math.floor(Math.random() * 2);
+        let contador_pericias = 0;
+        let pericias_sorteadas = [];
+
+        while (qtde_pericias > 0) {
+
+          let pericia_sorteada = undefined;
+
+          if (contador_pericias < qtde_pericias_gerais) {
+            /* Perícias Gerais */
+            let index_pericia_geral = Math.floor(Math.random() * PERICIAS["Geral"].length);
+            pericia_sorteada = PERICIAS["Geral"][index_pericia_geral];
+          } else {
+            /* Perícias do Grupo */
+            let index_pericia_grupo = Math.floor(Math.random() * PERICIAS[CLASSES[classe]["Grupo"]].length);
+            pericia_sorteada = PERICIAS[CLASSES[classe]["Grupo"]][index_pericia_grupo];
+          }
+
+          /*
+            { nome: "Lutar no Escuro", pontos: 2, habilidade_relevante: '', modificador: 0 },
+          */
+          if ( (pericia_sorteada != undefined) && ( (qtde_pericias - pericia_sorteada.pontos) >= 0 ) && (!pericias_sorteadas.includes(pericia_sorteada.nome)) ) {
+            qtde_pericias = qtde_pericias - pericia_sorteada.pontos;
+            contador_pericias = contador_pericias + 1;
+            pericias_sorteadas.push(pericia_sorteada.nome);
+            personagem["Perícias"].push(formatar_pericia_comum(pericia_sorteada));
+          }
+
+          if ( qtde_pericias == 0 ) {
+
+            personagem["Pontos de Perícia"]["Perícias Comuns Inicial"] = personagem["Pontos de Perícia"]["Perícias Comuns Inicial"] + " (0 pontos restantes)";
+            debug('Perícias escolhidas');
+
+            /* Perícias com Armas */
+            let qtde_pericias_armas = personagem["Pontos de Perícia"]["Perícias Armas Inicial"];
+            let procurar_pericias_armas = true;
+
+            if (armas_mais_fortes.length == 0) {
+                debug('Nenhuma perícia de arma foi selecionada');
+                personagem["Pontos de Perícia"]["Perícias Armas Inicial"] = qtde_pericias_armas + " (" + qtde_pericias_armas + " pontos restantes)";
+                callback();
+            } else {
+
+              let index_arma_mais_forte = 0;
+              let possui_especializacao = false;
+              if (classe == "Guerreiro") {
+                possui_especializacao = (Math.floor(Math.random() * 2) == 1);
+              }
+
+              while ( (procurar_pericias_armas) && (qtde_pericias_armas > 0) && (index_arma_mais_forte < armas_mais_fortes.length) ) {
+
+                let arma_da_vez = armas_mais_fortes[index_arma_mais_forte].arma;
+
+                if ( (possui_especializacao) && (index_arma_mais_forte == 0) ) {
+                  let texto_especializacao = "Especialista em " + arma_da_vez;
+                  let texto_especialista_arco = 'Especialistas em arcos ou bestas obtém uma categoria de alcance adicional: tiro certo. A distância de tiro certo para arcos vai de 2 a 10 mestros, e para as bestas vai de 2 a 20 metros. Nesta distância, o personagem obtém um bônus de +2 nas jogadas de ataque. Se o personagem possuir uma flecha ou seta preparada, seu primeiro tiro pode ser feito no início da rodada (antes da iniciativa).';
+                  let texto_especialista_meele = 'Especialistas em arma de combate corpo a corpo ganham bônus de +1 para as jogadas de ataque e +2 para as jogadas de dano.';
+
+                  if ( (arma_da_vez == "Arco Longo Composto") || (arma_da_vez == "Arco Curto Composto") || (arma_da_vez == "Arco Longo") || (arma_da_vez == "Arco Curto") ) {
+                    qtde_pericias_armas = qtde_pericias_armas - 3;
+                    personagem["Detalhes"].push(texto_especialista_arco);
+                    texto_especializacao = texto_especializacao + ". +2 Ataque (de 2 a 10 metros). Nº Pontos Necessários: 3";
+                  } else {
+                    qtde_pericias_armas = qtde_pericias_armas - 2;
+                    if (arma_da_vez == "Besta Pesada") {
+                      personagem["Detalhes"].push(texto_especialista_arco);
+                      texto_especializacao = texto_especializacao + ". +2 Ataque (de 2 a 20 metros), 1/2 ataques por rodada. Nº Pontos Necessários: 2";
+                    } else if (arma_da_vez == "Besta Leve") {
+                      personagem["Detalhes"].push(texto_especialista_arco);
+                      texto_especializacao = texto_especializacao + ". +2 Ataque (de 2 a 20 metros), 1/1 ataques por rodada. Nº Pontos Necessários: 2";
+                    } else if (arma_da_vez == "Besta de Mão") {
+                      personagem["Detalhes"].push(texto_especialista_arco);
+                    } else if (arma_da_vez == "Dardo") {
+                      personagem["Detalhes"].push(texto_especialista_meele);
+                      texto_especializacao = texto_especializacao + ". +1 Ataque, +2 Dano, 4/1 ataques por rodada. Nº Pontos Necessários: 2";
+                    } else if (arma_da_vez == "Adaga") {
+                      personagem["Detalhes"].push(texto_especialista_meele);
+                      texto_especializacao = texto_especializacao + ". +1 Ataque, +2 Dano, 3/2 ataques por rodada. Se arremessada, realiza 3/1 ataques por rodada. Nº Pontos Necessários: 2";
+                    } else {
+                      personagem["Detalhes"].push(texto_especialista_meele);
+                      texto_especializacao = texto_especializacao + ". +1 Ataque, +2 Dano, 3/2 ataques por rodada. Nº Pontos Necessários: 2";
+                    }
+                  }
+
+                  personagem["Especialização"].push(texto_especializacao);
+                  personagem["Detalhes"].push('Guerreiros especialistas ganham ataques extras por rodada. Esta regra não vale para especialistas em arcos. No nível 1, ele tem 3/2 ataques por rodada com armas corpo a corpo; 1/1 com bestas leves; 1/2 com bestas pesadas; 3/1 com adagas de arremesso; 4/1 com dardos; e 3/2 com outras armas de arremesso. Vide tabela 35 na página 71.');
+                } else {
+                  qtde_pericias_armas = qtde_pericias_armas - 1;
+                  personagem["Perícias"].push("Perito em " + arma_da_vez + ". Nº Pontos Necessários: 1");
+                }
+
+                index_arma_mais_forte = index_arma_mais_forte + 1;
+
+                if ( (qtde_pericias_armas == 0) || (index_arma_mais_forte >= armas_mais_fortes.length) ) {
+                  debug('Armas escolhidas');
+                  procurar_pericias_armas = false;
+                  personagem["Detalhes"].push('Personagens com perícias ou especializações em armas possuem um bônus que reduz pela metade (arredondando para cima) a penalidade para as armas similares. Exemplo: um perito em espeda curta tem reduz sua penalidade pela metade ao usar uma espada longa.');
+                  personagem["Pontos de Perícia"]["Perícias Armas Inicial"] = personagem["Pontos de Perícia"]["Perícias Armas Inicial"] + " (" + qtde_pericias_armas + " pontos restantes)";
+                  callback();
+                }
+              }
+
+            }
+
+            /* Perícias com Armas */
+
+          }
+        }
 
       }
 
@@ -4264,9 +4373,9 @@
             /* Detalhes */
             personagem["Detalhes"].push.apply(personagem["Detalhes"], CLASSES[classe].detalhes);
 
-            sortear_itens(classe, raca, personagem, (arma_talento) => {
+            sortear_itens(classe, raca, personagem, (armas_mais_fortes) => {
 
-              sortear_pericias(arma_talento, classe, raca, personagem, () => {
+              sortear_pericias(armas_mais_fortes, classe, raca, personagem, () => {
 
                 // movimentação
                 // calcular CA
