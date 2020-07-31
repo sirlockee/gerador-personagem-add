@@ -108,6 +108,16 @@
         border: 0 !important;
         white-space: normal !important;
       }
+      tbody tr:nth-child(16) td tbody tr td:last-child {
+        background-color: #eee !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
+      tbody tr:nth-child(17) td tbody tr td:last-child {
+        background-color: #eee !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
       td {
         max-width: 320px !important;
       }
@@ -166,6 +176,7 @@
         <label for="Necromante"><input type="radio" id="Necromante" name="forcar_classe" value="Necromante">Necromante</label>
         <label for="Transmutador"><input type="radio" id="Transmutador" name="forcar_classe" value="Transmutador">Transmutador</label>
         <label for="Clérigo"><input type="radio" id="Clérigo" name="forcar_classe" value="Clérigo">Clérigo</label>
+        <!--
         <label for="Clérigo da Agricultura"><input type="radio" id="Clérigo da Agricultura" name="forcar_classe" value="Clérigo da Agricultura">Clérigo da Agricultura</label>
         <label for="Clérigo dos Ferreiros"><input type="radio" id="Clérigo dos Ferreiros" name="forcar_classe" value="Clérigo dos Ferreiros">Clérigo dos Ferreiros</label>
         <label for="Clérigo da Morte"><input type="radio" id="Clérigo da Morte" name="forcar_classe" value="Clérigo da Morte">Clérigo da Morte</label>
@@ -182,6 +193,7 @@
         <label for="Clérigo do Trovão"><input type="radio" id="Clérigo do Trovão" name="forcar_classe" value="Clérigo do Trovão">Clérigo do Trovão</label>
         <label for="Clérigo da Guerra"><input type="radio" id="Clérigo da Guerra" name="forcar_classe" value="Clérigo da Guerra">Clérigo da Guerra</label>
         <label for="Clérigo dos Ventos"><input type="radio" id="Clérigo dos Ventos" name="forcar_classe" value="Clérigo dos Ventos">Clérigo dos Ventos</label>
+        -->
         <label for="Druida"><input type="radio" id="Druida" name="forcar_classe" value="Druida">Druida</label>
         <label for="Ladrão"><input type="radio" id="Ladrão" name="forcar_classe" value="Ladrão">Ladrão</label>
         <label for="Bardo"><input type="radio" id="Bardo" name="forcar_classe" value="Bardo">Bardo</label>
@@ -468,36 +480,26 @@
           }
           habilidade = ', Habilidade Relevante: ' + pericia.habilidade_relevante + ', Modificador do Teste: ' + modificador;
         }
-        return pericia.nome + ", Nº Pontos Necessários: " + pericia.pontos + habilidade;
+        return pericia.nome + habilidade;
       }
 
-      Arma Abençoada
-      Benção
-      Cativar Animais
-      Círculo de Fé
-      Comando
-      Construção
-      Criar Água
-      Curar Ferinentos Leves
-      Detectar Armadilhas
-      Detectar Magia
-      Detectar Maldade
-      Detectar Venenos
-      Fogo das Fadas
-      Invisibilidade contra Animais
-      Invisibilidade contra Mortos-Vivos
-      Localizar Animais ou Plantas
-      Luz
-      Passos sem Pegadas
-      Pedra Encantada
-      Proteção ao Calor/Frio
-      Proteção ao Mal
-      Purificar Alimentos
-      Remover Medo
-      Santurário
-
       const MAGIAS_DIVINAS = {
-
+        "Adivinhação": [ "Detectar Magia", "Detectar Venenos", "Detectar Armadilhas", "Localizar Animais ou Plantas" ],
+        "Animal": [ "Cativar Animais", "Invisibilidade contra Animais", "Localizar Animais ou Plantas" ],
+        "Astral": [],
+        "Clima": [ "Fogo das Fadas" ],
+        "Combate": [ "Pedra Encantada", "Arma Abençoada" ],
+        "Convocação": [],
+        "Criação": [],
+        "Cura": [ "Curar Ferimentos Leves" ],
+        "Elemental": [ "Criar Água" ],
+        "Feitiço": [ "Comando", "Remover Medo" ],
+        "Guarda": [],
+        "Necromântica": [ "Invisibilidade contra Mortos-Vivos" ],
+        "Proteção": [ "Proteção ao Calor/Frio", "Proteção ao Mal", "Santuário" ],
+        "Solar": [ "Luz" ],
+        "Vegetal": [ "Constrição", "Localizar Animais ou Plantas", "Passos sem Pegadas", "Arma Abençoada" ],
+        "Todas": [ "Bênção", "Círculo de Fé", "Detectar Maldade", "Purificar Alimentos" ]
       };
 
       const MAGIAS_ARCANAS = {
@@ -1292,7 +1294,8 @@
           armas: ["Mangual", "Martelo de Batalha", "Açoite", "Chicote", "Alvião", "Aprisionador", "Bordão", "Arco Curto", "Azagaia", "Lança de Cavalaria", "Funda", "Dardo", "Lança", "Clava", "Arpão", "Tridente", "Martelo", "Maça", "Maça-Estrela", "Zarabatana"],
           armaduras: ARMADURAS,
           escudos: ESCUDOS,
-          armas_divindade: []
+          armas_divindade: [],
+          esferas: ["Adivinhação", "Astral", "Combate", "Convocação", "Criação", "Cura", "Elemental", "Feitiço", "Guarda", "Necromântica", "Proteção", "Solar", "Todas"]
         },
         "Druida": {
           "Grupo": "Sacerdote",
@@ -1337,7 +1340,8 @@
           ],
           armas: ["Clava", "Foice", "Dardo", "Lança", "Adaga", "Cimitarra", "Funda", "Cajado"],
           armaduras: ARMADURAS_DRUIDA,
-          escudos: ESCUDOS_DRUIDA
+          escudos: ESCUDOS_DRUIDA,
+          esferas: ["Adivinhação", "Animal", "Clima", "Cura", "Elemental", "Vegetal", "Todas"]
         },
         "Ladrão": {
           "Grupo": "Ladino",
@@ -3297,6 +3301,7 @@
                     classe_final = classes_permitidas[index];
                   }
 
+                  /*
                   if ( (classe_final == "Clérigo") && (forcar_classe == "Todas") ) {
                     let lista_clerigos = [
                       "Clérigo", "Clérigo", "Clérigo", "Clérigo",
@@ -3324,6 +3329,7 @@
                     let index_clerigo = Math.floor(Math.random() * lista_clerigos.length);
                     classe_final = lista_clerigos[index_clerigo];
                   }
+                  */
 
                   if (classe_final == "Clérigo da Agricultura") {
                     CLASSES['Clérigo'].armas_divindade = ["Podão", "Foice", "Mangual"];
@@ -4097,6 +4103,7 @@
 
         /* Perícias fixas */
         if (classe == "Bardo") {
+          personagem["Perícias"].push(formatar_pericia_comum(PERICIAS["Ladino"][9]));
           personagem["Perícias"].push(formatar_pericia_comum(PERICIAS["Ladino"][10]));
         } else if (classe == "Ranger") {
           personagem["Perícias"].push(formatar_pericia_comum(PERICIAS["Homem de Armas"][13]));
@@ -4164,26 +4171,26 @@
                   if ( (arma_da_vez == "Arco Longo Composto") || (arma_da_vez == "Arco Curto Composto") || (arma_da_vez == "Arco Longo") || (arma_da_vez == "Arco Curto") ) {
                     qtde_pericias_armas = qtde_pericias_armas - 3;
                     personagem["Detalhes"].push(texto_especialista_arco);
-                    texto_especializacao = texto_especializacao + ". +2 Ataque (de 2 a 10 metros). Nº Pontos Necessários: 3";
+                    texto_especializacao = texto_especializacao + ". +2 Ataque (de 2 a 10 metros)";
                   } else {
                     qtde_pericias_armas = qtde_pericias_armas - 2;
                     if (arma_da_vez == "Besta Pesada") {
                       personagem["Detalhes"].push(texto_especialista_arco);
-                      texto_especializacao = texto_especializacao + ". +2 Ataque (de 2 a 20 metros), 1/2 ataques por rodada. Nº Pontos Necessários: 2";
+                      texto_especializacao = texto_especializacao + ". +2 Ataque (de 2 a 20 metros), 1/2 ataques por rodada";
                     } else if (arma_da_vez == "Besta Leve") {
                       personagem["Detalhes"].push(texto_especialista_arco);
-                      texto_especializacao = texto_especializacao + ". +2 Ataque (de 2 a 20 metros), 1/1 ataques por rodada. Nº Pontos Necessários: 2";
+                      texto_especializacao = texto_especializacao + ". +2 Ataque (de 2 a 20 metros), 1/1 ataques por rodada";
                     } else if (arma_da_vez == "Besta de Mão") {
                       personagem["Detalhes"].push(texto_especialista_arco);
                     } else if (arma_da_vez == "Dardo") {
                       personagem["Detalhes"].push(texto_especialista_meele);
-                      texto_especializacao = texto_especializacao + ". +1 Ataque, +2 Dano, 4/1 ataques por rodada. Nº Pontos Necessários: 2";
+                      texto_especializacao = texto_especializacao + ". +1 Ataque, +2 Dano, 4/1 ataques por rodada";
                     } else if (arma_da_vez == "Adaga") {
                       personagem["Detalhes"].push(texto_especialista_meele);
-                      texto_especializacao = texto_especializacao + ". +1 Ataque, +2 Dano, 3/2 ataques por rodada. Se arremessada, realiza 3/1 ataques por rodada. Nº Pontos Necessários: 2";
+                      texto_especializacao = texto_especializacao + ". +1 Ataque, +2 Dano, 3/2 ataques por rodada. Se arremessada, realiza 3/1 ataques por rodada";
                     } else {
                       personagem["Detalhes"].push(texto_especialista_meele);
-                      texto_especializacao = texto_especializacao + ". +1 Ataque, +2 Dano, 3/2 ataques por rodada. Nº Pontos Necessários: 2";
+                      texto_especializacao = texto_especializacao + ". +1 Ataque, +2 Dano, 3/2 ataques por rodada";
                     }
                   }
 
@@ -4191,7 +4198,7 @@
                   personagem["Detalhes"].push('Guerreiros especialistas ganham ataques extras por rodada. Esta regra não vale para especialistas em arcos. No nível 1, ele tem 3/2 ataques por rodada com armas corpo a corpo; 1/1 com bestas leves; 1/2 com bestas pesadas; 3/1 com adagas de arremesso; 4/1 com dardos; e 3/2 com outras armas de arremesso. Vide tabela 35 na página 71.');
                 } else {
                   qtde_pericias_armas = qtde_pericias_armas - 1;
-                  personagem["Perícias"].push("Perito em " + arma_da_vez + ". Nº Pontos Necessários: 1");
+                  personagem["Perícias"].push("Perito em " + arma_da_vez);
                 }
 
                 index_arma_mais_forte = index_arma_mais_forte + 1;
@@ -4216,11 +4223,33 @@
 
       // MAGIAS_ARCANAS
       function sortear_magias(classe, personagem, callback) {
-        if (classe == "Clérigo") {
-          callback();
-        } else if (classe == "Ranger") {
-          callback();
+        if (CLASSES[classe]["Grupo"] == "Sacerdote") {
+
+          let qtde_magias = personagem["Dados Básicos"]["Magias Divinas por Círculo"];
+
+          let qtde = 0;
+          while (qtde < qtde_magias) {
+
+            let index_esfera = Math.floor(Math.random() * CLASSES[classe].esferas.length);
+            let esfera = CLASSES[classe].esferas[index_esfera];
+            if (MAGIAS_DIVINAS[esfera].length > 0) {
+              let index_magia = Math.floor(Math.random() * MAGIAS_DIVINAS[esfera].length);
+              let magia = MAGIAS_DIVINAS[esfera][index_magia];
+              if (!personagem["Magias"].includes(magia)) {
+                personagem["Magias"].push(magia);
+                qtde++
+              }
+            }
+
+            if (qtde == qtde_magias) {
+              //personagem["Esferas"] = CLASSES[classe].esferas.join(", ");
+              personagem["Esferas"] = CLASSES[classe].esferas;
+              callback();
+            }
+          }
+
         } else if (CLASSES[classe]["Grupo"] == "Arcano") {
+
           let qtde_magias = personagem["Dados Básicos"]["Magias Arcanas por Círculo"];
           if (classe != "Mago") {
             if (MAGIAS_ARCANAS[classe].length < qtde_magias) {
@@ -4518,7 +4547,6 @@
 
                 sortear_magias(classe, personagem, () => {
 
-                  // perícia História Local para o bardo
                   callback();
 
                 });
