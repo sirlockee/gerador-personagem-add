@@ -7,12 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="img/favicon.gif">
     <style>
+      * {
+        padding: 2px !important;
+      }
       html {
         width: 100%;
+        margin: 0;
+        border: 0;
         box-sizing: border-box;
+        background-image: url(img/background.jpg);
       }
       body {
-        padding: 10px;
         margin: 0;
         border: 0;
         width: 100%;
@@ -20,126 +25,170 @@
 
         font-family: Consolas, "Lucida Console", Courier, mono !important;
         font-size: 12px !important;
-        color: rgb(34, 34, 34) !important;
+        color: rgb(5, 5, 5) !important;
       }
       header {
-        width: 100%;
-        display: block;
+        width: 410px;
         box-sizing: border-box;
+
+        display: block;
+        margin: 10px auto 10px auto;
       }
       header img {
         max-width: 300px;
         display: block;
-        margin: 0 auto;
+        margin: 0 auto 6px auto;
       }
-      div {
-        width: auto !important;
-        display: block;
+      div.classes {
+        background-image: linear-gradient(to bottom, #3f536d,  #000121);
+        border: 2px solid #ffffff;
+        border-radius: 5px;
+        color: #ffffff;
+        padding: 5px !important;
+        width: 400px !important;
         box-sizing: border-box;
+
+        display: block;
+        margin: 0 auto 10px auto;
       }
-      table {
-        width: auto !important;
-      }
-      thead tr th {
-        display: none;
-      }
-      td {
-        font-size: 0.9em !important;
-      }
-      tbody tr td:first-child {
-        font-weight: bold;
-        width: auto !important;
-        border: 0 !important;
-      }
-      tbody tr td tbody tr td tbody tr td:last-child {
-        background-color: #eee !important;
-        border: 0 !important;
-      }
-      tbody tr:nth-child(5) td tbody tr td:last-child {
-        background-color: #eee !important;
-        border: 0 !important;
-      }
-      tbody tr:nth-child(6) td tbody tr td:last-child {
-        background-color: #eee !important;
-        border: 0 !important;
-      }
-      tbody tr:nth-child(8) td tbody tr td:last-child {
-        background-color: #eee !important;
-        border: 0 !important;
-        white-space: normal !important;
-      }
-      tbody tr:nth-child(9) td tbody tr td:last-child {
-        background-color: #eee !important;
-        border: 0 !important;
-        white-space: normal !important;
-      }
-      tbody tr:nth-child(10) td tbody tr td:last-child {
-        background-color: #eee !important;
-        border: 0 !important;
-        white-space: normal !important;
-      }
-      tbody tr:nth-child(11) td tbody tr td:last-child {
-        background-color: #eee !important;
-        border: 0 !important;
-        white-space: normal !important;
-      }
-      tbody tr:nth-child(12) td tbody tr td:last-child {
-        background-color: #eee !important;
-        border: 0 !important;
-        white-space: normal !important;
-      }
-      tbody tr:nth-child(13) td tbody tr td:last-child {
-        background-color: #eee !important;
-        border: 0 !important;
-        white-space: normal !important;
-      }
-      tbody tr:nth-child(14) td tbody tr td:last-child {
-        background-color: #eee !important;
-        border: 0 !important;
-        white-space: normal !important;
-      }
-      tbody tr:nth-child(15) td tbody tr td:last-child {
-        background-color: #eee !important;
-        border: 0 !important;
-        white-space: normal !important;
-      }
-      tbody tr:nth-child(16) td tbody tr td:last-child {
-        background-color: #eee !important;
-        border: 0 !important;
-        white-space: normal !important;
-      }
-      tbody tr:nth-child(17) td tbody tr td:last-child {
-        background-color: #eee !important;
-        border: 0 !important;
-        white-space: normal !important;
-      }
-      tbody tr:nth-child(18) td tbody tr td:last-child {
-        background-color: #eee !important;
-        border: 0 !important;
-        white-space: normal !important;
-      }
-      tbody tr:nth-child(19) td tbody tr td:last-child {
-        background-color: #eee !important;
-        border: 0 !important;
-        white-space: normal !important;
-      }
-      td {
-        max-width: 320px !important;
-      }
-      #botao {
-        padding: 5px;
-        margin-bottom: 10px;
-        background-color: #eee;
-        width: 100% !important;
-      }
-      #botao::after {
+      div.classes::after {
         content: '';
         display: block;
         height: 0;
         clear: both;
       }
+      div.classes button {
+        display: block;
+        float: right;
+        width: 80px;
+        height: 30px;
+        background-color: #ffffff;
+      }
+
+      /* ANTIGO */
+      div {
+        width: auto !important;
+        display: block;
+        box-sizing: border-box !important;
+      }
+      div#ficha > div > table {
+        width: 400px !important;
+        box-sizing: border-box !important;
+        display: block !important;
+        margin: 0 auto !important;
+      }
+      div#ficha > div > table > tbody > tr > td > table {
+        width: 400px !important;
+        box-sizing: border-box !important;
+        display: block !important;
+        margin: 0 auto !important;
+      }
+      
+      table > tbody {
+        width: 400px !important;
+        box-sizing: border-box !important;
+        display: block !important;
+        margin: 0 auto !important;
+      }
+      thead tr th {
+        display: none;
+      }
+      td {
+        font-size: 0.85em !important;
+        box-sizing: border-box !important;
+      }
+      tbody tr td {
+        background-color: inherit !important;
+        box-sizing: border-box !important;
+      }
+      tbody tr td:first-child {
+        font-weight: bold;
+        width: auto !important;
+        border: 0 !important;
+        background-color: inherit !important;
+        box-sizing: border-box !important;
+        padding: 2px !important;
+      }
+
+      tbody tr td tbody tr td tbody tr td:last-child {
+        background-color: rgba(255,255,255,0.5) !important;
+        border: 0 !important;
+      }
+      tbody tr:nth-child(5) td tbody tr td:last-child {
+        background-color: rgba(255,255,255,0.5) !important;
+        border: 0 !important;
+      }
+      tbody tr:nth-child(6) td tbody tr td:last-child {
+        background-color: rgba(255,255,255,0.5) !important;
+        border: 0 !important;
+      }
+      tbody tr:nth-child(8) td tbody tr td:last-child {
+        background-color: rgba(255,255,255,0.5) !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
+      tbody tr:nth-child(9) td tbody tr td:last-child {
+        background-color: rgba(255,255,255,0.5) !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
+      tbody tr:nth-child(10) td tbody tr td:last-child {
+        background-color: rgba(255,255,255,0.5) !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
+      tbody tr:nth-child(11) td tbody tr td:last-child {
+        background-color: rgba(255,255,255,0.5) !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
+      tbody tr:nth-child(12) td tbody tr td:last-child {
+        background-color: rgba(255,255,255,0.5) !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
+      tbody tr:nth-child(13) td tbody tr td:last-child {
+        background-color: rgba(255,255,255,0.5) !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
+      tbody tr:nth-child(14) td tbody tr td:last-child {
+        background-color: rgba(255,255,255,0.5) !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
+      tbody tr:nth-child(15) td tbody tr td:last-child {
+        background-color: rgba(255,255,255,0.5) !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
+      tbody tr:nth-child(16) td tbody tr td:last-child {
+        background-color: rgba(255,255,255,0.5) !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
+      tbody tr:nth-child(17) td tbody tr td:last-child {
+        background-color: rgba(255,255,255,0.5) !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
+      tbody tr:nth-child(18) td tbody tr td:last-child {
+        background-color: rgba(255,255,255,0.5) !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
+      tbody tr:nth-child(19) td tbody tr td:last-child {
+        background-color: rgba(255,255,255,0.5) !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
+      td {
+        max-width: 290px !important;
+      }
       #ficha {
-        margin-bottom: 30px;
+        display: block !important;
+        margin: 0 auto !important;
+        margin-bottom: 30px !important;
       }
       button {
         background-color: #ddd;
@@ -163,7 +212,7 @@
     <header>
       <img src="img/logo.gif" />
     </header>
-    <div id="botao">
+    <div class="classes">
       Force a rolagem para um tipo específico de classe:
       <br style="clear: both" />
       <form>
@@ -206,6 +255,7 @@
         <button type="submit">Rolar</button>
       </form>
     </div>
+
     <div id="ficha"></div>
 
     <script src="scripts/prettyprint.js"></script>
@@ -222,7 +272,7 @@
       let forcar_classe = 'Todas';
       //forcar_classe = 'Clérigo';
 
-      document.querySelector("div#botao > form").addEventListener("submit", evento => {
+      document.querySelector("div.classes > form").addEventListener("submit", evento => {
         evento.preventDefault();
         var radios = document.getElementsByName('forcar_classe');
         for (var i = 0, length = radios.length; i < length; i++) {
