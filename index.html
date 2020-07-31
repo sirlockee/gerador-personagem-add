@@ -70,6 +70,8 @@
         width: auto !important;
         display: block;
         box-sizing: border-box !important;
+        font-family: Consolas, "Lucida Console", Courier, mono !important;
+        font-size: 1em !important;
       }
       div#ficha > div > table {
         width: 400px !important;
@@ -83,7 +85,64 @@
         display: block !important;
         margin: 0 auto !important;
       }
-      
+      div#ficha > div > table > tbody > tr:nth-child(7) > td:nth-child(2) > table > tbody  {
+        padding: 0 !important;
+      }
+      div#ficha > div > table > tbody > tr:nth-child(7) > td:nth-child(2) > table > tbody > tr > td:nth-child(2) {
+        padding: 0 !important;
+      }
+      div#ficha > div > table > tbody > tr:nth-child(7) > td:nth-child(2) > table > tbody > tr > td:nth-child(2) > table > tbody {
+        width: 215px !important;
+        padding: 0 !important;
+      }
+      div#ficha > div > table > tbody > tr:nth-child(7) > td:nth-child(2) > table > tbody > tr > td:nth-child(2) {
+        border: 0 !important;
+      }
+      div#ficha > div > table > tbody > tr:nth-child(7) > td:nth-child(2) > table > tbody > tr:nth-child(odd) {
+        background-color: rgba(255,255,255,0.3) !important;
+      }
+
+      div#ficha > div > table > tbody > tr:nth-child(7) > td:nth-child(2) > table > tbody > tr > td:last-child > table > tbody > tr:nth-child(5) > td:last-child {
+        width: 100px !important;
+        white-space: normal !important;
+      }
+      div#ficha > div > table > tbody > tr:nth-child(7) > td:nth-child(2) > table > tbody > tr > td:last-child > table > tbody > tr > td:last-child {
+        background-color: inherit !important;
+      }
+
+      div#ficha > div > table > tbody > tr:nth-child(12) > td:nth-child(2) > table > tbody > tr {
+        background-color: rgba(255,255,255,0.3) !important;
+      }
+      div#ficha > div > table > tbody > tr:nth-child(12) > td:nth-child(2) > table > tbody > tr > td:last-child {
+        width: 260px !important;
+        white-space: normal !important;
+        background-color: inherit !important;
+      }
+      div#ficha > div > table > tbody > tr:nth-child(13) > td:nth-child(2) > table > tbody > tr {
+        background-color: rgba(255,255,255,0.3) !important;
+      }
+      div#ficha > div > table > tbody > tr:nth-child(13) > td:nth-child(2) > table > tbody > tr > td:last-child {
+        width: 260px !important;
+        white-space: normal !important;
+        background-color: inherit !important;
+      }
+      div#ficha > div > table > tbody > tr:nth-child(14) > td:nth-child(2) > table > tbody > tr {
+        background-color: rgba(255,255,255,0.3) !important;
+      }
+      div#ficha > div > table > tbody > tr:nth-child(14) > td:nth-child(2) > table > tbody > tr > td:last-child {
+        width: 260px !important;
+        white-space: normal !important;
+        background-color: inherit !important;
+      }
+      div#ficha > div > table > tbody > tr:nth-child(15) > td:nth-child(2) > table > tbody > tr {
+        background-color: rgba(255,255,255,0.3) !important;
+      }
+      div#ficha > div > table > tbody > tr:nth-child(15) > td:nth-child(2) > table > tbody > tr > td:last-child {
+        width: 260px !important;
+        white-space: normal !important;
+        background-color: inherit !important;
+      }
+
       table > tbody {
         width: 400px !important;
         box-sizing: border-box !important;
@@ -96,6 +155,10 @@
       td {
         font-size: 0.85em !important;
         box-sizing: border-box !important;
+        padding: 2px !important;
+      }
+      div#ficha > div > table > tbody > tr:nth-child(7) > td:nth-child(2) > table > tbody > tr > td:nth-child(2) > table > tbody > tr > td {
+        font-size: 0.9em !important;
       }
       tbody tr td {
         background-color: inherit !important;
@@ -2698,7 +2761,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "80%";
           } else if (atributo == "Imunidade à Magia") {
-            return [];
+            return "Nenhuma";
           }
         } else if (sabedoria == 2) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2708,7 +2771,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "60%";
           } else if (atributo == "Imunidade à Magia") {
-            return [];
+            return "Nenhuma";
           }
         } else if (sabedoria == 3) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2718,7 +2781,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "50%";
           } else if (atributo == "Imunidade à Magia") {
-            return [];
+            return "Nenhuma";
           }
         } else if (sabedoria == 4) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2728,7 +2791,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "45%";
           } else if (atributo == "Imunidade à Magia") {
-            return [];
+            return "Nenhuma";
           }
         } else if (sabedoria == 5) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2738,7 +2801,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "40%";
           } else if (atributo == "Imunidade à Magia") {
-            return [];
+            return "Nenhuma";
           }
         } else if (sabedoria == 6) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2748,7 +2811,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "35%";
           } else if (atributo == "Imunidade à Magia") {
-            return [];
+            return "Nenhuma";
           }
         } else if (sabedoria == 7) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2758,7 +2821,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "30%";
           } else if (atributo == "Imunidade à Magia") {
-            return [];
+            return "Nenhuma";
           }
         } else if (sabedoria == 8) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2768,7 +2831,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "25%";
           } else if (atributo == "Imunidade à Magia") {
-            return [];
+            return "Nenhuma";
           }
         } else if (sabedoria == 9) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2778,7 +2841,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "20%";
           } else if (atributo == "Imunidade à Magia") {
-            return [];
+            return "Nenhuma";
           }
         } else if (sabedoria == 10) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2788,7 +2851,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "15%";
           } else if (atributo == "Imunidade à Magia") {
-            return [];
+            return "Nenhuma";
           }
         } else if (sabedoria == 11) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2798,7 +2861,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "10%";
           } else if (atributo == "Imunidade à Magia") {
-            return [];
+            return "Nenhuma";
           }
         } else if (sabedoria == 12) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2808,7 +2871,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "5%";
           } else if (atributo == "Imunidade à Magia") {
-            return [];
+            return "Nenhuma";
           }
         } else if (sabedoria == 13) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2818,7 +2881,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "0%";
           } else if (atributo == "Imunidade à Magia") {
-            return [];
+            return "Nenhuma";
           }
         } else if (sabedoria == 14) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2828,7 +2891,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "0%";
           } else if (atributo == "Imunidade à Magia") {
-            return [];
+            return "Nenhuma";
           }
         } else if (sabedoria == 15) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2838,7 +2901,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "0%";
           } else if (atributo == "Imunidade à Magia") {
-            return [];
+            return "Nenhuma";
           }
         } else if (sabedoria == 16) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2848,7 +2911,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "0%";
           } else if (atributo == "Imunidade à Magia") {
-            return [];
+            return "Nenhuma";
           }
         } else if (sabedoria == 17) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2858,7 +2921,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "0%";
           } else if (atributo == "Imunidade à Magia") {
-            return [];
+            return "Nenhuma";
           }
         } else if (sabedoria == 18) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2868,7 +2931,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "0%";
           } else if (atributo == "Imunidade à Magia") {
-            return [];
+            return "Nenhuma";
           }
         } else if (sabedoria == 19) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2878,7 +2941,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "0%";
           } else if (atributo == "Imunidade à Magia") {
-            return ["Causar Medo", "Encantar Pessoa", "Comanda", "Amigos", "Hipnose"];
+            return "Causar Medo, Encantar Pessoa, Comanda, Amigos, Hipnose";
           }
         } else if (sabedoria == 20) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2888,7 +2951,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "0%";
           } else if (atributo == "Imunidade à Magia") {
-            return ["Esquecer", "Paralisar Pessoa", "Raio de Esquecimanto", "Assustar"];
+            return "Causar Medo, Encantar Pessoa, Comanda, Amigos, Hipnose, Esquecer, Paralisar Pessoa, Raio de Esquecimanto, Assustar";
           }
         } else if (sabedoria == 21) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2898,7 +2961,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "0%";
           } else if (atributo == "Imunidade à Magia") {
-            return ["Medo"];
+            return "Causar Medo, Encantar Pessoa, Comanda, Amigos, Hipnose, Esquecer, Paralisar Pessoa, Raio de Esquecimanto, Assustar, Medo";
           }
         } else if (sabedoria == 22) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2908,7 +2971,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "0%";
           } else if (atributo == "Imunidade à Magia") {
-            return ["Encantar Monstro", "Confusão", "Emoção", "Falha", "Sugestão"];
+            return "Causar Medo, Encantar Pessoa, Comanda, Amigos, Hipnose, Esquecer, Paralisar Pessoa, Raio de Esquecimanto, Assustar, Medo, Encantar Monstro, Confusão, Emoção, Falha, Sugestão";
           }
         } else if (sabedoria == 23) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2918,7 +2981,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "0%";
           } else if (atributo == "Imunidade à Magia") {
-            return ["Caos", "Debilitar Mente", "Paralisar Monstro", "Jarro Arcano", "Busca"];
+            return "Causar Medo, Encantar Pessoa, Comanda, Amigos, Hipnose, Esquecer, Paralisar Pessoa, Raio de Esquecimanto, Assustar, Medo, Encantar Monstro, Confusão, Emoção, Falha, Sugestão, Caos, Debilitar Mente, Paralisar Monstro, Jarro Arcano, Busca";
           }
         } else if (sabedoria == 24) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2928,7 +2991,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "0%";
           } else if (atributo == "Imunidade à Magia") {
-            return ["Tarefa", "Sugestão em Massa", "Cetro do Poder"];
+            return "Causar Medo, Encantar Pessoa, Comanda, Amigos, Hipnose, Esquecer, Paralisar Pessoa, Raio de Esquecimanto, Assustar, Medo, Encantar Monstro, Confusão, Emoção, Falha, Sugestão, Caos, Debilitar Mente, Paralisar Monstro, Jarro Arcano, Busca, Tarefa, Sugestão em Massa, Cetro do Poder";
           }
         } else if (sabedoria == 25) {
           if (atributo == "Ajuste de Defesa Contra Magia") {
@@ -2938,7 +3001,7 @@
           } else if (atributo == "Chance da Magia Falhar") {
             return "0%";
           } else if (atributo == "Imunidade à Magia") {
-            return ["Antipatia/Simpatia", "Morte", "Encantar as Massas"];
+            return "Causar Medo, Encantar Pessoa, Comanda, Amigos, Hipnose, Esquecer, Paralisar Pessoa, Raio de Esquecimanto, Assustar, Medo, Encantar Monstro, Confusão, Emoção, Falha, Sugestão, Caos, Debilitar Mente, Paralisar Monstro, Jarro Arcano, Busca, Tarefa, Sugestão em Massa, Cetro do Poder, Antipatia/Simpatia, Morte, Encantar as Massas";
           }
         }
       }
