@@ -103,6 +103,11 @@
         border: 0 !important;
         white-space: normal !important;
       }
+      tbody tr:nth-child(15) td tbody tr td:last-child {
+        background-color: #eee !important;
+        border: 0 !important;
+        white-space: normal !important;
+      }
       td {
         max-width: 320px !important;
       }
@@ -465,6 +470,61 @@
         }
         return pericia.nome + ", Nº Pontos Necessários: " + pericia.pontos + habilidade;
       }
+
+      Arma Abençoada
+      Benção
+      Cativar Animais
+      Círculo de Fé
+      Comando
+      Construção
+      Criar Água
+      Curar Ferinentos Leves
+      Detectar Armadilhas
+      Detectar Magia
+      Detectar Maldade
+      Detectar Venenos
+      Fogo das Fadas
+      Invisibilidade contra Animais
+      Invisibilidade contra Mortos-Vivos
+      Localizar Animais ou Plantas
+      Luz
+      Passos sem Pegadas
+      Pedra Encantada
+      Proteção ao Calor/Frio
+      Proteção ao Mal
+      Purificar Alimentos
+      Remover Medo
+      Santurário
+
+      const MAGIAS_DIVINAS = {
+
+      };
+
+      const MAGIAS_ARCANAS = {
+        //Abjuração
+        "Abjurante": [ "Alarme", "Proteção ao Mal" ],
+
+        // Conjuração/Convocação
+        "Conjurador": [ "Área Escorregadia", "Armadura Arcana", "Conjurar Familiar", "Montaria Arcana", "Servo Invisível" ],
+
+        // Profecia
+        "Adivinho": [ "Detectar Magia", "Detectar Mortos-Vivos", "Identificação", "Ler Magias" ],
+
+        // Encantamento/Feitiço
+        "Feiticeiro": [ "Amizade", "Enfeitiçar Pessoas", "Hipnotismo", "Provocação", "Sono", "Truque" ],
+
+        // Ilusão
+        "Ilusionista": [ "A Aura Esotérica de Nystul", "Força Fantasmagórica", "Som Ilusório", "Susto", "Transformação Momentânea", "Ventriloquismo" ],
+
+        // Invocação/Evocação
+        "Invocador": [ "Alarme", "Dardos Místicos", "O Disco Flutuante de Tenser", "Escudo Arcano", "Muralhas de Névoas" ],
+
+        // Necromancia
+        "Necromante": [ "Toque Macabro" ],
+
+        // Alteração
+        "Transmutador": [ "Apagar", "Cerrar Portas", "Compreensão da Linguagem", "Consertar", "Expandir", "Globos de Luz", "Leque Cromático", "Luz", "Manipular Chamas", "Mãos Flamejantes", "Mensagem", "Patas de Aranha", "Queda Suave", "Reflexão do Olhar", "Runa Arcana", "Salto", "Toque Chocante" ]
+      };
 
       const PERICIAS = {
         "Geral": [
@@ -986,7 +1046,11 @@
           ],
           armas: [],
           armaduras: ARMADURAS,
-          escudos: ESCUDOS
+          escudos: ESCUDOS,
+          talentos: {
+            'Mover-se em Silêncio': 15,
+            'Esconder-se nas Sombras': 10
+          }
         },
         "Mago": {
           "Grupo": "Arcano",
@@ -1028,7 +1092,8 @@
           ],
           armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
           armaduras: [],
-          escudos: []
+          escudos: [],
+          escola: 'Abjuração'
         },
         "Conjurador": {
           "Grupo": "Arcano",
@@ -1052,7 +1117,8 @@
           ],
           armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
           armaduras: [],
-          escudos: []
+          escudos: [],
+          escola: 'Conjuração/Convocação'
         },
         "Adivinho": {
           "Grupo": "Arcano",
@@ -1076,7 +1142,8 @@
           ],
           armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
           armaduras: [],
-          escudos: []
+          escudos: [],
+          escola: 'Profecia'
         },
         "Feiticeiro": {
           "Grupo": "Arcano",
@@ -1100,7 +1167,8 @@
           ],
           armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
           armaduras: [],
-          escudos: []
+          escudos: [],
+          escola: 'Encantamento/Feitiço'
         },
         "Ilusionista": {
           "Grupo": "Arcano",
@@ -1124,7 +1192,8 @@
           ],
           armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
           armaduras: [],
-          escudos: []
+          escudos: [],
+          escola: 'Ilusão/Visão'
         },
         "Invocador": {
           "Grupo": "Arcano",
@@ -1148,7 +1217,8 @@
           ],
           armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
           armaduras: [],
-          escudos: []
+          escudos: [],
+          escola: 'Invocação/Evocação'
         },
         "Necromante": {
           "Grupo": "Arcano",
@@ -1172,7 +1242,8 @@
           ],
           armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
           armaduras: [],
-          escudos: []
+          escudos: [],
+          escola: 'Necromancia'
         },
         "Transmutador": {
           "Grupo": "Arcano",
@@ -1196,7 +1267,8 @@
           ],
           armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
           armaduras: [],
-          escudos: []
+          escudos: [],
+          escola: 'Alteração'
         },
         "Clérigo": {
           "Grupo": "Sacerdote",
@@ -2994,6 +3066,7 @@
             "Perícias Comuns Inicial": 0,
             "Perícias Comuns Nº Níveis": 0
           },
+          "Magias": [],
           "Perícias": [],
           "Especialização": [],
           "Itens": [],
@@ -3396,6 +3469,12 @@
       }
 
       function sortear_pontos_talentos(classe, personagem, callback) {
+
+        if (classe == "Ranger") {
+          callback();
+          return;
+        }
+
         let pontos_extras = 60;
         let limites = {
           'Furtar Bolsos': 30,
@@ -3439,7 +3518,7 @@
       }
 
       function definir_talentos(classe, personagem, callback) {
-        if (CLASSES[classe]["Grupo"] == "Ladino") {
+        if ( (CLASSES[classe]["Grupo"] == "Ladino") || (classe == "Ranger") ) {
           personagem["Talentos"] = {};
           let keys_talentos = Object.keys(CLASSES[classe].talentos);
           keys_talentos.forEach((talento, index_talento) => {
@@ -4135,6 +4214,51 @@
 
       }
 
+      // MAGIAS_ARCANAS
+      function sortear_magias(classe, personagem, callback) {
+        if (classe == "Clérigo") {
+          callback();
+        } else if (classe == "Ranger") {
+          callback();
+        } else if (CLASSES[classe]["Grupo"] == "Arcano") {
+          let qtde_magias = personagem["Dados Básicos"]["Magias Arcanas por Círculo"];
+          if (classe != "Mago") {
+            if (MAGIAS_ARCANAS[classe].length < qtde_magias) {
+              qtde_magias = MAGIAS_ARCANAS[classe].length;
+            }
+          }
+
+          let qtde = 0;
+          while (qtde < qtde_magias) {
+
+            if (classe != "Mago") {
+              let index_magia = Math.floor(Math.random() * MAGIAS_ARCANAS[classe].length);
+              let magia = MAGIAS_ARCANAS[classe][index_magia];
+              if (!personagem["Magias"].includes(magia)) {
+                personagem["Magias"].push(magia);
+                qtde++
+              }
+            } else {
+              let keys_magias = Object.keys(MAGIAS_ARCANAS);
+              let index_escola = keys_magias[Math.floor(Math.random() * keys_magias.length)];
+              let index_magia = Math.floor(Math.random() * MAGIAS_ARCANAS[index_escola].length);
+              let magia = MAGIAS_ARCANAS[index_escola][index_magia];
+              if (!personagem["Magias"].includes(magia)) {
+                personagem["Magias"].push(magia);
+                qtde++
+              }
+            }
+
+            if (qtde == qtde_magias) {
+              callback();
+            }
+          }
+
+        } else {
+          callback();
+        }
+      }
+
       function sortear_dados_basicos(personagem, callback) {
         let classe = ajustar_nome_classe(personagem);
         let raca = ajustar_nome_raca(personagem);
@@ -4329,6 +4453,13 @@
             personagem["Resistência"]["Sopro-de-Dragão"] = 15;
             personagem["Resistência"]["Magia"] = 12;
 
+            if (classe == "Mago") {
+              personagem["Dados Básicos"]["Magias Arcanas por Círculo"] = 1;
+            } else {
+              personagem["Dados Básicos"]["Magias Arcanas por Círculo"] = 2;
+              personagem["Dados Básicos"]["Escola de Magia"] = CLASSES[classe].escola;
+            }
+
           } else if (CLASSES[classe]["Grupo"] == "Sacerdote") {
             personagem["Pontos de Perícia"]["Perícias Armas Inicial"] = 2;
             personagem["Pontos de Perícia"]["Perícias Armas Nº Níveis"] = 4;
@@ -4341,6 +4472,14 @@
             personagem["Resistência"]["Petrificação ou Transformação"] = 13;
             personagem["Resistência"]["Sopro-de-Dragão"] = 16;
             personagem["Resistência"]["Magia"] = 15;
+
+            if (personagem["Habilidades"]["Sabedoria"]["Magias Extras"] == 13) {
+              personagem["Dados Básicos"]["Magias Divinas por Círculo"] = 2;
+            } else if (personagem["Habilidades"]["Sabedoria"]["Magias Extras"] == 14) {
+              personagem["Dados Básicos"]["Magias Divinas por Círculo"] = 3;
+            } else {
+              personagem["Dados Básicos"]["Magias Divinas por Círculo"] = 1;
+            }
 
           } else if (CLASSES[classe]["Grupo"] == "Ladino") {
             personagem["Pontos de Perícia"]["Perícias Armas Inicial"] = 2;
@@ -4377,11 +4516,12 @@
 
               sortear_pericias(armas_mais_fortes, classe, raca, personagem, () => {
 
-                // movimentação
-                // calcular CA
-                // perícia História Local para o bardo
+                sortear_magias(classe, personagem, () => {
 
-                callback();
+                  // perícia História Local para o bardo
+                  callback();
+
+                });
 
               });
 
