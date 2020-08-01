@@ -80,7 +80,6 @@
         margin: 0 auto !important;
       }
       div#ficha > div > table > tbody > tr > td > table {
-        width: 400px !important;
         box-sizing: border-box !important;
         display: block !important;
         margin: 0 auto !important;
@@ -150,7 +149,6 @@
       }
 
       table > tbody {
-        width: 400px !important;
         box-sizing: border-box !important;
         display: block !important;
         margin: 0 auto !important;
@@ -277,6 +275,7 @@
         float: left;
       }
     </style>
+    <link rel="stylesheet" type="text/css" href="css/print.css">
   </head>
   <body>
 
@@ -324,6 +323,7 @@
         <label for="Bardo"><input type="radio" id="Bardo" name="forcar_classe" value="Bardo">Bardo</label>
         <br style="clear: both" />
         <button type="submit">Rolar</button>
+        <button id="botao_PDF" type="button">PDF</button>
       </form>
     </div>
 
@@ -331,6 +331,10 @@
 
     <script src="scripts/prettyprint.js"></script>
     <script type="text/javascript">
+
+      botao_PDF.addEventListener('click',()=>{
+          window.print();
+      });
 
       /* debug */
       const DEBUG = false;
@@ -3233,6 +3237,7 @@
             "Categoria de Armadura": 10,
             "Iniciativa": '1d10 (menor primeiro)',
             "Teste de Surpresa": '',
+            "TACO": 20,
             "Infravisão": '0 metros no escuro',
             "Peso dos Equipamentos": 0,
             "Moedas": 0
