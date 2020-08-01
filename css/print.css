@@ -1,5 +1,5 @@
 @media print {
-  
+
 
   html {
     background: #fff;
@@ -200,5 +200,9 @@
     max-width: 200px;
     display: block;
     margin: 0 auto 6px auto;
+  }
+
+  div.fb-like {
+    display: none;
   }
 }

@@ -274,6 +274,12 @@
         display: block;
         float: left;
       }
+
+      div.fb-like {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+      }
     </style>
     <link rel="stylesheet" type="text/css" href="css/print.css">
   </head>
@@ -281,7 +287,11 @@
 
     <header>
       <img src="img/logo.gif" />
+      <div id="fb-root"></div>
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v7.0&appId=386817718574693&autoLogAppEvents=1" nonce="jCzpVpSe"></script>
+      <div class="fb-like" data-href="https://sirlockee.com/aded/" data-width="410" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div>
     </header>
+
     <div class="classes">
       Force a rolagem para um tipo específico de classe:
       <br style="clear: both" />
