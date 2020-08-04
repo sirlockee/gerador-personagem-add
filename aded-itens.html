@@ -177,7 +177,7 @@
         { nome: '⛏ Porta-Pergaminhos', preco: { quantidade: 8, moeda: 'pp' }, peso: 0.25 },
         { nome: '⛏ Balança de Comerciante', preco: { quantidade: 2, moeda: 'po' }, peso: 0.5 },
         { nome: '⛏ Espelho Pequeno de Metal', preco: { quantidade: 10, moeda: 'po' }, peso: 0 },
-        { nome: '♪ Instrumento Musical: Alaúde', preco: { quantidade: 35, moeda: 'po' }, peso: 1 },
+        { nome: '🎻 Instrumento Musical: Alaúde', preco: { quantidade: 35, moeda: 'po' }, peso: 1 },
         { nome: '🎻 Instrumento Musical: Charamela', preco: { quantidade: 2, moeda: 'po' }, peso: 0.5 },
         { nome: '🎻 Instrumento Musical: Flauta Doce', preco: { quantidade: 2, moeda: 'po' }, peso: 0.5 },
         { nome: '🎻 Instrumento Musical: Flauta', preco: { quantidade: 12, moeda: 'po' }, peso: 1 },
@@ -743,6 +743,10 @@
         return "<b>" + item.nome + "</b>" + peso + moedas;
       }
 
+      function titulo(texto) {
+        return "<b style='color: #1a3578; font-size: 1.2em;'>" + texto + "</b><br/>";
+      }
+
       function sortear_loot() {
         texto = "";
         sortear_lista_itens(true, ITENS, 1, () => {
@@ -755,8 +759,8 @@
                       sortear_lista_armaduras(true, 1, () => {
                         sortear_moedas(() => {
                           let DIV = document.getElementById("loot");
-                          if (texto == '') texto = 'Nenhum item encontrado.';
-                          else texto = "<b style='color: #1a3578; font-size: 1.2em;'>Baús ou Loots</b><br/>" + texto;
+                          if (texto == '') texto = titulo('Baús ou Loots') + 'Nenhum item encontrado.';
+                          else texto = titulo('Baús ou Loots') + texto;
                           DIV.innerHTML = texto;
                         });
                       });
@@ -774,8 +778,8 @@
         sortear_lista_itens(false, ITENS, 10, () => {
           sortear_lista_itens(false, ALIMENTOS, 10, () => {
             let DIV = document.getElementById("taverna");
-            if (texto == '') texto = 'Nenhum item encontrado.';
-            else texto = "<b style='color: #1a3578; font-size: 1.2em;'>Tavernas ou Estalagens</b><br/>" + texto;
+            if (texto == '') texto =  + 'Nenhum item encontrado.';
+            else texto = titulo('Tavernas ou Estalagens') + texto;
             DIV.innerHTML = texto;
           });
         });
@@ -786,8 +790,8 @@
         sortear_lista_itens(false, VESTIMENTAS['Masculino'], 3, () => {
           sortear_lista_itens(false, VESTIMENTAS['Feminino'], 3, () => {
             let DIV = document.getElementById("alfaiataria");
-            if (texto == '') texto = 'Nenhum item encontrado.';
-            else texto = "<b style='color: #1a3578; font-size: 1.2em;'>Alfaiataria</b><br/>" + texto;
+            if (texto == '') texto = titulo('Alfaiataria') + 'Nenhum item encontrado.';
+            else texto = titulo('Alfaiataria') + texto;
             DIV.innerHTML = texto;
           });
         });
@@ -800,8 +804,8 @@
             sortear_lista_misseis(false, 3, () => {
               sortear_lista_armaduras(false, 3, () => {
                 let DIV = document.getElementById("armeiro");
-                if (texto == '') texto = 'Nenhum item encontrado.';
-                else texto = "<b style='color: #1a3578; font-size: 1.2em;'>Loja de Armas e Armaduras</b><br/>" + texto;
+                if (texto == '') texto = titulo('Loja de Armas e Armaduras') + 'Nenhum item encontrado.';
+                else texto = titulo('Loja de Armas e Armaduras') + texto;
                 DIV.innerHTML = texto;
               });
             });
