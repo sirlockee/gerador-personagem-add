@@ -771,11 +771,13 @@
 
       function sortear_taverna() {
         texto = "";
-        sortear_lista_itens(false, ALIMENTOS, 10, () => {
-          let DIV = document.getElementById("taverna");
-          if (texto == '') texto = 'Nenhum item encontrado.';
-          else texto = "<b style='color: #1a3578; font-size: 1.2em;'>Tavernas ou Estalagens</b><br/>" + texto;
-          DIV.innerHTML = texto;
+        sortear_lista_itens(false, ITENS, 10, () => {
+          sortear_lista_itens(false, ALIMENTOS, 10, () => {
+            let DIV = document.getElementById("taverna");
+            if (texto == '') texto = 'Nenhum item encontrado.';
+            else texto = "<b style='color: #1a3578; font-size: 1.2em;'>Tavernas ou Estalagens</b><br/>" + texto;
+            DIV.innerHTML = texto;
+          });
         });
       }
 
