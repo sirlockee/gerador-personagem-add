@@ -346,7 +346,23 @@
     <div id="ficha"></div>
 
     <script src="scripts/prettyprint.js"></script>
+    <script src="scripts/itens.js"></script>
     <script type="text/javascript">
+
+      function openArrayByte(callback) {
+        let xhr = new XMLHttpRequest();
+        //xhr.open('GET', 'https://flechamagica.com.br/pdf/ficha-editavel-add.pdf', true);
+        xhr.open('GET', 'https://flechamagica.com.br/pdf/ficha_add6.pdf', true);
+        xhr.responseType = 'arraybuffer';
+        xhr.onload = function(e) {
+          if (this.status == 200) {
+            let myBlob = this.response;
+            // myBlob is now the blob that the object URL pointed to.
+            callback(myBlob);
+          }
+        };
+        xhr.send();
+      }
 
       botao_PDF.addEventListener('click',()=>{
           window.print();
@@ -583,7 +599,7 @@
           peso: { "Masculino": { minimo: 45, maximo: 61 }, "Feminino": { minimo: 35, maximo: 51 }},
           linguas_importantes: [ "comum", 'élfico' ],
           linguas: [ 'dos gnomos', 'dos halflings', 'dos goblins', 'dos robgoblins', 'dos orcs', 'dos gnolls' ],
-          armas_importantes: [ 'Arco Longo Composto', 'Arco Curto Composto', 'Arco Longo', 'Arco Curto', 'Espada Longa', 'Espada Curta' ],
+          armas_importantes: [ "⚔ Arco Longo Composto", "⚔ Arco Longo Composto (quase quebrado)", "⚔ Arco Longo", "⚔ Arco Longo (quase quebrado)", "⚔ Arco Curto Composto", "⚔ Arco Curto Composto (quase quebrado)", "⚔ Arco Curto", "⚔ Arco Curto (quase quebrado)", "⚔ Espada Curta", "⚔ Espada Curta (enferrujada)", "⚔ Espada Curta (lascada)", "⚔ Espada Longa", "⚔ Espada Longa (enferrujada)", "⚔ Espada Longa (lascada)"],
           talentos: {
             'Furtar Bolsos': 5,
             'Abrir Fechaduras': -5,
@@ -694,7 +710,7 @@
           peso: { "Masculino": { minimo: 26, maximo: 46 }, "Feminino": { minimo: 24, maximo: 44 }},
           linguas_importantes: [ "comum", "dos halflings" ],
           linguas: [ "dos anões", "élfico", "dos gnomos", "dos goblins", "dos orcs" ],
-          armas_importantes: [ 'Funda', 'Dardo', 'Arco Curto', 'Zarabatana' ],
+          armas_importantes: [ "⚔ Funda", "⚔ Cajado-Funda", "⚔ Dardo", "⚔ Arco Curto Composto", "⚔ Arco Curto Composto (quase quebrado)", "⚔ Arco Curto", "⚔ Arco Curto (quase quebrado)", "⚔ Zarabatana" ],
           talentos: {
             'Furtar Bolsos': 5,
             'Abrir Fechaduras': 5,
@@ -880,6 +896,7 @@
         ]
       };
 
+      /*
       const ITENS = [
         { nome: 'Sineta', preco: { quantidade: 1, moeda: 'po' }, peso: 0 },
         { nome: 'Algibeira Grande', preco: { quantidade: 1, moeda: 'po' }, peso: 0.5 },
@@ -1079,10 +1096,6 @@
         { nome: 'Armadura Simples', ca: 3, preco: { quantidade: 600, moeda: 'po' }, peso: 25 },
         { nome: 'Armadura de Batalha', ca: 2, preco: { quantidade: 2000, moeda: 'po' }, peso: 30 },
         { nome: 'Armadura Completa', ca: 1, preco: { quantidade: 4000, moeda: 'po' }, peso: 35 }
-        /*
-        { nome: 'Elmo Grande', ca: 0, preco: { quantidade: 30, moeda: 'po' }, peso: 5 },
-        { nome: 'Basinet', ca: 0, preco: { quantidade: 8, moeda: 'po' }, peso: 2.5 }
-        */
       ];
 
       const MISSEIS = {
@@ -1187,6 +1200,7 @@
         "Bastão": { preco: { quantidade: 5, moeda: 'pp' }, peso: 1, tamanho: 'Médio', tipo: 'Concussão', velocidade: 3, dano_p: '1d3', dano_mg: '1d3', dano: 3, detalhes: [] },
         "Laço": { preco: { quantidade: 1, moeda: 'pp' }, peso: 1, tamanho: 'Médio', tipo: '', velocidade: 8, dano_p: '1d2', dano_mg: '1', dano: 1, detalhes: [] }
       };
+      */
 
       const ESCUDOS_DRUIDA = [
         ESCUDOS[1],
@@ -1325,7 +1339,8 @@
             'Uma vez que tenha alcançado o 9º nível, um arcano pode escrever pergaminhos e preparar poções. Ele só poderá criar itens de maior poder depois de ter aprendido as magias apropriadas para isso (ou de ter trabalhado com alguém que as conheça).',
             'Todos os arcanos recebem um d4 de vida por nível do personagem, do 1º até o 10º. Depois do 10º, arcanos ganham 1 ponto de vida por nível.'
           ],
-          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
+          armas: ["⚔ Cajado-Funda", "⚔ Cajado", "⚔ Cajado (quase quebrado)", "⚔ Cajado Pequeno", "⚔ Cajado Pequeno (quase quebrado)", "⚔ Adaga", "⚔ Adaga (lascada)", "⚔ Adaga (enferrujada)", "⚔ Punhal",
+          "⚔ Punhal (lascado)", "⚔ Punhal (enferrujado)", "⚔ Dardo", "⚔ Faca", "⚔ Faca (lascada)", "⚔ Funda"],
           armaduras: [],
           escudos: []
         },
@@ -1349,7 +1364,8 @@
             'Quando um arcano especialista tenta criar uma nova magia dentro de sua própria escola de especialização, o Mestre, ao determinar a dificuldade da tarefa, deve considerar a nova magia como sendo de um círculo interior ao real.',
             'Um Abjurante não pode aprender magias das escolas de Alteração e Ilusão.'
           ],
-          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
+          armas: ["⚔ Cajado-Funda", "⚔ Cajado", "⚔ Cajado (quase quebrado)", "⚔ Cajado Pequeno", "⚔ Cajado Pequeno (quase quebrado)", "⚔ Adaga", "⚔ Adaga (lascada)", "⚔ Adaga (enferrujada)", "⚔ Punhal",
+          "⚔ Punhal (lascado)", "⚔ Punhal (enferrujado)", "⚔ Dardo", "⚔ Faca", "⚔ Faca (lascada)", "⚔ Funda"],
           armaduras: [],
           escudos: [],
           escola: 'Abjuração'
@@ -1374,7 +1390,8 @@
             'Quando um arcano especialista tenta criar uma nova magia dentro de sua própria escola de especialização, o Mestre, ao determinar a dificuldade da tarefa, deve considerar a nova magia como sendo de um círculo interior ao real.',
             'Um Conjurador não pode aprender magias das escolas de Profecia e Invocação'
           ],
-          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
+          armas: ["⚔ Cajado-Funda", "⚔ Cajado", "⚔ Cajado (quase quebrado)", "⚔ Cajado Pequeno", "⚔ Cajado Pequeno (quase quebrado)", "⚔ Adaga", "⚔ Adaga (lascada)", "⚔ Adaga (enferrujada)", "⚔ Punhal",
+          "⚔ Punhal (lascado)", "⚔ Punhal (enferrujado)", "⚔ Dardo", "⚔ Faca", "⚔ Faca (lascada)", "⚔ Funda"],
           armaduras: [],
           escudos: [],
           escola: 'Conjuração/Convocação'
@@ -1399,7 +1416,8 @@
             'Quando um arcano especialista tenta criar uma nova magia dentro de sua própria escola de especialização, o Mestre, ao determinar a dificuldade da tarefa, deve considerar a nova magia como sendo de um círculo interior ao real.',
             'Um Adivinho não pode aprender magias da escola de Conjuração/Convocação'
           ],
-          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
+          armas: ["⚔ Cajado-Funda", "⚔ Cajado", "⚔ Cajado (quase quebrado)", "⚔ Cajado Pequeno", "⚔ Cajado Pequeno (quase quebrado)", "⚔ Adaga", "⚔ Adaga (lascada)", "⚔ Adaga (enferrujada)", "⚔ Punhal",
+          "⚔ Punhal (lascado)", "⚔ Punhal (enferrujado)", "⚔ Dardo", "⚔ Faca", "⚔ Faca (lascada)", "⚔ Funda"],
           armaduras: [],
           escudos: [],
           escola: 'Profecia'
@@ -1424,7 +1442,8 @@
             'Quando um arcano especialista tenta criar uma nova magia dentro de sua própria escola de especialização, o Mestre, ao determinar a dificuldade da tarefa, deve considerar a nova magia como sendo de um círculo interior ao real.',
             'Um Feiticeiro não pode aprender magias das escolas de Invocação/Evocação e Necromancia'
           ],
-          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
+          armas: ["⚔ Cajado-Funda", "⚔ Cajado", "⚔ Cajado (quase quebrado)", "⚔ Cajado Pequeno", "⚔ Cajado Pequeno (quase quebrado)", "⚔ Adaga", "⚔ Adaga (lascada)", "⚔ Adaga (enferrujada)", "⚔ Punhal",
+          "⚔ Punhal (lascado)", "⚔ Punhal (enferrujado)", "⚔ Dardo", "⚔ Faca", "⚔ Faca (lascada)", "⚔ Funda"],
           armaduras: [],
           escudos: [],
           escola: 'Encantamento/Feitiço'
@@ -1449,7 +1468,8 @@
             'Quando um arcano especialista tenta criar uma nova magia dentro de sua própria escola de especialização, o Mestre, ao determinar a dificuldade da tarefa, deve considerar a nova magia como sendo de um círculo interior ao real.',
             'Um Ilusionista não pode aprender magias das escolas de Necromancia, Invocação/Evocação e Abjuração'
           ],
-          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
+          armas: ["⚔ Cajado-Funda", "⚔ Cajado", "⚔ Cajado (quase quebrado)", "⚔ Cajado Pequeno", "⚔ Cajado Pequeno (quase quebrado)", "⚔ Adaga", "⚔ Adaga (lascada)", "⚔ Adaga (enferrujada)", "⚔ Punhal",
+          "⚔ Punhal (lascado)", "⚔ Punhal (enferrujado)", "⚔ Dardo", "⚔ Faca", "⚔ Faca (lascada)", "⚔ Funda"],
           armaduras: [],
           escudos: [],
           escola: 'Ilusão/Visão'
@@ -1474,7 +1494,8 @@
             'Quando um arcano especialista tenta criar uma nova magia dentro de sua própria escola de especialização, o Mestre, ao determinar a dificuldade da tarefa, deve considerar a nova magia como sendo de um círculo interior ao real.',
             'Um Invocador não pode aprender magias das escolas de Encantamento/Feitiço e Conjuração/Convocação'
           ],
-          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
+          armas: ["⚔ Cajado-Funda", "⚔ Cajado", "⚔ Cajado (quase quebrado)", "⚔ Cajado Pequeno", "⚔ Cajado Pequeno (quase quebrado)", "⚔ Adaga", "⚔ Adaga (lascada)", "⚔ Adaga (enferrujada)", "⚔ Punhal",
+          "⚔ Punhal (lascado)", "⚔ Punhal (enferrujado)", "⚔ Dardo", "⚔ Faca", "⚔ Faca (lascada)", "⚔ Funda"],
           armaduras: [],
           escudos: [],
           escola: 'Invocação/Evocação'
@@ -1499,7 +1520,8 @@
             'Quando um arcano especialista tenta criar uma nova magia dentro de sua própria escola de especialização, o Mestre, ao determinar a dificuldade da tarefa, deve considerar a nova magia como sendo de um círculo interior ao real.',
             'Um Necromante não pode aprender magias das escolas de Ilusão e Encantamento/Feitiço'
           ],
-          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
+          armas: ["⚔ Cajado-Funda", "⚔ Cajado", "⚔ Cajado (quase quebrado)", "⚔ Cajado Pequeno", "⚔ Cajado Pequeno (quase quebrado)", "⚔ Adaga", "⚔ Adaga (lascada)", "⚔ Adaga (enferrujada)", "⚔ Punhal",
+          "⚔ Punhal (lascado)", "⚔ Punhal (enferrujado)", "⚔ Dardo", "⚔ Faca", "⚔ Faca (lascada)", "⚔ Funda"],
           armaduras: [],
           escudos: [],
           escola: 'Necromancia'
@@ -1524,7 +1546,8 @@
             'Quando um arcano especialista tenta criar uma nova magia dentro de sua própria escola de especialização, o Mestre, ao determinar a dificuldade da tarefa, deve considerar a nova magia como sendo de um círculo interior ao real.',
             'Um Transmutador não pode aprender magias das escolas de Abjuração e Necromancia'
           ],
-          armas: ["Cajado", "Adaga", "Punhal", "Dardo", "Faca", "Funda"],
+          armas: ["⚔ Cajado-Funda", "⚔ Cajado", "⚔ Cajado (quase quebrado)", "⚔ Cajado Pequeno", "⚔ Cajado Pequeno (quase quebrado)", "⚔ Adaga", "⚔ Adaga (lascada)", "⚔ Adaga (enferrujada)", "⚔ Punhal",
+          "⚔ Punhal (lascado)", "⚔ Punhal (enferrujado)", "⚔ Dardo", "⚔ Faca", "⚔ Faca (lascada)", "⚔ Funda"],
           armaduras: [],
           escudos: [],
           escola: 'Alteração'
@@ -1548,7 +1571,7 @@
             'Ao alcançar o 8° nível, o clérigo automaticamente atrai um grupo de seguidores fanaticamente leais, contanto que o personagem tenha estabelecido um local de adoração de bom tamanho.',
             'No 9º nível, o clérigo pode receber autorização oficial para construir uma fortaleza religiosa, seja um mosteiro fortificado ou um convento isolado.'
           ],
-          armas: ["Mangual", "Martelo de Batalha", "Açoite", "Chicote", "Alvião", "Aprisionador", "Bordão", "Arco Curto", "Azagaia", "Lança de Cavalaria", "Funda", "Dardo", "Lança", "Clava", "Arpão", "Tridente", "Martelo", "Maça", "Maça-Estrela", "Zarabatana"],
+          armas: ["⚔ Mangual de Infantaria", "⚔ Mangual de Infantaria (lascado)", "⚔ Mangual", "⚔ Mangual (lascado)", "⚔ Mangual de Cavalaria", "⚔ Mangual de Cavalaria (lascado)", "⚔ Martelo de Batalha", "⚔ Martelo de Batalha (amassado)", "⚔ Martelo", "⚔ Martelo (amassado)", "⚔ Açoite", "⚔ Chicote", "⚔ Alvião de Infantaria", "⚔ Alvião", "⚔ Alvião de Cavalaria", "⚔ Aprisionador", "⚔ Bordão", "⚔ Bordão (enferrujado)", "⚔ Arco Curto Composto", "⚔ Arco Curto Composto (quase quebrado)", "⚔ Arco Curto", "⚔ Arco Curto (quase quebrado)", "⚔ Azagaia", "⚔ Lança de Cavalaria Pesada", "⚔ Lança de Cavalaria", "⚔ Lança de Cavalaria Média", "⚔ Funda", "⚔ Cajado-Funda", "⚔ Dardo", "⚔ Lança", "⚔ Lança (quase quebrada)", "⚔ Lança de Cavalaria Pesada", "⚔ Lança de Cavalaria", "⚔ Lança de Cavalaria Média", "⚔ Lança de Tornoio", "⚔ Clava", "⚔ Clava (rachada)", "⚔ Clava com Espinhos", "⚔ Arpão", "⚔ Tridente", "⚔ Tridente (enferrujado)", "⚔ Bidente", "⚔ Bidente (enferrujado)", "⚔ Martelo de Batalha", "⚔ Martelo de Batalha (amassado)", "⚔ Martelo", "⚔ Martelo (amassado)", "⚔ Maça de Infantaria", "⚔ Maça de Infantaria (amassada)", "⚔ Maça", "⚔ Maça (amassada)", "⚔ Maça de Cavalaria", "⚔ Maça de Cavalaria (amassada)", "⚔ Maça-Estrela", "⚔ Maça-Estrela (quase quebrada)", "⚔ Maça-Estrela (enferrujada)", "⚔ Zarabatana"],
           armaduras: ARMADURAS,
           escudos: ESCUDOS,
           armas_divindade: [],
@@ -1595,7 +1618,7 @@
             'No 19º nivel o druida ganha o poder de entrar e sobreviver no plano elemental da Agua.',
             'No 20º nivel o druida ganha o poder entrar e sobreviver no plano elemental do Ar.'
           ],
-          armas: ["Clava", "Foice", "Dardo", "Lança", "Adaga", "Cimitarra", "Funda", "Cajado"],
+          armas: ["⚔ Clava", "⚔ Clava (rachada)", "⚔ Clava com Espinhos", "⚔ Foice", "⚔ Foice (lascada)", "⚔ Foice (enferrujada)", "⚔ Dardo", "⚔ Lança", "⚔ Lança (quase quebrada)", "⚔ Lança de Cavalaria Pesada", "⚔ Lança de Cavalaria", "⚔ Lança de Cavalaria Média", "⚔ Lança de Tornoio", "⚔ Adaga", "⚔ Adaga (lascada)", "⚔ Adaga (enferrujada)", "⚔ Cimitarra", "⚔ Cimitarra (enferrujada)", "⚔ Cimitarra (lascada)", "⚔ Funda", "⚔ Cajado-Funda", "⚔ Cajado", "⚔ Cajado (quase quebrado)", "⚔ Cajado Pequeno", "⚔ Cajado Pequeno (quase quebrado)"],
           armaduras: ARMADURAS_DRUIDA,
           escudos: ESCUDOS_DRUIDA,
           esferas: ["Adivinhação", "Animal", "Clima", "Cura", "Elemental", "Vegetal", "Todas"]
@@ -1639,7 +1662,7 @@
             'A partir do 10º nível, o ladrão ganha uma capacidade limitada de usar pergaminhos, arcanos ou sacerdotais. O personagem tem uma chance de 25% de ler incorretamente o pergaminho.',
             'Quando um ladrão atinge o 10º nível, sua reputação é tão grande que ele atrai 4d6 seguidores.'
           ],
-          armas: ['Clava', 'Adaga', 'Besta de Mão', 'Espada Longa', 'Dardo', 'Faca', 'Laço', 'Arco Curto', 'Funda', 'Espada Larga', 'Espada Curta', 'Cajado'],
+          armas: ["⚔ Clava", "⚔ Clava (rachada)", "⚔ Clava com Espinhos", "⚔ Adaga", "⚔ Adaga (lascada)", "⚔ Adaga (enferrujada)", "⚔ Besta de Mão", "⚔ Besta de Mão (quase quebrada)", "⚔ Espada Longa", "⚔ Espada Longa (enferrujada)", "⚔ Espada Longa (lascada)", "⚔ Dardo", "⚔ Faca", "⚔ Faca (lascada)", "⚔ Laço", "⚔ Arco Curto Composto", "⚔ Arco Curto Composto (quase quebrado)", "⚔ Arco Curto", "⚔ Arco Curto (quase quebrado)", "⚔ Funda", "⚔ Cajado-Funda", "⚔ Espada Larga", "⚔ Espada Larga (enferrujada)", "⚔ Espada Larga (lascada)", "⚔ Espada Curta", "⚔ Espada Curta (enferrujada)", "⚔ Espada Curta (lascada)", "⚔ Cajado", "⚔ Cajado (quase quebrado)", "⚔ Cajado Pequeno", "⚔ Cajado Pequeno (quase quebrado)"],
           armaduras: ARMADURAS_LADRAO,
           escudos: ESCUDOS_LADRAO,
           talentos: {
@@ -4420,7 +4443,12 @@
 
               while ( (procurar_pericias_armas) && (qtde_pericias_armas > 0) && (index_arma_mais_forte < armas_mais_fortes.length) ) {
 
-                let arma_da_vez = armas_mais_fortes[index_arma_mais_forte].arma;
+                let temp_arma_da_vez = armas_mais_fortes[index_arma_mais_forte].arma;
+                let arma_da_vez = temp_arma_da_vez.substring(2, temp_arma_da_vez.length);
+                let parenteses_arma_da_vez = arma_da_vez.indexOf("(");
+                if (parenteses_arma_da_vez > -1) {
+                  arma_da_vez = arma_da_vez.substring(0, (parenteses_arma_da_vez - 1));
+                }
 
                 if ( (possui_especializacao) && (index_arma_mais_forte == 0) ) {
                   let texto_especializacao = "Especialista em " + arma_da_vez;
